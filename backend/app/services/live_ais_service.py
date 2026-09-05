@@ -531,8 +531,9 @@ class LiveAISService:
                 self._connected = False
                 self._active_ws = None
                 self._last_error = str(e)
-                logger.warning(f"AIS connection interrupted: {e}. Reconnecting in {backoff:.1f}s...")
-                await asyncio.sleep(backoff)
+                sleep_time = max(8.0, backoff) if "429" in str(e) else backoff
+                logger.warning(f"AIS connection interrupted: {e}. Reconnecting in {sleep_time:.1f}s...")
+                await asyncio.sleep(sleep_time)
                 backoff = min(backoff * 2.0, 60.0)
             finally:
                 self._active_ws = None
