@@ -769,6 +769,7 @@ def get_live_vessels(
 
     return {
         "status": live_ais_service.get_status(),
+        "configured": live_ais_service.is_configured(),
         "region": live_ais_service.current_region,
         "active_bbox": live_ais_service.active_bbox.as_tuple,
         "total_count": len(vessels),

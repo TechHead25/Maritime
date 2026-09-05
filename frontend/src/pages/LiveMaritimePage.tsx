@@ -148,6 +148,7 @@ export const LiveMaritimePage: React.FC = () => {
   const [minSpeedKnots, setMinSpeedKnots] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [status, setStatus] = useState<string>('DISCONNECTED');
+  const [isConfigured, setIsConfigured] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
   const [isChangingRegion, setIsChangingRegion] = useState<boolean>(false);
   const [isCreatingInvestigation, setIsCreatingInvestigation] = useState<boolean>(false);
@@ -176,6 +177,9 @@ export const LiveMaritimePage: React.FC = () => {
       });
       setVessels(data.vessels || []);
       setStatus(data.status || 'DISCONNECTED');
+      if (typeof data.configured === 'boolean') {
+        setIsConfigured(data.configured);
+      }
     } catch (err) {
       console.warn('Live vessels fetch failed:', err);
     } finally {
@@ -201,8 +205,8 @@ export const LiveMaritimePage: React.FC = () => {
       try {
         const payload = JSON.parse(event.data);
         if (payload.type === 'INITIAL_STATUS' || payload.type === 'HEARTBEAT') {
-          setStatus(payload.status || 'STREAMING');
-        } else if (payload.type === 'VESSEL_POSITION') {
+          setStatus(payload.status || 'LIVE');
+        } else if (payload.type === 'VESSEL_POSITION' || payload.type === 'VESSEL_UPDATE') {
           const vData = payload.data;
           setVessels((prev) => {
             const idx = prev.findIndex((v) => v.mmsi === vData.mmsi);
@@ -249,6 +253,15 @@ export const LiveMaritimePage: React.FC = () => {
 
     loadDetails();
   }, [selectedMmsi, vessels]);
+
+  const handleSelectVessel = (mmsi: string) => {
+    setSelectedMmsi(mmsi);
+  };
+
+  const handleOpenProfileModal = (mmsi: string) => {
+    setProfileModalMmsi(mmsi);
+    setIsProfileModalOpen(true);
+  };
 
   // Handle region subscription change
   const handleRegionChange = async (newRegion: string) => {
@@ -307,12 +320,19 @@ export const LiveMaritimePage: React.FC = () => {
   // Real-time status styling
   const getStatusIndicator = () => {
     switch (status) {
+      case 'LIVE':
       case 'STREAMING':
         return { label: 'LIVE AIS STREAMING', color: '#10b981', dotColor: '#34d399' };
       case 'CONNECTING':
         return { label: 'CONNECTING...', color: '#f59e0b', dotColor: '#fbbf24' };
+      case 'STALE':
+        return { label: 'IDLE (CONNECTED)', color: '#38bdf8', dotColor: '#60a5fa' };
       default:
-        return { label: 'DISCONNECTED', color: '#94a3b8', dotColor: '#64748b' };
+        return {
+          label: isConfigured ? 'CONNECTING...' : 'UNCONFIGURED',
+          color: isConfigured ? '#f59e0b' : '#94a3b8',
+          dotColor: isConfigured ? '#fbbf24' : '#64748b',
+        };
     }
   };
 
@@ -445,7 +465,7 @@ export const LiveMaritimePage: React.FC = () => {
               borderRadius: '50%',
               backgroundColor: statusIndicator.dotColor,
               display: 'inline-block',
-              animation: status === 'STREAMING' ? 'pulse 2s infinite' : 'none',
+              animation: (status === 'STREAMING' || status === 'LIVE') ? 'pulse 2s infinite' : 'none',
             }} />
             {statusIndicator.label}
           </div>
@@ -458,18 +478,17 @@ export const LiveMaritimePage: React.FC = () => {
             onClick={fetchVesselSnapshot}
             disabled={loading}
             style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
-              color: '#cbd5e1',
-              padding: '0.35rem 0.65rem',
-              borderRadius: '4px',
-              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: '0.35rem',
-              fontSize: '0.72rem',
+              backgroundColor: '#1e293b',
+              border: '1px solid #334155',
+              color: '#94a3b8',
+              borderRadius: '4px',
+              padding: '0.35rem 0.65rem',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
             }}
-            title="Refresh positions"
           >
             <RefreshCw size={12} className={loading ? 'spin-icon' : ''} />
             Refresh
@@ -477,128 +496,154 @@ export const LiveMaritimePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Workspace: Leaflet Map & Selected Vessel Drawer */}
+      {/* Dynamic Map Area */}
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: selectedVessel ? '1fr 380px' : '1fr',
-        gap: '1rem',
-        flex: 1,
-        minHeight: '600px',
+        position: 'relative',
+        height: selectedVessel ? 'calc(100vh - 460px)' : 'calc(100vh - 260px)',
+        minHeight: '400px',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        border: '1px solid #1e293b',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
       }}>
-        {/* Map Container */}
+        <MapContainer
+          center={mapConfig.center}
+          zoom={mapConfig.zoom}
+          style={{ height: '100%', width: '100%', backgroundColor: '#060d17' }}
+        >
+          <MapViewController
+            center={mapConfig.center}
+            zoom={mapConfig.zoom}
+            targetVesselCoords={selectedVesselCoords}
+          />
+
+          <TileLayer
+            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          />
+
+          {/* Vessel Markers */}
+          {filteredVessels.map((v) => {
+            const isSelected = selectedMmsi === v.mmsi;
+            const icon = createDirectionalVesselIcon(v.vessel_type, v.course_over_ground_deg, isSelected);
+
+            return (
+              <Marker
+                key={v.mmsi}
+                position={[v.latitude, v.longitude]}
+                icon={icon}
+                eventHandlers={{
+                  click: () => handleSelectVessel(v.mmsi),
+                }}
+              >
+                <Popup>
+                  <div style={{ color: '#0f172a', fontSize: '0.75rem', lineHeight: 1.4 }}>
+                    <strong style={{ fontSize: '0.85rem' }}>{v.vessel_name}</strong>
+                    <div>Type: <strong>{v.vessel_type}</strong></div>
+                    <div>MMSI: {v.mmsi}</div>
+                    {v.imo && <div>IMO: {v.imo}</div>}
+                    <div>Speed: {v.speed_over_ground_knots} kn</div>
+                    <div>Course: {v.course_over_ground_deg}°</div>
+                    <div style={{ fontSize: '0.70rem', color: '#64748b', marginTop: '0.25rem' }}>
+                      Data Age: {v.data_age_seconds}s ({v.data_age_seconds < 300 ? 'LIVE POSITION' : 'RECENT POSITION'})
+                    </div>
+                    <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem' }}>
+                      <button
+                        onClick={() => handleSelectVessel(v.mmsi)}
+                        style={{
+                          backgroundColor: '#0284c7',
+                          color: '#fff',
+                          border: 'none',
+                          borderRadius: '4px',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontSize: '0.70rem',
+                        }}
+                      >
+                        View Track
+                      </button>
+                      <button
+                        onClick={() => handleOpenProfileModal(v.mmsi)}
+                        style={{
+                          backgroundColor: '#334155',
+                          color: '#f8fafc',
+                          border: 'none',
+                          borderRadius: '4px',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontSize: '0.70rem',
+                        }}
+                      >
+                        Profile
+                      </button>
+                    </div>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
+
+          {/* Detailed Waypoint Trail for Selected Vessel */}
+          {selectedVessel?.trail && selectedVessel.trail.length > 1 && (
+            <Polyline
+              positions={selectedVessel.trail.map((wp) => [wp.latitude, wp.longitude])}
+              pathOptions={{
+                color: selectedVessel.vessel_type === 'TANKER' ? '#f59e0b' : '#38bdf8',
+                weight: 3,
+                dashArray: selectedVessel.has_ais_gaps ? '6, 6' : undefined,
+                opacity: 0.85,
+              }}
+            />
+          )}
+        </MapContainer>
+
+        {/* Empty Overlay */}
+        {filteredVessels.length === 0 && !loading && (
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgba(15, 23, 42, 0.92)',
+            border: '1px solid #334155',
+            borderRadius: '8px',
+            padding: '1.5rem 2rem',
+            textAlign: 'center',
+            maxWidth: '480px',
+            zIndex: 1000,
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+          }}>
+            <Radio size={28} color="#94a3b8" style={{ margin: '0 auto 0.75rem' }} />
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', margin: '0 0 0.4rem' }}>
+              {!isConfigured
+                ? 'Live AIS Stream Unconfigured'
+                : status === 'DISCONNECTED'
+                ? 'Connecting to Live AIS Stream...'
+                : 'Awaiting Transponder Signals'}
+            </h3>
+            <p style={{ fontSize: '0.75rem', color: '#94a3b8', margin: 0, lineHeight: 1.4 }}>
+              {!isConfigured
+                ? 'Server-side AIS streaming credentials (AISSTREAM_API_KEY) are not configured. The platform strictly enforces zero synthetic data generation; no simulated vessels are shown.'
+                : status === 'DISCONNECTED'
+                ? 'Connecting to the live satellite AIS telemetry feed. Vessels will appear in real time once transponders broadcast.'
+                : `Live stream is connected. Awaiting position reports for ${mapConfig.label}. Vessels will appear in real time as transponders broadcast.`}
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Selected Vessel Telemetry & Identity Drawer */}
+      {selectedVessel && (
         <div style={{
           backgroundColor: '#0c1322',
           border: '1px solid #1e293b',
           borderRadius: '8px',
-          overflow: 'hidden',
-          position: 'relative',
+          padding: '1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          overflowY: 'auto',
         }}>
-          <MapContainer
-            center={mapConfig.center}
-            zoom={mapConfig.zoom}
-            style={{ width: '100%', height: '100%', minHeight: '600px', backgroundColor: '#090d16' }}
-          >
-            <MapViewController
-              center={mapConfig.center}
-              zoom={mapConfig.zoom}
-              targetVesselCoords={selectedVesselCoords}
-            />
-
-            {/* Dark nautical basemap */}
-            <TileLayer
-              attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-              url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-              maxZoom={19}
-            />
-
-            {/* Vessel Markers */}
-            {filteredVessels.map((v) => {
-              const isSelected = selectedMmsi === v.mmsi;
-              const icon = createDirectionalVesselIcon(
-                v.vessel_type,
-                v.heading_deg || v.course_over_ground_deg || 0,
-                isSelected
-              );
-
-              return (
-                <Marker
-                  key={v.mmsi}
-                  position={[v.latitude, v.longitude]}
-                  icon={icon}
-                  eventHandlers={{
-                    click: () => setSelectedMmsi(v.mmsi),
-                  }}
-                >
-                  <Popup>
-                    <div style={{ color: '#0f172a', fontSize: '0.80rem' }}>
-                      <strong style={{ display: 'block', fontSize: '0.90rem' }}>{v.vessel_name}</strong>
-                      <div>Type: {v.vessel_type}</div>
-                      <div>MMSI: {v.mmsi}</div>
-                      <div>Speed: {v.speed_over_ground_knots} kn | Course: {v.course_over_ground_deg}°</div>
-                      <div style={{ fontSize: '0.70rem', color: '#64748b', marginTop: '0.25rem' }}>
-                        Data Age: {v.data_age_seconds}s ({v.data_age_seconds < 300 ? 'LIVE POSITION' : 'RECENT POSITION'})
-                      </div>
-                    </div>
-                  </Popup>
-                </Marker>
-              );
-            })}
-
-            {/* Selected Vessel Historical Track Trail */}
-            {selectedVessel?.trail && selectedVessel.trail.length > 1 && (
-              <Polyline
-                positions={selectedVessel.trail.map((pt) => [pt.latitude, pt.longitude])}
-                pathOptions={{
-                  color: selectedVessel.vessel_type === 'TANKER' ? '#f59e0b' : '#38bdf8',
-                  weight: 3,
-                  dashArray: '6, 6',
-                  opacity: 0.9,
-                }}
-              />
-            )}
-          </MapContainer>
-
-          {/* Empty State Banner if 0 vessels */}
-          {filteredVessels.length === 0 && !loading && (
-            <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              backgroundColor: 'rgba(15, 23, 42, 0.92)',
-              border: '1px solid #334155',
-              borderRadius: '8px',
-              padding: '1.5rem 2rem',
-              textAlign: 'center',
-              maxWidth: '480px',
-              zIndex: 1000,
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
-            }}>
-              <Radio size={28} color="#94a3b8" style={{ margin: '0 auto 0.75rem' }} />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', margin: '0 0 0.4rem' }}>
-                {status === 'DISCONNECTED' ? 'Live AIS Stream Offline / Unconfigured' : 'No Vessels In Selected Zone'}
-              </h3>
-              <p style={{ fontSize: '0.75rem', color: '#94a3b8', margin: 0, lineHeight: 1.4 }}>
-                {status === 'DISCONNECTED'
-                  ? 'Server-side AIS streaming credentials (AISSTREAM_API_KEY) are unconfigured. The platform strictly enforces zero synthetic data generation; no simulated vessels are shown.'
-                  : `Currently awaiting position reports for ${mapConfig.label}. Vessels will appear in real time as transponders broadcast.`}
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Selected Vessel Telemetry & Identity Drawer */}
-        {selectedVessel && (
-          <div style={{
-            backgroundColor: '#0c1322',
-            border: '1px solid #1e293b',
-            borderRadius: '8px',
-            padding: '1.25rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-            overflowY: 'auto',
-          }}>
             {/* Drawer Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
@@ -796,7 +841,6 @@ export const LiveMaritimePage: React.FC = () => {
             </div>
           </div>
         )}
-      </div>
 
       {/* Unified Vessel Profile Modal */}
       <VesselIntelligenceModal

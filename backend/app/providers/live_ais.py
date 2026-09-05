@@ -75,6 +75,8 @@ class LiveAISWebSocketProvider(AISDataProvider):
 
     def is_available(self) -> bool:
         """Available only if valid credentials are configured."""
+        if not self.api_key or not self.api_key.strip():
+            self.api_key = os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
         return bool(self.api_key and len(self.api_key.strip()) > 0)
 
     def get_auth_status(self) -> Dict[str, Any]:

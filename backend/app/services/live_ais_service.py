@@ -302,6 +302,8 @@ class LiveAISService:
         self._running = False
         self._connected = False
         self._worker_thread: Optional[threading.Thread] = None
+        self._worker_loop: Optional[asyncio.AbstractEventLoop] = None
+        self._active_ws: Optional[Any] = None
         self._last_message_time: Optional[datetime] = None
         self._connection_attempts = 0
         self._total_messages_received = 0
@@ -313,10 +315,18 @@ class LiveAISService:
 
     def is_configured(self) -> bool:
         """Returns True if provider credentials are set."""
+        if not self.api_key or not self.api_key.strip():
+            self.api_key = os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
         return bool(self.api_key and len(self.api_key.strip()) > 0)
+
+    def ensure_started(self):
+        """Auto-starts background streaming worker thread if configured and not yet running."""
+        if self.is_configured() and not self._running:
+            self.start()
 
     def get_status(self) -> str:
         """Returns connection health state: LIVE, STALE, or DISCONNECTED."""
+        self.ensure_started()
         if not self.is_configured() or not self._connected:
             return "DISCONNECTED"
 
@@ -324,11 +334,12 @@ class LiveAISService:
             return "DISCONNECTED"
 
         age = (datetime.now(timezone.utc) - self._last_message_time).total_seconds()
-        if age > 45.0:
+        if age > 120.0:
             return "STALE"
         return "LIVE"
 
     def get_health_telemetry(self) -> Dict[str, Any]:
+        self.ensure_started()
         return {
             "status": self.get_status(),
             "configured": self.is_configured(),
@@ -353,6 +364,13 @@ class LiveAISService:
         else:
             raise ValueError(f"Unknown predefined region '{region_name}'. Available: {list(PREDEFINED_REGIONS.keys())}")
         logger.info(f"Updated live AIS subscription region: {self.current_region} -> {self.active_bbox.as_tuple}")
+
+        # If currently streaming on an active socket, close it cleanly to force immediate resubscription to new bbox
+        if self._active_ws and self._worker_loop and self._worker_loop.is_running():
+            try:
+                self._worker_loop.call_soon_threadsafe(lambda: asyncio.create_task(self._active_ws.close()))
+            except Exception:
+                pass
 
     def ingest_raw_packet(self, raw_json_str: str) -> bool:
         """Processes an incoming raw AIS frame through validator and normalizer."""
@@ -468,7 +486,17 @@ class LiveAISService:
         self._last_error = None
 
     def _run_async_worker(self):
-        asyncio.run(self._worker_lifecycle())
+        try:
+            self._worker_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(self._worker_loop)
+            self._worker_loop.run_until_complete(self._worker_lifecycle())
+        except Exception as e:
+            logger.error(f"LiveAIS-Streamer worker encountered failure: {e}", exc_info=True)
+            self._connected = False
+        finally:
+            self._active_ws = None
+            if self._worker_loop and not self._worker_loop.is_closed():
+                self._worker_loop.close()
 
     async def _worker_lifecycle(self):
         import websockets
@@ -477,8 +505,11 @@ class LiveAISService:
         while self._running:
             self._connection_attempts += 1
             try:
+                if not self.api_key or not self.api_key.strip():
+                    self.api_key = os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
                 logger.info(f"Connecting to live AIS stream at {self.ws_url} (Region: {self.current_region})...")
                 async with websockets.connect(self.ws_url, ping_interval=20, ping_timeout=10) as ws:
+                    self._active_ws = ws
                     self._connected = True
                     backoff = 1.0
                     self._last_message_time = datetime.now(timezone.utc)
@@ -498,10 +529,13 @@ class LiveAISService:
 
             except Exception as e:
                 self._connected = False
+                self._active_ws = None
                 self._last_error = str(e)
                 logger.warning(f"AIS connection interrupted: {e}. Reconnecting in {backoff:.1f}s...")
                 await asyncio.sleep(backoff)
                 backoff = min(backoff * 2.0, 60.0)
+            finally:
+                self._active_ws = None
 
     # -----------------------------------------------------------------------
     # Queries & SSE Streams
@@ -514,6 +548,7 @@ class LiveAISService:
         min_speed: Optional[float] = None,
     ) -> List[Dict[str, Any]]:
         """Queries currently buffered vessel states matching spatial/filter constraints."""
+        self.ensure_started()
         target_bbox = bbox or self.active_bbox
         return self.current_state.get_all(bbox=target_bbox, vessel_type=vessel_type, min_speed=min_speed)
 
@@ -558,6 +593,7 @@ class LiveAISService:
 
     async def event_generator(self) -> AsyncGenerator[str, None]:
         """Server-Sent Events (SSE) generator streaming vessel events directly to browser clients."""
+        self.ensure_started()
         q = asyncio.Queue()
         with self._sub_lock:
             self._subscribers.add(q)

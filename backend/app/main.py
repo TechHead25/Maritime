@@ -7,6 +7,7 @@ Implements:
 - Health and diagnostic routes
 """
 
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 import logging
 import os
@@ -30,12 +31,34 @@ logging.basicConfig(
 )
 logger = logging.getLogger("maritime-oil-attribution")
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager orchestrating background ingestion workers cleanly."""
+    try:
+        from backend.app.services.live_ais_service import live_ais_service
+        if live_ais_service.is_configured():
+            logger.info("Auto-starting live AIS background ingestion worker...")
+            live_ais_service.start()
+        else:
+            logger.info("Live AIS service running in passive mode (AISSTREAM_API_KEY unconfigured).")
+    except Exception as e:
+        logger.warning(f"Could not auto-start live AIS worker on startup: {e}")
+    yield
+    try:
+        from backend.app.services.live_ais_service import live_ais_service
+        live_ais_service.stop()
+    except Exception:
+        pass
+
+
 app = FastAPI(
     title="Maritime Oil-Spill Attribution Intelligence API",
     description="Backend API for SAR Slick Detection, Backward Drift Simulation, AIS Interception, and Explainable Forensic Attribution",
     version="0.1.0",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 
