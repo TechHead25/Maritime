@@ -1,0 +1,82 @@
+[
+  {
+    "mmsi": "371584000",
+    "imo": "9199347",
+    "vessel_name": "MT NEW DIAMOND",
+    "vessel_type": "TANKER",
+    "flag_country": "Panama",
+    "waypoints": [
+      {"timestamp": "2020-09-02T22:00:00Z", "longitude": 82.0124, "latitude": 7.3521, "speed_over_ground_knots": 14.2, "course_over_ground_deg": 48.5, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-02T23:00:00Z", "longitude": 82.1554, "latitude": 7.4812, "speed_over_ground_knots": 14.0, "course_over_ground_deg": 48.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T00:00:00Z", "longitude": 82.2987, "latitude": 7.6045, "speed_over_ground_knots": 13.9, "course_over_ground_deg": 48.2, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T01:00:00Z", "longitude": 82.4412, "latitude": 7.7289, "speed_over_ground_knots": 13.8, "course_over_ground_deg": 48.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T02:00:00Z", "longitude": 82.5856, "latitude": 7.8541, "speed_over_ground_knots": 13.7, "course_over_ground_deg": 48.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T03:00:00Z", "longitude": 82.7291, "latitude": 7.9782, "speed_over_ground_knots": 13.5, "course_over_ground_deg": 47.8, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T03:25:00Z", "longitude": 82.7892, "latitude": 8.0298, "speed_over_ground_knots": 12.1, "course_over_ground_deg": 45.0, "navigational_status": "not under command"},
+      {"timestamp": "2020-09-03T08:30:00Z", "longitude": 82.8124, "latitude": 8.0412, "speed_over_ground_knots": 0.4, "course_over_ground_deg": 120.0, "navigational_status": "not under command"},
+      {"timestamp": "2020-09-03T12:00:00Z", "longitude": 82.8351, "latitude": 8.0551, "speed_over_ground_knots": 0.5, "course_over_ground_deg": 135.0, "navigational_status": "not under command"}
+    ],
+    "has_ais_gaps": true,
+    "gap_intervals": [["2020-09-03T03:25:00Z", "2020-09-03T08:30:00Z"]]
+  },
+  {
+    "mmsi": "353130000",
+    "imo": "9467419",
+    "vessel_name": "MSC LAUREN",
+    "vessel_type": "CARGO",
+    "flag_country": "Panama",
+    "waypoints": [
+      {"timestamp": "2020-09-03T01:00:00Z", "longitude": 82.1054, "latitude": 7.2014, "speed_over_ground_knots": 18.5, "course_over_ground_deg": 52.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T02:00:00Z", "longitude": 82.3211, "latitude": 7.3854, "speed_over_ground_knots": 18.4, "course_over_ground_deg": 52.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T03:00:00Z", "longitude": 82.5364, "latitude": 7.5684, "speed_over_ground_knots": 18.5, "course_over_ground_deg": 51.8, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T04:00:00Z", "longitude": 82.7512, "latitude": 7.7512, "speed_over_ground_knots": 18.3, "course_over_ground_deg": 52.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T05:00:00Z", "longitude": 82.9681, "latitude": 7.9341, "speed_over_ground_knots": 18.4, "course_over_ground_deg": 52.0, "navigational_status": "under way using engine"}
+    ],
+    "has_ais_gaps": false,
+    "gap_intervals": []
+  },
+  {
+    "mmsi": "538008821",
+    "imo": "9541234",
+    "vessel_name": "PACIFIC DOLPHIN",
+    "vessel_type": "TANKER",
+    "flag_country": "Marshall Islands",
+    "waypoints": [
+      {"timestamp": "2020-09-03T00:00:00Z", "longitude": 82.1054, "latitude": 8.1254, "speed_over_ground_knots": 12.5, "course_over_ground_deg": 65.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T01:30:00Z", "longitude": 82.3854, "latitude": 8.2412, "speed_over_ground_knots": 12.4, "course_over_ground_deg": 65.2, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T03:00:00Z", "longitude": 82.6654, "latitude": 8.3584, "speed_over_ground_knots": 12.5, "course_over_ground_deg": 65.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T04:30:00Z", "longitude": 82.9451, "latitude": 8.4751, "speed_over_ground_knots": 12.6, "course_over_ground_deg": 64.8, "navigational_status": "under way using engine"}
+    ],
+    "has_ais_gaps": false,
+    "gap_intervals": []
+  },
+  {
+    "mmsi": "419001122",
+    "imo": "9315544",
+    "vessel_name": "JAG LALIT",
+    "vessel_type": "TANKER",
+    "flag_country": "India",
+    "waypoints": [
+      {"timestamp": "2020-09-02T23:00:00Z", "longitude": 83.1524, "latitude": 8.4512, "speed_over_ground_knots": 13.0, "course_over_ground_deg": 228.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T01:00:00Z", "longitude": 82.8954, "latitude": 8.2254, "speed_over_ground_knots": 13.1, "course_over_ground_deg": 228.0, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T03:00:00Z", "longitude": 82.6384, "latitude": 8.0012, "speed_over_ground_knots": 13.0, "course_over_ground_deg": 227.8, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T05:00:00Z", "longitude": 82.3812, "latitude": 7.7784, "speed_over_ground_knots": 12.9, "course_over_ground_deg": 228.0, "navigational_status": "under way using engine"}
+    ],
+    "has_ais_gaps": false,
+    "gap_intervals": []
+  },
+  {
+    "mmsi": "440129000",
+    "imo": "9685512",
+    "vessel_name": "GLOVIS SYMPHONY",
+    "vessel_type": "CARGO",
+    "flag_country": "Republic of Korea",
+    "waypoints": [
+      {"timestamp": "2020-09-03T11:00:00Z", "longitude": 82.0124, "latitude": 7.3521, "speed_over_ground_knots": 16.5, "course_over_ground_deg": 48.5, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T13:00:00Z", "longitude": 82.2987, "latitude": 7.6045, "speed_over_ground_knots": 16.4, "course_over_ground_deg": 48.2, "navigational_status": "under way using engine"},
+      {"timestamp": "2020-09-03T15:00:00Z", "longitude": 82.5856, "latitude": 7.8541, "speed_over_ground_knots": 16.5, "course_over_ground_deg": 48.0, "navigational_status": "under way using engine"}
+    ],
+    "has_ais_gaps": false,
+    "gap_intervals": []
+  }
+]

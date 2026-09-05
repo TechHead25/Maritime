@@ -1,0 +1,27 @@
+{
+  "id": "slick-ennore-20170129-001",
+  "sar_scene_id": "sar-s1a-20170129-ennore",
+  "slick_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [80.328, 13.205],
+        [80.342, 13.218],
+        [80.355, 13.242],
+        [80.348, 13.258],
+        [80.334, 13.245],
+        [80.322, 13.220],
+        [80.328, 13.205]
+      ]
+    ]
+  },
+  "centroid": {
+    "type": "Point",
+    "coordinates": [80.338, 13.232]
+  },
+  "area_sq_km": 3.75,
+  "perimeter_km": 14.82,
+  "major_axis_orientation_deg": 28.5,
+  "confidence_score": 0.885,
+  "lookalike_probability": 0.05
+}

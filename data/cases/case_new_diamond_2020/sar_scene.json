@@ -1,0 +1,21 @@
+{
+  "id": "sar-s1a-20200903-new-diamond",
+  "case_id": "case_new_diamond_2020",
+  "satellite_platform": "Sentinel-1A",
+  "sensor_mode": "IW",
+  "polarization": "VV",
+  "acquisition_timestamp": "2020-09-03T12:45:00Z",
+  "footprint_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [81.5, 6.5],
+        [84.5, 6.5],
+        [84.5, 9.0],
+        [81.5, 9.0],
+        [81.5, 6.5]
+      ]
+    ]
+  },
+  "pixel_resolution_meters": 20.0
+}

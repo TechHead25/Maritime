@@ -1,0 +1,30 @@
+{
+  "case_id": "case_ennore_2017",
+  "ocean_currents": {
+    "source": "Copernicus Marine Service (CMEMS) GLOBAL_REANALYSIS_PHY_001_030",
+    "dataset_source": "Copernicus Marine Service (CMEMS) GLOBAL_REANALYSIS_PHY_001_030",
+    "bounding_box": [80.15, 12.90, 80.60, 13.50],
+    "spatial_resolution_deg": 0.083,
+    "timestamp_utc": "2017-01-28T12:00:00Z",
+    "mean_current_vectors": {
+      "u_eastward_m_per_s": 0.125,
+      "v_northward_m_per_s": 0.340,
+      "speed_knots": 0.704,
+      "direction_deg": 20.2
+    }
+  },
+  "wind_data": {
+    "source": "ECMWF ERA5 Atmospheric Reanalysis 10m Surface Wind",
+    "dataset_source": "ECMWF ERA5 Atmospheric Reanalysis 10m Surface Wind",
+    "bounding_box": [80.15, 12.90, 80.60, 13.50],
+    "spatial_resolution_deg": 0.25,
+    "timestamp_utc": "2017-01-28T12:00:00Z",
+    "mean_wind_vectors": {
+      "u_eastward_m_per_s": -2.8,
+      "v_northward_m_per_s": -3.9,
+      "wind_speed_m_per_s": 4.80,
+      "wind_speed_knots": 9.33,
+      "wind_direction_from_deg": 35.6
+    }
+  }
+}

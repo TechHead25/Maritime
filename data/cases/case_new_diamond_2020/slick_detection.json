@@ -1,0 +1,29 @@
+{
+  "id": "slick-s1a-20200903-new-diamond-001",
+  "sar_scene_id": "sar-s1a-20200903-new-diamond",
+  "slick_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [82.25, 7.60],
+        [82.35, 7.68],
+        [82.52, 7.82],
+        [82.65, 7.92],
+        [82.72, 7.98],
+        [82.70, 7.94],
+        [82.55, 7.80],
+        [82.40, 7.68],
+        [82.25, 7.60]
+      ]
+    ]
+  },
+  "centroid": {
+    "type": "Point",
+    "coordinates": [82.50, 7.75]
+  },
+  "area_sq_km": 18.45,
+  "perimeter_km": 28.6,
+  "major_axis_orientation_deg": 52.0,
+  "confidence_score": 0.94,
+  "lookalike_probability": 0.06
+}

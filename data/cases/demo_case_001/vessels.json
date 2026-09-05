@@ -1,0 +1,195 @@
+{
+  "synthetic": true,
+  "data_classification": "SYNTHETIC_BENCHMARK_DATA",
+  "case_id": "demo-case-001",
+  "vessels": [
+    {
+      "mmsi": "538009912",
+      "imo": "9312345",
+      "vessel_name": "MT PACIFIC GLORY",
+      "vessel_type": "TANKER",
+      "flag_country": "Liberia",
+      "callsign": "A8TG4",
+      "scenario_role": "VESSEL_A_GROUND_TRUTH_CULPRIT",
+      "description": "Crude oil tanker that conducted illegal discharge during tank washing. Passes within 450m of origin during peak release window on heading 048 deg.",
+      "has_ais_gaps": true,
+      "gap_intervals": [
+        ["2026-08-31T23:45:00Z", "2026-09-01T01:15:00Z"]
+      ],
+      "waypoints": [
+        {
+          "timestamp": "2026-08-31T22:00:00Z",
+          "longitude": 101.550,
+          "latitude": 2.380,
+          "speed_over_ground_knots": 13.5,
+          "course_over_ground_deg": 48.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-08-31T23:00:00Z",
+          "longitude": 101.690,
+          "latitude": 2.495,
+          "speed_over_ground_knots": 13.5,
+          "course_over_ground_deg": 48.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-08-31T23:45:00Z",
+          "longitude": 101.780,
+          "latitude": 2.570,
+          "speed_over_ground_knots": 13.2,
+          "course_over_ground_deg": 48.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T00:45:00Z",
+          "longitude": 101.833,
+          "latitude": 2.613,
+          "speed_over_ground_knots": 8.0,
+          "course_over_ground_deg": 48.5,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T01:15:00Z",
+          "longitude": 101.885,
+          "latitude": 2.660,
+          "speed_over_ground_knots": 13.4,
+          "course_over_ground_deg": 48.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T03:00:00Z",
+          "longitude": 102.120,
+          "latitude": 2.855,
+          "speed_over_ground_knots": 13.5,
+          "course_over_ground_deg": 48.0,
+          "navigational_status": "Under way using engine"
+        }
+      ]
+    },
+    {
+      "mmsi": "352001140",
+      "imo": "9488123",
+      "vessel_name": "MV ATLANTIC TRANSIT",
+      "vessel_type": "CARGO",
+      "flag_country": "Panama",
+      "callsign": "3FTG9",
+      "scenario_role": "VESSEL_B_WRONG_TIME",
+      "description": "Cargo vessel passing near origin coordinates (101.84, 2.62) but 11 hours after the estimated release window.",
+      "has_ais_gaps": false,
+      "gap_intervals": [],
+      "waypoints": [
+        {
+          "timestamp": "2026-09-01T10:00:00Z",
+          "longitude": 101.680,
+          "latitude": 2.480,
+          "speed_over_ground_knots": 14.0,
+          "course_over_ground_deg": 50.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T11:30:00Z",
+          "longitude": 101.840,
+          "latitude": 2.620,
+          "speed_over_ground_knots": 14.1,
+          "course_over_ground_deg": 50.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T13:00:00Z",
+          "longitude": 102.010,
+          "latitude": 2.760,
+          "speed_over_ground_knots": 14.0,
+          "course_over_ground_deg": 50.0,
+          "navigational_status": "Under way using engine"
+        }
+      ]
+    },
+    {
+      "mmsi": "211889900",
+      "imo": "9122340",
+      "vessel_name": "STAR VOYAGER",
+      "vessel_type": "PASSENGER",
+      "flag_country": "Germany",
+      "callsign": "DABF",
+      "scenario_role": "VESSEL_C_FAR_DISTANCE",
+      "description": "Passenger liner passing during the correct release window (00:30 UTC) but 32 km away in the eastern transit corridor.",
+      "has_ais_gaps": false,
+      "gap_intervals": [],
+      "waypoints": [
+        {
+          "timestamp": "2026-08-31T23:30:00Z",
+          "longitude": 102.050,
+          "latitude": 2.650,
+          "speed_over_ground_knots": 18.5,
+          "course_over_ground_deg": 355.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T00:30:00Z",
+          "longitude": 102.100,
+          "latitude": 2.750,
+          "speed_over_ground_knots": 18.4,
+          "course_over_ground_deg": 355.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T01:30:00Z",
+          "longitude": 102.150,
+          "latitude": 2.850,
+          "speed_over_ground_knots": 18.5,
+          "course_over_ground_deg": 355.0,
+          "navigational_status": "Under way using engine"
+        }
+      ]
+    },
+    {
+      "mmsi": "636015522",
+      "imo": "9554411",
+      "vessel_name": "NEPTUNE TRADER",
+      "vessel_type": "CARGO",
+      "flag_country": "Marshall Islands",
+      "callsign": "V7X91",
+      "scenario_role": "VESSEL_D_AIS_GAP_WEAK_EVIDENCE",
+      "description": "Bulk cargo vessel with a 2-hour AIS transponder gap, but passing 18 km away on a perpendicular heading (140 deg).",
+      "has_ais_gaps": true,
+      "gap_intervals": [
+        ["2026-08-31T23:30:00Z", "2026-09-01T01:30:00Z"]
+      ],
+      "waypoints": [
+        {
+          "timestamp": "2026-08-31T22:30:00Z",
+          "longitude": 101.880,
+          "latitude": 2.850,
+          "speed_over_ground_knots": 11.0,
+          "course_over_ground_deg": 140.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-08-31T23:30:00Z",
+          "longitude": 101.930,
+          "latitude": 2.780,
+          "speed_over_ground_knots": 11.0,
+          "course_over_ground_deg": 140.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T01:30:00Z",
+          "longitude": 102.030,
+          "latitude": 2.640,
+          "speed_over_ground_knots": 11.0,
+          "course_over_ground_deg": 140.0,
+          "navigational_status": "Under way using engine"
+        },
+        {
+          "timestamp": "2026-09-01T02:30:00Z",
+          "longitude": 102.080,
+          "latitude": 2.570,
+          "speed_over_ground_knots": 11.0,
+          "course_over_ground_deg": 140.0,
+          "navigational_status": "Under way using engine"
+        }
+      ]
+    }
+  ]
+}

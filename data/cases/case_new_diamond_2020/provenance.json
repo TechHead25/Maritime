@@ -1,0 +1,27 @@
+{
+  "case_id": "case_new_diamond_2020",
+  "pipeline_version": "0.1.0-mvp",
+  "executed_at_utc": "2026-09-05T16:59:51.458013+00:00",
+  "execution_duration_sec": 0.134,
+  "engine_components": {
+    "sar_detector": "DeterministicSARDetector (CFAR & Morphological Segmentation)",
+    "drift_engine": "Lagrangian2DDriftEngine (Forward Euler & Runge-Kutta Advection)",
+    "ais_interceptor": "AISEngine (Geodesic CPA & Spatiotemporal Envelope Interceptor)",
+    "attribution_engine": "ScoringEngine (5-Factor Calibrated Forensic Scoring Matrix)"
+  },
+  "parameters": {
+    "time_step_minutes": 30,
+    "max_hours_backward": 18.0,
+    "particle_count": 1000,
+    "wind_leeway_factor": 0.03,
+    "current_advection_factor": 1.0,
+    "horizontal_diffusivity_m2_s": 2.5,
+    "random_seed": 42,
+    "estimated_release_hours_ago": 9.25,
+    "release_window_half_width_hours": 2.0,
+    "max_cpa_distance_km": 50.0,
+    "use_synthetic_slick": false,
+    "bypass_cache": false
+  },
+  "status": "PERSISTENCE_VERIFIED"
+}

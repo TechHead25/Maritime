@@ -1,0 +1,41 @@
+{
+  "id": "sar-s1a-20200903-new-diamond",
+  "case_id": "case_new_diamond_2020",
+  "satellite_platform": "Sentinel-1A",
+  "sensor_mode": "IW",
+  "polarization": "VV",
+  "product_type": "GRD",
+  "orbit_pass": "DESCENDING",
+  "relative_orbit": 69,
+  "acquisition_timestamp": "2020-09-03T12:45:00Z",
+  "pixel_resolution_meters": 20.0,
+  "swath_width_km": 250.0,
+  "footprint_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [81.5, 6.5],
+        [84.5, 6.5],
+        [84.5, 9.0],
+        [81.5, 9.0],
+        [81.5, 6.5]
+      ]
+    ]
+  },
+  "raster_properties": {
+    "width": 300,
+    "height": 300,
+    "top_left_lon": 81.5,
+    "top_left_lat": 9.0,
+    "pixel_size_deg": 0.00833,
+    "sea_mean_db": -14.2,
+    "sea_std_db": 1.15
+  },
+  "incident_context": {
+    "vessel_name": "MT NEW DIAMOND",
+    "mmsi": "371584000",
+    "reported_fire_coordinates": [82.50, 7.75],
+    "reported_fire_timestamp_utc": "2020-09-03T03:30:00Z",
+    "observed_slick_type": "IFO-380 Heavy Fuel Oil & Engine Bilge Discharge"
+  }
+}

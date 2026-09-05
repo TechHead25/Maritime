@@ -1,0 +1,362 @@
+[
+  {
+    "run_id": "run_1",
+    "run_number": 1,
+    "created_at_utc": "2026-09-03T04:59:39.919704+00:00",
+    "duration_sec": 0.13,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_2",
+    "run_number": 2,
+    "created_at_utc": "2026-09-03T04:59:40.052924+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_3",
+    "run_number": 3,
+    "created_at_utc": "2026-09-03T04:59:40.198149+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 53.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.54269,
+        2.78088
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 12.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 77,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_4",
+    "run_number": 4,
+    "created_at_utc": "2026-09-03T04:59:43.210520+00:00",
+    "duration_sec": 0.09,
+    "candidates_count": 4,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 98.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.83124,
+        2.61184
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_5",
+    "run_number": 5,
+    "created_at_utc": "2026-09-05T16:40:05.021830+00:00",
+    "duration_sec": 0.11,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_6",
+    "run_number": 6,
+    "created_at_utc": "2026-09-05T16:40:05.167527+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_7",
+    "run_number": 7,
+    "created_at_utc": "2026-09-05T16:40:05.300062+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 53.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.54269,
+        2.78088
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 12.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 77,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_8",
+    "run_number": 8,
+    "created_at_utc": "2026-09-05T16:40:08.864629+00:00",
+    "duration_sec": 0.08,
+    "candidates_count": 4,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 98.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.83124,
+        2.61184
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_9",
+    "run_number": 9,
+    "created_at_utc": "2026-09-05T16:59:28.091196+00:00",
+    "duration_sec": 0.08,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_10",
+    "run_number": 10,
+    "created_at_utc": "2026-09-05T16:59:28.220750+00:00",
+    "duration_sec": 0.04,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 54.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.55802,
+        2.6763
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_11",
+    "run_number": 11,
+    "created_at_utc": "2026-09-05T16:59:28.365886+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 3,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 53.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.54269,
+        2.78088
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 12.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 77,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_12",
+    "run_number": 12,
+    "created_at_utc": "2026-09-05T16:59:32.116231+00:00",
+    "duration_sec": 0.23,
+    "candidates_count": 4,
+    "top_candidate": "MT PACIFIC GLORY",
+    "top_score": 98.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        101.83124,
+        2.61184
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": true,
+      "bypass_cache": false
+    }
+  }
+]

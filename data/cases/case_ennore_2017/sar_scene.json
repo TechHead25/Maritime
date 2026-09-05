@@ -1,0 +1,21 @@
+{
+  "id": "sar-s1a-20170129-ennore",
+  "case_id": "case_ennore_2017",
+  "satellite_platform": "Sentinel-1A",
+  "sensor_mode": "IW",
+  "polarization": "VV",
+  "acquisition_timestamp": "2017-01-29T00:45:00Z",
+  "pixel_resolution_meters": 10.0,
+  "footprint_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [80.15, 12.90],
+        [80.60, 12.90],
+        [80.60, 13.50],
+        [80.15, 13.50],
+        [80.15, 12.90]
+      ]
+    ]
+  }
+}

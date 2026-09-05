@@ -1,0 +1,29 @@
+{
+  "synthetic": true,
+  "data_classification": "SYNTHETIC_BENCHMARK_DATA",
+  "dataset_source": "Synthetic Hydrodynamic CMEMS-Model Emulation",
+  "reference_timestamp_utc": "2026-09-01T00:00:00Z",
+  "valid_interval_utc": [
+    "2026-08-31T00:00:00Z",
+    "2026-09-01T18:00:00Z"
+  ],
+  "spatial_bounds": {
+    "min_longitude": 101.0,
+    "max_longitude": 103.0,
+    "min_latitude": 2.0,
+    "max_latitude": 3.5
+  },
+  "grid_resolution_deg": 0.05,
+  "mean_current_vectors": {
+    "u_eastward_m_per_s": 0.789,
+    "v_northward_m_per_s": 0.691,
+    "speed_knots": 2.04,
+    "direction_deg": 48.8
+  },
+  "grid_points": [
+    {"lon": 101.5, "lat": 2.5, "u": 0.785, "v": 0.688},
+    {"lon": 101.8, "lat": 2.6, "u": 0.789, "v": 0.691},
+    {"lon": 102.1, "lat": 2.8, "u": 0.792, "v": 0.694},
+    {"lon": 102.4, "lat": 3.0, "u": 0.788, "v": 0.690}
+  ]
+}

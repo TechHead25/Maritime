@@ -1,0 +1,2553 @@
+{
+  "run_id": "run_2",
+  "case_id": "case_new_diamond_2020",
+  "created_at_utc": "2026-09-03T04:57:10.809760+00:00",
+  "duration_sec": 0.05,
+  "config": {
+    "time_step_minutes": 30,
+    "max_hours_backward": 2.0,
+    "particle_count": 20,
+    "wind_leeway_factor": 0.03,
+    "current_advection_factor": 1.0,
+    "horizontal_diffusivity_m2_s": 2.5,
+    "random_seed": 42,
+    "estimated_release_hours_ago": 14.0,
+    "release_window_half_width_hours": 2.0,
+    "max_cpa_distance_km": 50.0,
+    "use_synthetic_slick": false,
+    "bypass_cache": false
+  },
+  "results": {
+    "case": {
+      "id": "case_new_diamond_2020",
+      "title": "MT New Diamond Fire & Bunker Discharge (Bay of Bengal)",
+      "status": "ATTRIBUTION_COMPLETED",
+      "region_of_interest": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.5,
+              6.5
+            ],
+            [
+              84.5,
+              6.5
+            ],
+            [
+              84.5,
+              9.0
+            ],
+            [
+              81.5,
+              9.0
+            ],
+            [
+              81.5,
+              6.5
+            ]
+          ]
+        ]
+      },
+      "created_at": "2020-09-03T12:45:00Z",
+      "updated_at": "2026-09-03T04:57:10.808256Z",
+      "metadata": {
+        "synthetic": false,
+        "incident_vessel": "MT NEW DIAMOND",
+        "mmsi": "371584000",
+        "imo": "9199347",
+        "spill_substance": "IFO-380 Heavy Fuel Oil & Engine Bilge",
+        "incident_location": "Off Sangamankanda Point, Sri Lanka (07\u00b045'N, 082\u00b030'E)",
+        "sar_satellite": "Sentinel-1A (Copernicus CDSE)",
+        "ocean_model": "CMEMS Global Ocean Physics Analysis & Forecast",
+        "wind_model": "ECMWF ERA5 Atmospheric Reanalysis"
+      }
+    },
+    "sar_scenes": [
+      {
+        "id": "sar-s1a-20200903-new-diamond",
+        "case_id": "case_new_diamond_2020",
+        "satellite_platform": "Sentinel-1A",
+        "sensor_mode": "IW",
+        "polarization": "VV",
+        "acquisition_timestamp": "2020-09-03T12:45:00Z",
+        "footprint_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81.5,
+                6.5
+              ],
+              [
+                84.5,
+                6.5
+              ],
+              [
+                84.5,
+                9.0
+              ],
+              [
+                81.5,
+                9.0
+              ],
+              [
+                81.5,
+                6.5
+              ]
+            ]
+          ]
+        },
+        "image_path": null,
+        "pixel_resolution_meters": 20.0
+      }
+    ],
+    "slicks": [
+      {
+        "id": "b4797f64-5367-4ea1-ae37-7f59d458a0df",
+        "sar_scene_id": "sar-s1a-20200903-new-diamond",
+        "slick_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.52,
+                7.716
+              ],
+              [
+                82.524,
+                7.716
+              ],
+              [
+                82.524,
+                7.718
+              ],
+              [
+                82.526,
+                7.718
+              ],
+              [
+                82.524,
+                7.724
+              ],
+              [
+                82.526,
+                7.722
+              ],
+              [
+                82.526,
+                7.726
+              ],
+              [
+                82.528,
+                7.728
+              ],
+              [
+                82.53,
+                7.724
+              ],
+              [
+                82.53,
+                7.72
+              ],
+              [
+                82.532,
+                7.722
+              ],
+              [
+                82.532,
+                7.718
+              ],
+              [
+                82.534,
+                7.716
+              ],
+              [
+                82.536,
+                7.714
+              ],
+              [
+                82.536,
+                7.712
+              ],
+              [
+                82.536,
+                7.71
+              ],
+              [
+                82.534,
+                7.708
+              ],
+              [
+                82.532,
+                7.706
+              ],
+              [
+                82.53,
+                7.706
+              ],
+              [
+                82.528,
+                7.708
+              ],
+              [
+                82.526,
+                7.708
+              ],
+              [
+                82.524,
+                7.71
+              ],
+              [
+                82.522,
+                7.712
+              ],
+              [
+                82.52,
+                7.714
+              ],
+              [
+                82.52,
+                7.716
+              ]
+            ]
+          ]
+        },
+        "centroid": {
+          "type": "Point",
+          "coordinates": [
+            82.52813,
+            7.71513
+          ]
+        },
+        "area_sq_km": 2.23,
+        "perimeter_km": 10.56,
+        "major_axis_orientation_deg": 4.4,
+        "confidence_score": 0.728,
+        "lookalike_probability": 0.272
+      }
+    ],
+    "drift_simulations": [
+      {
+        "id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "slick_detection_id": "b4797f64-5367-4ea1-ae37-7f59d458a0df",
+        "simulation_mode": "BACKWARD_LAGRANGIAN",
+        "simulation_start_time": "2020-09-03T12:45:00Z",
+        "simulation_end_time": "2020-09-03T10:45:00Z",
+        "time_step_minutes": 30,
+        "particle_count": 20,
+        "wind_leeway_factor": 0.03,
+        "current_advection_factor": 1.0,
+        "created_at": "2026-09-03T04:57:10.796753Z"
+      }
+    ],
+    "probability_clouds": [
+      {
+        "id": "58ba40f4-6f10-4be5-9f66-6f04b6a9d2dd",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "timestamp": "2020-09-03T12:45:00Z",
+        "hours_before_sar": 0.0,
+        "envelope_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.52133,
+                7.70595
+              ],
+              [
+                82.53534,
+                7.70595
+              ],
+              [
+                82.53534,
+                7.72278
+              ],
+              [
+                82.52133,
+                7.72278
+              ],
+              [
+                82.52133,
+                7.70595
+              ]
+            ]
+          ]
+        },
+        "center_point": {
+          "type": "Point",
+          "coordinates": [
+            82.52834,
+            7.71436
+          ]
+        },
+        "dispersion_radius_km": 0.5,
+        "particle_sample_points": [
+          [
+            82.53238,
+            7.71566
+          ],
+          [
+            82.52205,
+            7.71591
+          ],
+          [
+            82.52709,
+            7.711
+          ],
+          [
+            82.52887,
+            7.7074
+          ],
+          [
+            82.53213,
+            7.7138
+          ],
+          [
+            82.53245,
+            7.71028
+          ],
+          [
+            82.52521,
+            7.71415
+          ],
+          [
+            82.52751,
+            7.71017
+          ],
+          [
+            82.52699,
+            7.72432
+          ],
+          [
+            82.5312,
+            7.71287
+          ],
+          [
+            82.5262,
+            7.71234
+          ],
+          [
+            82.53092,
+            7.70907
+          ],
+          [
+            82.52734,
+            7.71851
+          ],
+          [
+            82.53069,
+            7.71636
+          ],
+          [
+            82.52904,
+            7.72283
+          ],
+          [
+            82.53016,
+            7.71818
+          ],
+          [
+            82.52895,
+            7.71269
+          ],
+          [
+            82.52049,
+            7.71561
+          ],
+          [
+            82.52343,
+            7.71499
+          ],
+          [
+            82.53365,
+            7.71115
+          ]
+        ]
+      },
+      {
+        "id": "6d35612a-52f4-42e7-aae3-637e8adb7a96",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "timestamp": "2020-09-03T12:15:00Z",
+        "hours_before_sar": 0.5,
+        "envelope_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.51503,
+                7.69956
+              ],
+              [
+                82.52832,
+                7.69956
+              ],
+              [
+                82.52832,
+                7.71652
+              ],
+              [
+                82.51503,
+                7.71652
+              ],
+              [
+                82.51503,
+                7.69956
+              ]
+            ]
+          ]
+        },
+        "center_point": {
+          "type": "Point",
+          "coordinates": [
+            82.52168,
+            7.70804
+          ]
+        },
+        "dispersion_radius_km": 0.5,
+        "particle_sample_points": [
+          [
+            82.52494,
+            7.7093
+          ],
+          [
+            82.51582,
+            7.70985
+          ],
+          [
+            82.52056,
+            7.70356
+          ],
+          [
+            82.52281,
+            7.70017
+          ],
+          [
+            82.5251,
+            7.70667
+          ],
+          [
+            82.52593,
+            7.70344
+          ],
+          [
+            82.51909,
+            7.7085
+          ],
+          [
+            82.52059,
+            7.7034
+          ],
+          [
+            82.52073,
+            7.718
+          ],
+          [
+            82.52398,
+            7.708
+          ],
+          [
+            82.51923,
+            7.70605
+          ],
+          [
+            82.52393,
+            7.70372
+          ],
+          [
+            82.51966,
+            7.71172
+          ],
+          [
+            82.52446,
+            7.7102
+          ],
+          [
+            82.52198,
+            7.71602
+          ],
+          [
+            82.52351,
+            7.7119
+          ],
+          [
+            82.5227,
+            7.70742
+          ],
+          [
+            82.51422,
+            7.70814
+          ],
+          [
+            82.51735,
+            7.70937
+          ],
+          [
+            82.52691,
+            7.70536
+          ]
+        ]
+      },
+      {
+        "id": "bbc53f4c-9dce-4094-9f8f-d630fbb69ecd",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "timestamp": "2020-09-03T11:45:00Z",
+        "hours_before_sar": 1.0,
+        "envelope_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.50799,
+                7.69337
+              ],
+              [
+                82.52187,
+                7.69337
+              ],
+              [
+                82.52187,
+                7.7107
+              ],
+              [
+                82.50799,
+                7.7107
+              ],
+              [
+                82.50799,
+                7.69337
+              ]
+            ]
+          ]
+        },
+        "center_point": {
+          "type": "Point",
+          "coordinates": [
+            82.51493,
+            7.70203
+          ]
+        },
+        "dispersion_radius_km": 0.5,
+        "particle_sample_points": [
+          [
+            82.51777,
+            7.70386
+          ],
+          [
+            82.50792,
+            7.70367
+          ],
+          [
+            82.51396,
+            7.69631
+          ],
+          [
+            82.5157,
+            7.69331
+          ],
+          [
+            82.51865,
+            7.70095
+          ],
+          [
+            82.51929,
+            7.69816
+          ],
+          [
+            82.51381,
+            7.70423
+          ],
+          [
+            82.51373,
+            7.69991
+          ],
+          [
+            82.51319,
+            7.71237
+          ],
+          [
+            82.51747,
+            7.70116
+          ],
+          [
+            82.51276,
+            7.69823
+          ],
+          [
+            82.51845,
+            7.69796
+          ],
+          [
+            82.51372,
+            7.70503
+          ],
+          [
+            82.51811,
+            7.70385
+          ],
+          [
+            82.51658,
+            7.70951
+          ],
+          [
+            82.51583,
+            7.70579
+          ],
+          [
+            82.5155,
+            7.70234
+          ],
+          [
+            82.50677,
+            7.70228
+          ],
+          [
+            82.51036,
+            7.70324
+          ],
+          [
+            82.51907,
+            7.69848
+          ]
+        ]
+      },
+      {
+        "id": "a8676d5f-412b-4e10-bc94-23c5abc4aeae",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "timestamp": "2020-09-03T11:15:00Z",
+        "hours_before_sar": 1.5,
+        "envelope_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.50106,
+                7.68712
+              ],
+              [
+                82.51544,
+                7.68712
+              ],
+              [
+                82.51544,
+                7.70531
+              ],
+              [
+                82.50106,
+                7.70531
+              ],
+              [
+                82.50106,
+                7.68712
+              ]
+            ]
+          ]
+        },
+        "center_point": {
+          "type": "Point",
+          "coordinates": [
+            82.50825,
+            7.69622
+          ]
+        },
+        "dispersion_radius_km": 0.5,
+        "particle_sample_points": [
+          [
+            82.50967,
+            7.69748
+          ],
+          [
+            82.50084,
+            7.69663
+          ],
+          [
+            82.50726,
+            7.68922
+          ],
+          [
+            82.51056,
+            7.68747
+          ],
+          [
+            82.5121,
+            7.69632
+          ],
+          [
+            82.51348,
+            7.69231
+          ],
+          [
+            82.50673,
+            7.69813
+          ],
+          [
+            82.50605,
+            7.69417
+          ],
+          [
+            82.50571,
+            7.7075
+          ],
+          [
+            82.51019,
+            7.69535
+          ],
+          [
+            82.50793,
+            7.69188
+          ],
+          [
+            82.51108,
+            7.69291
+          ],
+          [
+            82.50778,
+            7.69941
+          ],
+          [
+            82.51067,
+            7.69918
+          ],
+          [
+            82.51073,
+            7.70368
+          ],
+          [
+            82.5095,
+            7.69874
+          ],
+          [
+            82.5087,
+            7.69518
+          ],
+          [
+            82.50007,
+            7.69771
+          ],
+          [
+            82.50314,
+            7.69873
+          ],
+          [
+            82.5128,
+            7.69234
+          ]
+        ]
+      },
+      {
+        "id": "fbf42fe3-8d2c-4536-82d9-dc43581e95cd",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "timestamp": "2020-09-03T10:45:00Z",
+        "hours_before_sar": 2.0,
+        "envelope_polygon": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.49451,
+                7.68083
+              ],
+              [
+                82.50831,
+                7.68083
+              ],
+              [
+                82.50831,
+                7.69979
+              ],
+              [
+                82.49451,
+                7.69979
+              ],
+              [
+                82.49451,
+                7.68083
+              ]
+            ]
+          ]
+        },
+        "center_point": {
+          "type": "Point",
+          "coordinates": [
+            82.50141,
+            7.69031
+          ]
+        },
+        "dispersion_radius_km": 0.5,
+        "particle_sample_points": [
+          [
+            82.50268,
+            7.69151
+          ],
+          [
+            82.49544,
+            7.69022
+          ],
+          [
+            82.49965,
+            7.68295
+          ],
+          [
+            82.50313,
+            7.68234
+          ],
+          [
+            82.506,
+            7.69079
+          ],
+          [
+            82.50649,
+            7.68747
+          ],
+          [
+            82.50007,
+            7.69201
+          ],
+          [
+            82.49925,
+            7.68758
+          ],
+          [
+            82.49934,
+            7.70132
+          ],
+          [
+            82.50475,
+            7.68957
+          ],
+          [
+            82.50136,
+            7.68605
+          ],
+          [
+            82.50498,
+            7.68599
+          ],
+          [
+            82.49936,
+            7.6935
+          ],
+          [
+            82.50397,
+            7.69338
+          ],
+          [
+            82.50335,
+            7.69984
+          ],
+          [
+            82.5018,
+            7.69436
+          ],
+          [
+            82.50129,
+            7.68845
+          ],
+          [
+            82.49313,
+            7.69147
+          ],
+          [
+            82.49727,
+            7.69149
+          ],
+          [
+            82.505,
+            7.68584
+          ]
+        ]
+      }
+    ],
+    "release_windows": [
+      {
+        "id": "b680b96d-0691-4172-8390-fe4d54eaadd0",
+        "drift_simulation_id": "c2632c10-f0b7-4ef5-afe8-055c2481801c",
+        "estimated_start_time": "2020-09-02T20:45:00Z",
+        "estimated_end_time": "2020-09-03T00:45:00Z",
+        "peak_probability_time": "2020-09-02T22:45:00Z",
+        "confidence_interval": 0.9
+      }
+    ],
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "origin_uncertainty_radius_km": 0.5,
+    "candidate_vessels": [
+      {
+        "id": "6c9baf6d-f11b-4e80-9ce9-410231eb6718",
+        "case_id": "case_new_diamond_2020",
+        "vessel_track_id": "f09c1f84-e5a9-4a47-bcbe-0a179fd07c72",
+        "mmsi": "371584000",
+        "vessel_name": "MT NEW DIAMOND",
+        "vessel_type": "TANKER",
+        "flag_country": "Panama",
+        "closest_point_of_approach_km": 7.609,
+        "time_of_closest_approach": "2020-09-03T01:05:00Z",
+        "interpolated_position_at_cpa": {
+          "type": "Point",
+          "coordinates": [
+            82.45323,
+            7.73933
+          ]
+        },
+        "is_in_release_envelope": false,
+        "has_ais_gaps": true,
+        "gap_intervals": [
+          [
+            "2020-09-03T03:25:00Z",
+            "2020-09-03T08:30:00Z"
+          ]
+        ]
+      },
+      {
+        "id": "e5d19713-5044-4acf-9c03-f56f696b7368",
+        "case_id": "case_new_diamond_2020",
+        "vessel_track_id": "8ea28c8e-e49f-403b-bd9e-6cc63716a4f3",
+        "mmsi": "353130000",
+        "vessel_name": "MSC LAUREN",
+        "vessel_type": "CARGO",
+        "flag_country": "Panama",
+        "closest_point_of_approach_km": 12.816,
+        "time_of_closest_approach": "2020-09-03T03:10:00Z",
+        "interpolated_position_at_cpa": {
+          "type": "Point",
+          "coordinates": [
+            82.5722,
+            7.59887
+          ]
+        },
+        "is_in_release_envelope": false,
+        "has_ais_gaps": true,
+        "gap_intervals": [
+          [
+            "2020-09-03T01:00:00Z",
+            "2020-09-03T02:00:00Z"
+          ],
+          [
+            "2020-09-03T02:00:00Z",
+            "2020-09-03T03:00:00Z"
+          ],
+          [
+            "2020-09-03T03:00:00Z",
+            "2020-09-03T04:00:00Z"
+          ],
+          [
+            "2020-09-03T04:00:00Z",
+            "2020-09-03T05:00:00Z"
+          ]
+        ]
+      },
+      {
+        "id": "15285622-c562-477b-b68e-98eb204bb169",
+        "case_id": "case_new_diamond_2020",
+        "vessel_track_id": "067324f1-4c0c-4dcc-9f81-87e5e3c4f347",
+        "mmsi": "419001122",
+        "vessel_name": "JAG LALIT",
+        "vessel_type": "TANKER",
+        "flag_country": "India",
+        "closest_point_of_approach_km": 16.097,
+        "time_of_closest_approach": "2020-09-03T04:50:00Z",
+        "interpolated_position_at_cpa": {
+          "type": "Point",
+          "coordinates": [
+            82.40263,
+            7.79697
+          ]
+        },
+        "is_in_release_envelope": false,
+        "has_ais_gaps": true,
+        "gap_intervals": [
+          [
+            "2020-09-02T23:00:00Z",
+            "2020-09-03T01:00:00Z"
+          ],
+          [
+            "2020-09-03T01:00:00Z",
+            "2020-09-03T03:00:00Z"
+          ],
+          [
+            "2020-09-03T03:00:00Z",
+            "2020-09-03T05:00:00Z"
+          ]
+        ]
+      },
+      {
+        "id": "1c4ce407-9cf9-417d-82eb-c5096bfbb880",
+        "case_id": "case_new_diamond_2020",
+        "vessel_track_id": "269bfc5b-6eec-41fd-a5f2-a3075b2d8028",
+        "mmsi": "440129000",
+        "vessel_name": "GLOVIS SYMPHONY",
+        "vessel_type": "CARGO",
+        "flag_country": "Republic of Korea",
+        "closest_point_of_approach_km": 7.572,
+        "time_of_closest_approach": "2020-09-03T14:05:00Z",
+        "interpolated_position_at_cpa": {
+          "type": "Point",
+          "coordinates": [
+            82.4541,
+            7.7397
+          ]
+        },
+        "is_in_release_envelope": false,
+        "has_ais_gaps": true,
+        "gap_intervals": [
+          [
+            "2020-09-03T11:00:00Z",
+            "2020-09-03T13:00:00Z"
+          ],
+          [
+            "2020-09-03T13:00:00Z",
+            "2020-09-03T15:00:00Z"
+          ]
+        ]
+      }
+    ],
+    "attribution_scores": [
+      {
+        "id": "f8231016-8336-454e-9455-22b0b6556041",
+        "candidate_vessel_id": "6c9baf6d-f11b-4e80-9ce9-410231eb6718",
+        "candidate_name": "MT NEW DIAMOND",
+        "mmsi": "371584000",
+        "vessel_type": "TANKER",
+        "rank": 1,
+        "total_score": 51.1,
+        "risk_level": "HIGH",
+        "sub_scores": {
+          "proximity_score": 0.0,
+          "trajectory_alignment_score": 24.8,
+          "vessel_type_risk_score": 10.0,
+          "navigational_anomaly_score": 12.3,
+          "ais_integrity_penalty": 4.0
+        },
+        "supporting_evidence": [
+          {
+            "id": "edf7fdde-dc92-4062-a969-cbe8f5b9d389",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Open-Sea Deceleration / Loitering Anomaly",
+            "description": "Vessel exhibited an abnormal open-ocean deceleration from 14.2 knots down to 0.4 knots during passage through the spill area.",
+            "severity": "HIGH",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "14.2 -> 0.4 kts",
+            "threshold_used": "Speed Drop >= 3.5 kts AND Min Speed < 9.0 kts",
+            "calculation_reference": "Waypoint Speed Over Ground Analysis",
+            "confidence": 0.94,
+            "uncertainty": null,
+            "score_impact": 5.0,
+            "verifiable_data": {
+              "min_speed_knots": 0.4,
+              "max_speed_knots": 14.2
+            }
+          },
+          {
+            "id": "55152920-c256-44a8-8605-4dd6c33e7932",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (5.1h)",
+            "description": "Vessel exhibited a 5.1-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "5.1 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 5.08
+            }
+          },
+          {
+            "id": "fc74e586-df11-44fb-9515-77243e7a8c07",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "High-Risk Laden Crude / Product Tanker Profile",
+            "description": "Vessel is an oil/chemical tanker carrying high-volume liquid hydrocarbon cargo and oily ballast.",
+            "severity": "HIGH",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: TANKER",
+            "threshold_used": "Tanker / Liquid Petroleum Cargo",
+            "calculation_reference": null,
+            "confidence": 0.98,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "vessel_type": "TANKER"
+            }
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "id": "64d56d1c-a31f-4709-a2f8-b2481d50da64",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "CONTRADICTING_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Slight Temporal Offset (2.3h from Peak)",
+            "description": "Vessel transit (01:05 UTC) was offset by 2.3 hours from the peak discharge probability time.",
+            "severity": "LOW",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "2.3h offset",
+            "threshold_used": "Outside release window",
+            "calculation_reference": null,
+            "confidence": 0.85,
+            "uncertainty": null,
+            "score_impact": 24.8,
+            "verifiable_data": {
+              "delta_hours": 2.33
+            }
+          }
+        ],
+        "exculpatory_evidence": [
+          {
+            "id": "0cd84914-4642-4fab-806a-8d9e9564239a",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (51.8 km)",
+            "description": "Vessel remained 51.8 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "51.8 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 51.779
+            }
+          }
+        ],
+        "data_quality_items": [
+          {
+            "id": "ae6c78ef-6064-48d9-9eb7-6fddeec6968a",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 9 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "9 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 9
+            }
+          }
+        ],
+        "uncertainty_items": [
+          {
+            "id": "8a003b26-8968-48a7-ad0b-c6b191bc6b05",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "9351b739-d850-407b-924a-5bd1aab2af92",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ],
+        "evidence_items": [
+          {
+            "id": "edf7fdde-dc92-4062-a969-cbe8f5b9d389",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Open-Sea Deceleration / Loitering Anomaly",
+            "description": "Vessel exhibited an abnormal open-ocean deceleration from 14.2 knots down to 0.4 knots during passage through the spill area.",
+            "severity": "HIGH",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "14.2 -> 0.4 kts",
+            "threshold_used": "Speed Drop >= 3.5 kts AND Min Speed < 9.0 kts",
+            "calculation_reference": "Waypoint Speed Over Ground Analysis",
+            "confidence": 0.94,
+            "uncertainty": null,
+            "score_impact": 5.0,
+            "verifiable_data": {
+              "min_speed_knots": 0.4,
+              "max_speed_knots": 14.2
+            }
+          },
+          {
+            "id": "55152920-c256-44a8-8605-4dd6c33e7932",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (5.1h)",
+            "description": "Vessel exhibited a 5.1-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "5.1 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 5.08
+            }
+          },
+          {
+            "id": "fc74e586-df11-44fb-9515-77243e7a8c07",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "High-Risk Laden Crude / Product Tanker Profile",
+            "description": "Vessel is an oil/chemical tanker carrying high-volume liquid hydrocarbon cargo and oily ballast.",
+            "severity": "HIGH",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: TANKER",
+            "threshold_used": "Tanker / Liquid Petroleum Cargo",
+            "calculation_reference": null,
+            "confidence": 0.98,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "vessel_type": "TANKER"
+            }
+          },
+          {
+            "id": "64d56d1c-a31f-4709-a2f8-b2481d50da64",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "CONTRADICTING_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Slight Temporal Offset (2.3h from Peak)",
+            "description": "Vessel transit (01:05 UTC) was offset by 2.3 hours from the peak discharge probability time.",
+            "severity": "LOW",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "2.3h offset",
+            "threshold_used": "Outside release window",
+            "calculation_reference": null,
+            "confidence": 0.85,
+            "uncertainty": null,
+            "score_impact": 24.8,
+            "verifiable_data": {
+              "delta_hours": 2.33
+            }
+          },
+          {
+            "id": "0cd84914-4642-4fab-806a-8d9e9564239a",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (51.8 km)",
+            "description": "Vessel remained 51.8 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "51.8 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 51.779
+            }
+          },
+          {
+            "id": "ae6c78ef-6064-48d9-9eb7-6fddeec6968a",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 9 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "9 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 9
+            }
+          },
+          {
+            "id": "8a003b26-8968-48a7-ad0b-c6b191bc6b05",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "9351b739-d850-407b-924a-5bd1aab2af92",
+            "attribution_score_id": "f8231016-8336-454e-9455-22b0b6556041",
+            "candidate_vessel": "MT NEW DIAMOND",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+        "candidate_vessel_id": "15285622-c562-477b-b68e-98eb204bb169",
+        "candidate_name": "JAG LALIT",
+        "mmsi": "419001122",
+        "vessel_type": "TANKER",
+        "rank": 2,
+        "total_score": 28.2,
+        "risk_level": "LOW",
+        "sub_scores": {
+          "proximity_score": 0.0,
+          "trajectory_alignment_score": 1.0,
+          "vessel_type_risk_score": 10.0,
+          "navigational_anomaly_score": 7.2,
+          "ais_integrity_penalty": 10.0
+        },
+        "supporting_evidence": [
+          {
+            "id": "69e26102-3302-4793-b60d-2e7b7e19a3b6",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "AIS Transponder Blackout During Release Window (6.0h)",
+            "description": "AIS transponder was deactivated for 6.0 hours during transit directly across the estimated spill release envelope.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": "2020-09-02T23:00:00Z",
+            "source_timestamp_end": "2020-09-03T01:00:00Z",
+            "calculated_value": "6.0 hours gap",
+            "threshold_used": "Outage > 60 min during release window",
+            "calculation_reference": "Consecutive AIS Message Gap Interval",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "gap_duration_hours": 6.0,
+              "gap_count": 3
+            }
+          },
+          {
+            "id": "37743b60-8d73-4a67-8ba9-7d07452ff42f",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "High-Risk Laden Crude / Product Tanker Profile",
+            "description": "Vessel is an oil/chemical tanker carrying high-volume liquid hydrocarbon cargo and oily ballast.",
+            "severity": "HIGH",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: TANKER",
+            "threshold_used": "Tanker / Liquid Petroleum Cargo",
+            "calculation_reference": null,
+            "confidence": 0.98,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "vessel_type": "TANKER"
+            }
+          }
+        ],
+        "contradicting_evidence": [],
+        "exculpatory_evidence": [
+          {
+            "id": "4c3c4e8f-0b62-46d3-b554-36b519cda724",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (34.3 km)",
+            "description": "Vessel remained 34.3 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "34.3 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 34.347
+            }
+          },
+          {
+            "id": "5dcc7635-7d93-4801-a532-7a1f8de56226",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (6.1h Outside Window)",
+            "description": "Vessel transit occurred 6.1 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "6.1h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 6.08
+            }
+          },
+          {
+            "id": "7602faf8-6a29-49d1-99fb-166479dc575b",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (12.9 - 13.1 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "12.9 - 13.1 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 12.9,
+              "max_speed_knots": 13.1
+            }
+          }
+        ],
+        "data_quality_items": [
+          {
+            "id": "86be7df0-eb3b-4822-bcd6-26b2ea38efc6",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 4 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 4
+            }
+          }
+        ],
+        "uncertainty_items": [
+          {
+            "id": "87702ec7-e26d-4ecb-9b56-2ee1f1e07806",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "3ccda518-0f91-4fda-929b-0d9ea9e69544",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ],
+        "evidence_items": [
+          {
+            "id": "69e26102-3302-4793-b60d-2e7b7e19a3b6",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "AIS Transponder Blackout During Release Window (6.0h)",
+            "description": "AIS transponder was deactivated for 6.0 hours during transit directly across the estimated spill release envelope.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": "2020-09-02T23:00:00Z",
+            "source_timestamp_end": "2020-09-03T01:00:00Z",
+            "calculated_value": "6.0 hours gap",
+            "threshold_used": "Outage > 60 min during release window",
+            "calculation_reference": "Consecutive AIS Message Gap Interval",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "gap_duration_hours": 6.0,
+              "gap_count": 3
+            }
+          },
+          {
+            "id": "37743b60-8d73-4a67-8ba9-7d07452ff42f",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "High-Risk Laden Crude / Product Tanker Profile",
+            "description": "Vessel is an oil/chemical tanker carrying high-volume liquid hydrocarbon cargo and oily ballast.",
+            "severity": "HIGH",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: TANKER",
+            "threshold_used": "Tanker / Liquid Petroleum Cargo",
+            "calculation_reference": null,
+            "confidence": 0.98,
+            "uncertainty": null,
+            "score_impact": 10.0,
+            "verifiable_data": {
+              "vessel_type": "TANKER"
+            }
+          },
+          {
+            "id": "4c3c4e8f-0b62-46d3-b554-36b519cda724",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (34.3 km)",
+            "description": "Vessel remained 34.3 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "34.3 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 34.347
+            }
+          },
+          {
+            "id": "5dcc7635-7d93-4801-a532-7a1f8de56226",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (6.1h Outside Window)",
+            "description": "Vessel transit occurred 6.1 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "6.1h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 6.08
+            }
+          },
+          {
+            "id": "7602faf8-6a29-49d1-99fb-166479dc575b",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (12.9 - 13.1 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "12.9 - 13.1 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 12.9,
+              "max_speed_knots": 13.1
+            }
+          },
+          {
+            "id": "86be7df0-eb3b-4822-bcd6-26b2ea38efc6",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 4 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 4
+            }
+          },
+          {
+            "id": "87702ec7-e26d-4ecb-9b56-2ee1f1e07806",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "3ccda518-0f91-4fda-929b-0d9ea9e69544",
+            "attribution_score_id": "03a3afba-e8cf-426d-99b7-4512ada19ee6",
+            "candidate_vessel": "JAG LALIT",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+        "candidate_vessel_id": "1c4ce407-9cf9-417d-82eb-c5096bfbb880",
+        "candidate_name": "GLOVIS SYMPHONY",
+        "mmsi": "440129000",
+        "vessel_type": "CARGO",
+        "rank": 3,
+        "total_score": 18.2,
+        "risk_level": "LOW",
+        "sub_scores": {
+          "proximity_score": 0.0,
+          "trajectory_alignment_score": 1.0,
+          "vessel_type_risk_score": 6.0,
+          "navigational_anomaly_score": 7.2,
+          "ais_integrity_penalty": 4.0
+        },
+        "supporting_evidence": [
+          {
+            "id": "f13b7f1e-f6dd-41b8-864e-a7743c1747ab",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (4.0h)",
+            "description": "Vessel exhibited a 4.0-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.0 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 4.0
+            }
+          },
+          {
+            "id": "2241f206-5e36-45e6-95a5-02eb7fa1f3e1",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "Moderate Risk: Commercial Cargo Vessel",
+            "description": "Commercial container/bulk cargo vessel operating with heavy fuel oil bunker storage.",
+            "severity": "LOW",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: CARGO",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": null,
+            "score_impact": 6.0,
+            "verifiable_data": {
+              "vessel_type": "CARGO"
+            }
+          }
+        ],
+        "contradicting_evidence": [],
+        "exculpatory_evidence": [
+          {
+            "id": "89f3479f-83df-4095-ba2e-babccf78638e",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (28.1 km)",
+            "description": "Vessel remained 28.1 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "28.1 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 28.101
+            }
+          },
+          {
+            "id": "ab34139f-db55-433d-8335-7fd13c6234a1",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (15.3h Outside Window)",
+            "description": "Vessel transit occurred 15.3 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "15.3h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 15.33
+            }
+          },
+          {
+            "id": "a79364c9-4605-4a64-b235-291542c7ed19",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (16.4 - 16.5 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "16.4 - 16.5 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 16.4,
+              "max_speed_knots": 16.5
+            }
+          }
+        ],
+        "data_quality_items": [
+          {
+            "id": "c6af306c-337e-4ed5-8b79-89fd024b07bf",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 3 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "3 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 3
+            }
+          }
+        ],
+        "uncertainty_items": [
+          {
+            "id": "0f4c7452-1e35-4b7d-b185-e58c8ab00981",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "aafd76f5-5f63-421a-9702-5388e8b34d85",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ],
+        "evidence_items": [
+          {
+            "id": "f13b7f1e-f6dd-41b8-864e-a7743c1747ab",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (4.0h)",
+            "description": "Vessel exhibited a 4.0-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.0 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 4.0
+            }
+          },
+          {
+            "id": "2241f206-5e36-45e6-95a5-02eb7fa1f3e1",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "Moderate Risk: Commercial Cargo Vessel",
+            "description": "Commercial container/bulk cargo vessel operating with heavy fuel oil bunker storage.",
+            "severity": "LOW",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: CARGO",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": null,
+            "score_impact": 6.0,
+            "verifiable_data": {
+              "vessel_type": "CARGO"
+            }
+          },
+          {
+            "id": "89f3479f-83df-4095-ba2e-babccf78638e",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (28.1 km)",
+            "description": "Vessel remained 28.1 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "28.1 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 28.101
+            }
+          },
+          {
+            "id": "ab34139f-db55-433d-8335-7fd13c6234a1",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (15.3h Outside Window)",
+            "description": "Vessel transit occurred 15.3 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "15.3h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 15.33
+            }
+          },
+          {
+            "id": "a79364c9-4605-4a64-b235-291542c7ed19",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (16.4 - 16.5 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "16.4 - 16.5 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 16.4,
+              "max_speed_knots": 16.5
+            }
+          },
+          {
+            "id": "c6af306c-337e-4ed5-8b79-89fd024b07bf",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 3 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "3 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 3
+            }
+          },
+          {
+            "id": "0f4c7452-1e35-4b7d-b185-e58c8ab00981",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "aafd76f5-5f63-421a-9702-5388e8b34d85",
+            "attribution_score_id": "2d233595-a1b3-4433-a4db-d92f31f4039a",
+            "candidate_vessel": "GLOVIS SYMPHONY",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+        "candidate_vessel_id": "e5d19713-5044-4acf-9c03-f56f696b7368",
+        "candidate_name": "MSC LAUREN",
+        "mmsi": "353130000",
+        "vessel_type": "CARGO",
+        "rank": 4,
+        "total_score": 17.7,
+        "risk_level": "LOW",
+        "sub_scores": {
+          "proximity_score": 0.0,
+          "trajectory_alignment_score": 1.0,
+          "vessel_type_risk_score": 6.0,
+          "navigational_anomaly_score": 6.7,
+          "ais_integrity_penalty": 4.0
+        },
+        "supporting_evidence": [
+          {
+            "id": "516f7803-98b1-4fc8-806c-0e106a81a043",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (4.0h)",
+            "description": "Vessel exhibited a 4.0-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.0 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 4.0
+            }
+          },
+          {
+            "id": "4f02b59e-23c6-4a59-915d-0c3067c2f946",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "Moderate Risk: Commercial Cargo Vessel",
+            "description": "Commercial container/bulk cargo vessel operating with heavy fuel oil bunker storage.",
+            "severity": "LOW",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: CARGO",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": null,
+            "score_impact": 6.0,
+            "verifiable_data": {
+              "vessel_type": "CARGO"
+            }
+          }
+        ],
+        "contradicting_evidence": [],
+        "exculpatory_evidence": [
+          {
+            "id": "d51f92ab-14f4-4bbf-86f8-62f0a5024aa5",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (26.1 km)",
+            "description": "Vessel remained 26.1 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "26.1 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 26.066
+            }
+          },
+          {
+            "id": "d27d8c3e-ceb1-40e2-88ce-59f9d759114d",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (4.4h Outside Window)",
+            "description": "Vessel transit occurred 4.4 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.4h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 4.42
+            }
+          },
+          {
+            "id": "5aeeb67b-66df-4fd3-8fbd-515194b60f83",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (18.3 - 18.5 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "18.3 - 18.5 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 18.3,
+              "max_speed_knots": 18.5
+            }
+          }
+        ],
+        "data_quality_items": [
+          {
+            "id": "6c1acb6d-b63a-4b0e-8223-8c87fa6e5754",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 5 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "5 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 5
+            }
+          }
+        ],
+        "uncertainty_items": [
+          {
+            "id": "8f863fdb-49ca-4137-bae6-1689963113ca",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "757185e3-2be5-4951-b586-c02536b7f982",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ],
+        "evidence_items": [
+          {
+            "id": "516f7803-98b1-4fc8-806c-0e106a81a043",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "AIS_INTEGRITY",
+            "title": "Regional AIS Transmission Outage (4.0h)",
+            "description": "Vessel exhibited a 4.0-hour transponder transmission outage in the regional area.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.0 hours gap",
+            "threshold_used": "Outage > 60 min",
+            "calculation_reference": null,
+            "confidence": 0.88,
+            "uncertainty": null,
+            "score_impact": 4.0,
+            "verifiable_data": {
+              "gap_duration_hours": 4.0
+            }
+          },
+          {
+            "id": "4f02b59e-23c6-4a59-915d-0c3067c2f946",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "SUPPORTING_EVIDENCE",
+            "factor_category": "VESSEL_TYPE",
+            "title": "Moderate Risk: Commercial Cargo Vessel",
+            "description": "Commercial container/bulk cargo vessel operating with heavy fuel oil bunker storage.",
+            "severity": "LOW",
+            "source": "ITU-R M.1371 AIS Static Metadata",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "Ship Type: CARGO",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": null,
+            "score_impact": 6.0,
+            "verifiable_data": {
+              "vessel_type": "CARGO"
+            }
+          },
+          {
+            "id": "d51f92ab-14f4-4bbf-86f8-62f0a5024aa5",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "PROXIMITY",
+            "title": "Significant Distance from Spill Origin (26.1 km)",
+            "description": "Vessel remained 26.1 km away from the estimated origin region, exceeding reasonable oil drift dispersion boundaries.",
+            "severity": "HIGH",
+            "source": "Lagrangian Advection Intercept",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "26.1 km",
+            "threshold_used": "> 25.0 km",
+            "calculation_reference": "Geodesic Haversine Distance to Origin Centroid",
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_distance_km": 26.066
+            }
+          },
+          {
+            "id": "d27d8c3e-ceb1-40e2-88ce-59f9d759114d",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "ALIGNMENT",
+            "title": "Significant Temporal Non-Overlap (4.4h Outside Window)",
+            "description": "Vessel transit occurred 4.4 hours away from the release window, indicating the vessel was not present during the discharge event.",
+            "severity": "HIGH",
+            "source": "Historical AIS Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "4.4h",
+            "threshold_used": "> 4.0h from release window",
+            "calculation_reference": null,
+            "confidence": 0.96,
+            "uncertainty": null,
+            "score_impact": 1.0,
+            "verifiable_data": {
+              "delta_hours": 4.42
+            }
+          },
+          {
+            "id": "5aeeb67b-66df-4fd3-8fbd-515194b60f83",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "EXCULPATORY_EVIDENCE",
+            "factor_category": "BEHAVIOR",
+            "title": "Nominal Constant Cruising Speed Profile",
+            "description": "Vessel maintained uniform cruising speed (18.3 - 18.5 kts) with zero loitering, stopping, or sudden speed drop anomalies.",
+            "severity": "MEDIUM",
+            "source": "Historical AIS Telemetry",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "18.3 - 18.5 kts (Stable)",
+            "threshold_used": "Speed variation < 2.0 kts",
+            "calculation_reference": "SOG Stability Evaluation",
+            "confidence": 0.92,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "min_speed_knots": 18.3,
+              "max_speed_knots": 18.5
+            }
+          },
+          {
+            "id": "6c1acb6d-b63a-4b0e-8223-8c87fa6e5754",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "DATA_QUALITY",
+            "factor_category": "DATA_QUALITY",
+            "title": "AIS Trajectory Telemetry Density",
+            "description": "Trajectory reconstructed from 5 georeferenced AIS positions with geodesic waypoint interpolation at 15-minute resolution.",
+            "severity": "INFORMATIONAL",
+            "source": "Historical AIS CSV Ingestion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "5 pings",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.95,
+            "uncertainty": null,
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "waypoint_count": 5
+            }
+          },
+          {
+            "id": "8f863fdb-49ca-4137-bae6-1689963113ca",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Origin Spatial Dispersion Uncertainty (1-Sigma)",
+            "description": "Turbulent diffusion and hydrodynamic divergence define an origin uncertainty radius of +/- 0.50 km around the reconstructed centroid.",
+            "severity": "INFORMATIONAL",
+            "source": "CMEMS Hydrodynamic Lagrangian Diffusion",
+            "source_timestamp_start": null,
+            "source_timestamp_end": null,
+            "calculated_value": "+/- 0.50 km",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "1-sigma radius: 0.50 km",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "dispersion_sigma_km": 0.5
+            }
+          },
+          {
+            "id": "757185e3-2be5-4951-b586-c02536b7f982",
+            "attribution_score_id": "a9146c58-cd20-439f-aa6e-0876922b9456",
+            "candidate_vessel": "MSC LAUREN",
+            "category": "UNCERTAINTY",
+            "factor_category": "UNCERTAINTY",
+            "title": "Release Time Uncertainty Window",
+            "description": "Estimated discharge time window is bounded within 4.0 hours with a 90% confidence interval.",
+            "severity": "INFORMATIONAL",
+            "source": "Lagrangian Reverse Advection Statistics",
+            "source_timestamp_start": "2020-09-02T20:45:00Z",
+            "source_timestamp_end": "2020-09-03T00:45:00Z",
+            "calculated_value": "4.0 hours span",
+            "threshold_used": null,
+            "calculation_reference": null,
+            "confidence": 0.9,
+            "uncertainty": "90% CI",
+            "score_impact": 0.0,
+            "verifiable_data": {
+              "window_duration_hours": 4.0
+            }
+          }
+        ]
+      }
+    ],
+    "summary_verdict": "This vessel (MT NEW DIAMOND, MMSI 371584000) is the highest-ranked candidate based on the available spatial, temporal, and navigational evidence (Attribution Score: 51.1/100, Risk Level: HIGH).",
+    "data_sources": {
+      "sar_platform": "Sentinel-1A",
+      "detection_method": "SAR Dark-Patch CFAR & Morphological Segmentation",
+      "hydrodynamic_model": "Copernicus Marine Service (CMEMS) GLOBAL_ANALYSISFORECAST_PHY_001_024",
+      "meteorological_model": "ECMWF ERA5 Atmospheric Reanalysis (reanalysis-era5-single-levels)",
+      "ais_provider": "Terrestrial & Satellite AIS Ingestion Feed",
+      "data_classification": "HISTORICAL_OBSERVED_DATA"
+    },
+    "generated_at": "2026-09-03T04:57:10.808256Z"
+  }
+}

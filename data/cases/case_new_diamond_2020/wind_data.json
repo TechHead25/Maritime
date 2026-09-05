@@ -1,0 +1,24 @@
+{
+  "synthetic": false,
+  "data_classification": "OBSERVED_HISTORICAL_REANALYSIS",
+  "dataset_source": "ECMWF ERA5 Atmospheric Reanalysis (reanalysis-era5-single-levels)",
+  "reference_timestamp_utc": "2020-09-03T00:00:00Z",
+  "valid_interval_utc": [
+    "2020-09-02T00:00:00Z",
+    "2020-09-04T00:00:00Z"
+  ],
+  "spatial_bounds": {
+    "min_longitude": 81.5,
+    "max_longitude": 84.5,
+    "min_latitude": 6.5,
+    "max_latitude": 9.0
+  },
+  "mean_wind_vectors": {
+    "u_eastward_m_per_s": 4.10,
+    "v_northward_m_per_s": 4.80,
+    "wind_speed_m_per_s": 6.31,
+    "wind_speed_knots": 12.27,
+    "wind_direction_from_deg": 220.5
+  },
+  "wind_leeway_factor_recommended": 0.03
+}

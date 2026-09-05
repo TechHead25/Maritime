@@ -1,0 +1,22 @@
+{
+  "AIS": {
+    "state": "BLOCKED",
+    "detail": "Missing AISSTREAM_API_KEY",
+    "timestamp": "2026-09-03T06:55:11.955985+00:00"
+  },
+  "Sentinel-1": {
+    "state": "CONNECTED",
+    "detail": "Search succeeded but no scenes found",
+    "timestamp": "2026-09-03T06:55:15.464863+00:00"
+  },
+  "Copernicus Marine": {
+    "state": "VERIFIED",
+    "detail": "Ocean current data retrieved",
+    "timestamp": "2026-09-03T06:55:15.467246+00:00"
+  },
+  "Wind": {
+    "state": "VERIFIED",
+    "detail": "Wind data retrieved",
+    "timestamp": "2026-09-03T06:55:17.787718+00:00"
+  }
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "run_id": "run_1",
+    "run_number": 1,
+    "created_at_utc": "2026-09-03T04:59:36.478300+00:00",
+    "duration_sec": 0.09,
+    "candidates_count": 5,
+    "top_candidate": "DAWN KANCHIPURAM",
+    "top_score": 50.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49,
+        13.09442
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 20.7,
+      "release_window_half_width_hours": 2.5,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": true
+    }
+  },
+  {
+    "run_id": "run_2",
+    "run_number": 2,
+    "created_at_utc": "2026-09-03T04:59:36.846064+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 5,
+    "top_candidate": "BW MAPLE",
+    "top_score": 31.8,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49874,
+        13.14135
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_3",
+    "run_number": 3,
+    "created_at_utc": "2026-09-05T16:39:46.756307+00:00",
+    "duration_sec": 0.09,
+    "candidates_count": 5,
+    "top_candidate": "DAWN KANCHIPURAM",
+    "top_score": 50.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49,
+        13.09442
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 20.7,
+      "release_window_half_width_hours": 2.5,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": true
+    }
+  },
+  {
+    "run_id": "run_4",
+    "run_number": 4,
+    "created_at_utc": "2026-09-05T16:39:47.111797+00:00",
+    "duration_sec": 0.16,
+    "candidates_count": 5,
+    "top_candidate": "BW MAPLE",
+    "top_score": 31.8,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49874,
+        13.14135
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_5",
+    "run_number": 5,
+    "created_at_utc": "2026-09-05T16:59:09.561518+00:00",
+    "duration_sec": 0.09,
+    "candidates_count": 5,
+    "top_candidate": "DAWN KANCHIPURAM",
+    "top_score": 50.3,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49,
+        13.09442
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 24.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 20.7,
+      "release_window_half_width_hours": 2.5,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": true
+    }
+  },
+  {
+    "run_id": "run_6",
+    "run_number": 6,
+    "created_at_utc": "2026-09-05T16:59:09.946873+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 5,
+    "top_candidate": "BW MAPLE",
+    "top_score": 31.8,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        80.49874,
+        13.14135
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  }
+]

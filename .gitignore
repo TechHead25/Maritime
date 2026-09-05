@@ -1,0 +1,39 @@
+# Environments and Secrets
+.env
+.env.local
+*.env
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Operating System & IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary generated test cases and outputs
+data/cases/case_corrupt_*
+data/cases/case_persistence_*
+data/cases/case_e2e_*
+data/cases/case_automated_*
+data/cases/case_unanalyzed_*
+data/cases/case_malicious_*
+data/cases/case_live_patrol_*

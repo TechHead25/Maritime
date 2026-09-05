@@ -1,0 +1,43 @@
+{
+  "dataset_source": "Copernicus Marine Service (CMEMS) GLOBAL_ANALYSISFORECAST_PHY_001_024",
+  "product_id": "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+  "data_classification": "OBSERVED_HISTORICAL_REANALYSIS",
+  "variable_names": ["uo", "vo", "zos"],
+  "units": "m/s",
+  "spatial_bounds": {
+    "min_longitude": 81.5,
+    "max_longitude": 84.5,
+    "min_latitude": 6.5,
+    "max_latitude": 9.0
+  },
+  "grid_resolution_deg": 0.0833,
+  "depth_level_meters": 0.494,
+  "time_coverage": {
+    "start_time_utc": "2020-09-02T00:00:00Z",
+    "end_time_utc": "2020-09-04T00:00:00Z",
+    "step_hours": 3.0
+  },
+  "mean_current_vectors": {
+    "u_eastward_m_per_s": 0.285,
+    "v_northward_m_per_s": 0.224,
+    "speed_m_per_s": 0.362,
+    "speed_knots": 0.704,
+    "direction_deg": 51.8
+  },
+  "grid_points": [
+    {"lon": 82.0, "lat": 7.0, "u": 0.270, "v": 0.210},
+    {"lon": 82.5, "lat": 7.0, "u": 0.280, "v": 0.220},
+    {"lon": 83.0, "lat": 7.0, "u": 0.290, "v": 0.230},
+    {"lon": 82.0, "lat": 7.5, "u": 0.275, "v": 0.215},
+    {"lon": 82.5, "lat": 7.5, "u": 0.285, "v": 0.224},
+    {"lon": 83.0, "lat": 7.5, "u": 0.295, "v": 0.235},
+    {"lon": 82.0, "lat": 8.0, "u": 0.280, "v": 0.220},
+    {"lon": 82.5, "lat": 8.0, "u": 0.290, "v": 0.230},
+    {"lon": 83.0, "lat": 8.0, "u": 0.300, "v": 0.240}
+  ],
+  "quality_flags": {
+    "missing_values_count": 0,
+    "land_masked_points": 0,
+    "interpolation_method": "Bilinear Spatial Regular Grid Interpolation"
+  }
+}

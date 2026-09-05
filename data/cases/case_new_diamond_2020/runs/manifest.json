@@ -1,0 +1,1652 @@
+[
+  {
+    "run_id": "run_1",
+    "run_number": 1,
+    "created_at_utc": "2026-09-03T04:56:35.568106+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_2",
+    "run_number": 2,
+    "created_at_utc": "2026-09-03T04:57:10.809760+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_3",
+    "run_number": 3,
+    "created_at_utc": "2026-09-03T04:58:39.636282+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_4",
+    "run_number": 4,
+    "created_at_utc": "2026-09-03T04:58:59.977122+00:00",
+    "duration_sec": 0.04,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_5",
+    "run_number": 5,
+    "created_at_utc": "2026-09-03T04:59:26.261975+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_6",
+    "run_number": 6,
+    "created_at_utc": "2026-09-03T04:59:41.766896+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34218,
+        7.54698
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_7",
+    "run_number": 7,
+    "created_at_utc": "2026-09-03T04:59:42.080458+00:00",
+    "duration_sec": 0.18,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_8",
+    "run_number": 8,
+    "created_at_utc": "2026-09-03T04:59:51.944358+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_9",
+    "run_number": 9,
+    "created_at_utc": "2026-09-03T05:00:09.519064+00:00",
+    "duration_sec": 0.08,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40881,
+        7.60738
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_10",
+    "run_number": 10,
+    "created_at_utc": "2026-09-03T05:00:09.985386+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40885,
+        7.60723
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_11",
+    "run_number": 11,
+    "created_at_utc": "2026-09-03T05:11:05.550129+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_12",
+    "run_number": 12,
+    "created_at_utc": "2026-09-03T05:21:26.426316+00:00",
+    "duration_sec": 0.05,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_13",
+    "run_number": 13,
+    "created_at_utc": "2026-09-03T05:40:17.398566+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_14",
+    "run_number": 14,
+    "created_at_utc": "2026-09-03T05:40:59.884826+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_15",
+    "run_number": 15,
+    "created_at_utc": "2026-09-03T05:41:00.865993+00:00",
+    "duration_sec": 0.24,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_16",
+    "run_number": 16,
+    "created_at_utc": "2026-09-03T05:41:16.657783+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_17",
+    "run_number": 17,
+    "created_at_utc": "2026-09-03T05:41:17.661739+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_18",
+    "run_number": 18,
+    "created_at_utc": "2026-09-03T05:41:44.997108+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_19",
+    "run_number": 19,
+    "created_at_utc": "2026-09-03T05:41:46.023293+00:00",
+    "duration_sec": 0.19,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_20",
+    "run_number": 20,
+    "created_at_utc": "2026-09-03T05:42:01.078368+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_21",
+    "run_number": 21,
+    "created_at_utc": "2026-09-03T05:42:01.905028+00:00",
+    "duration_sec": 0.18,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_22",
+    "run_number": 22,
+    "created_at_utc": "2026-09-03T05:43:42.427101+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 46.9,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.3688,
+        7.57058
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 12.0,
+      "particle_count": 150,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_23",
+    "run_number": 23,
+    "created_at_utc": "2026-09-03T05:43:43.255787+00:00",
+    "duration_sec": 0.18,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_24",
+    "run_number": 24,
+    "created_at_utc": "2026-09-03T05:44:07.044924+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_25",
+    "run_number": 25,
+    "created_at_utc": "2026-09-03T05:44:07.775002+00:00",
+    "duration_sec": 0.18,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_26",
+    "run_number": 26,
+    "created_at_utc": "2026-09-03T06:14:54.699065+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_27",
+    "run_number": 27,
+    "created_at_utc": "2026-09-03T06:14:55.805835+00:00",
+    "duration_sec": 0.19,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_28",
+    "run_number": 28,
+    "created_at_utc": "2026-09-03T06:15:22.415818+00:00",
+    "duration_sec": 0.07,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_29",
+    "run_number": 29,
+    "created_at_utc": "2026-09-03T06:15:23.497988+00:00",
+    "duration_sec": 0.21,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_30",
+    "run_number": 30,
+    "created_at_utc": "2026-09-03T06:15:49.812629+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_31",
+    "run_number": 31,
+    "created_at_utc": "2026-09-03T06:15:50.817782+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_32",
+    "run_number": 32,
+    "created_at_utc": "2026-09-03T06:16:36.186485+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_33",
+    "run_number": 33,
+    "created_at_utc": "2026-09-03T06:16:37.227512+00:00",
+    "duration_sec": 0.2,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_34",
+    "run_number": 34,
+    "created_at_utc": "2026-09-03T06:17:17.183868+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_35",
+    "run_number": 35,
+    "created_at_utc": "2026-09-03T06:17:18.123424+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_36",
+    "run_number": 36,
+    "created_at_utc": "2026-09-03T06:18:00.370458+00:00",
+    "duration_sec": 0.07,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_37",
+    "run_number": 37,
+    "created_at_utc": "2026-09-03T06:18:01.429920+00:00",
+    "duration_sec": 0.2,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_38",
+    "run_number": 38,
+    "created_at_utc": "2026-09-03T06:18:36.051485+00:00",
+    "duration_sec": 0.06,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_39",
+    "run_number": 39,
+    "created_at_utc": "2026-09-03T06:18:37.093865+00:00",
+    "duration_sec": 0.18,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_40",
+    "run_number": 40,
+    "created_at_utc": "2026-09-03T06:35:27.721989+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_41",
+    "run_number": 41,
+    "created_at_utc": "2026-09-03T06:35:29.180115+00:00",
+    "duration_sec": 0.29,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_42",
+    "run_number": 42,
+    "created_at_utc": "2026-09-03T06:36:12.852957+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_43",
+    "run_number": 43,
+    "created_at_utc": "2026-09-03T06:36:14.321163+00:00",
+    "duration_sec": 0.29,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_44",
+    "run_number": 44,
+    "created_at_utc": "2026-09-05T16:39:55.045698+00:00",
+    "duration_sec": 0.07,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_45",
+    "run_number": 45,
+    "created_at_utc": "2026-09-05T16:39:55.736194+00:00",
+    "duration_sec": 0.19,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_46",
+    "run_number": 46,
+    "created_at_utc": "2026-09-05T16:40:07.810611+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34218,
+        7.54698
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_47",
+    "run_number": 47,
+    "created_at_utc": "2026-09-05T16:40:13.438314+00:00",
+    "duration_sec": 0.04,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_48",
+    "run_number": 48,
+    "created_at_utc": "2026-09-05T16:40:29.463141+00:00",
+    "duration_sec": 0.07,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40881,
+        7.60738
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_49",
+    "run_number": 49,
+    "created_at_utc": "2026-09-05T16:40:30.215801+00:00",
+    "duration_sec": 0.12,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40885,
+        7.60723
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_50",
+    "run_number": 50,
+    "created_at_utc": "2026-09-05T16:59:18.272922+00:00",
+    "duration_sec": 0.07,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34179,
+        7.54674
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 200,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_51",
+    "run_number": 51,
+    "created_at_utc": "2026-09-05T16:59:18.924157+00:00",
+    "duration_sec": 0.17,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34221,
+        7.54719
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_52",
+    "run_number": 52,
+    "created_at_utc": "2026-09-05T16:59:30.931697+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 47.4,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.34218,
+        7.54698
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 48.0,
+      "particle_count": 300,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_53",
+    "run_number": 53,
+    "created_at_utc": "2026-09-05T16:59:36.669663+00:00",
+    "duration_sec": 0.04,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 51.1,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.50141,
+        7.69031
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 2.0,
+      "particle_count": 20,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 14.0,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_54",
+    "run_number": 54,
+    "created_at_utc": "2026-09-05T16:59:50.759276+00:00",
+    "duration_sec": 0.1,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40881,
+        7.60738
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 500,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  },
+  {
+    "run_id": "run_55",
+    "run_number": 55,
+    "created_at_utc": "2026-09-05T16:59:51.422277+00:00",
+    "duration_sec": 0.13,
+    "candidates_count": 4,
+    "top_candidate": "MT NEW DIAMOND",
+    "top_score": 55.7,
+    "origin_centroid": {
+      "type": "Point",
+      "coordinates": [
+        82.40885,
+        7.60723
+      ]
+    },
+    "config": {
+      "time_step_minutes": 30,
+      "max_hours_backward": 18.0,
+      "particle_count": 1000,
+      "wind_leeway_factor": 0.03,
+      "current_advection_factor": 1.0,
+      "horizontal_diffusivity_m2_s": 2.5,
+      "random_seed": 42,
+      "estimated_release_hours_ago": 9.25,
+      "release_window_half_width_hours": 2.0,
+      "max_cpa_distance_km": 50.0,
+      "use_synthetic_slick": false,
+      "bypass_cache": false
+    }
+  }
+]

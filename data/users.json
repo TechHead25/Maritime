@@ -1,0 +1,35 @@
+[
+  {
+    "username": "admin",
+    "email": "admin@maritime-intelligence.internal",
+    "full_name": "Chief Forensic Administrator",
+    "role": "ADMIN",
+    "id": "usr_admin_001",
+    "hashed_password": "pbkdf2_sha256$100000$38d421e63901abf004b4cc1a635a6a88$b74eb556be0d1756b456464b0a02e61eae3e5b245558154f88322f08760cb7c5",
+    "is_active": true,
+    "created_at_utc": "2026-09-03T05:31:14.142576+00:00",
+    "last_login_utc": "2026-09-05T16:59:52.316062+00:00"
+  },
+  {
+    "username": "analyst",
+    "email": "analyst@maritime-intelligence.internal",
+    "full_name": "Senior Forensic Spill Analyst",
+    "role": "ANALYST",
+    "id": "usr_analyst_001",
+    "hashed_password": "pbkdf2_sha256$100000$417c5b2ffc6be49d40f4e3bff0618660$2d4d2177b6495bb4f3563bc258c0272ca0ef727a5b344fc6d93d368685d8f108",
+    "is_active": true,
+    "created_at_utc": "2026-09-03T05:31:14.142576+00:00",
+    "last_login_utc": "2026-09-05T16:59:52.280865+00:00"
+  },
+  {
+    "username": "viewer",
+    "email": "viewer@maritime-intelligence.internal",
+    "full_name": "Maritime Oversight Observer",
+    "role": "VIEWER",
+    "id": "usr_viewer_001",
+    "hashed_password": "pbkdf2_sha256$100000$e01eab8b9f62df3f3952f4149b250884$0adee03ee16ae30d5cf5fc2883904e3e1ed95886bf115188551e06610fd43541",
+    "is_active": true,
+    "created_at_utc": "2026-09-03T05:31:14.142576+00:00",
+    "last_login_utc": "2026-09-05T16:59:52.184109+00:00"
+  }
+]

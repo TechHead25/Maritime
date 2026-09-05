@@ -1,0 +1,24 @@
+{
+  "synthetic": true,
+  "data_classification": "SYNTHETIC_BENCHMARK_DATA",
+  "dataset_source": "Synthetic ECMWF/GFS Surface Wind Emulation",
+  "reference_timestamp_utc": "2026-09-01T00:00:00Z",
+  "valid_interval_utc": [
+    "2026-08-31T00:00:00Z",
+    "2026-09-01T18:00:00Z"
+  ],
+  "spatial_bounds": {
+    "min_longitude": 101.0,
+    "max_longitude": 103.0,
+    "min_latitude": 2.0,
+    "max_latitude": 3.5
+  },
+  "mean_wind_vectors": {
+    "u_eastward_m_per_s": -3.5,
+    "v_northward_m_per_s": -3.5,
+    "wind_speed_m_per_s": 4.95,
+    "wind_speed_knots": 9.62,
+    "wind_direction_from_deg": 45.0
+  },
+  "wind_leeway_factor_recommended": 0.03
+}

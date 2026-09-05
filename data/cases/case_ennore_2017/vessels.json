@@ -1,0 +1,242 @@
+[
+  {
+    "id": "vessel-track-dawn-kanchipuram-2017",
+    "case_id": "case_ennore_2017",
+    "mmsi": "419000109",
+    "vessel_name": "DAWN KANCHIPURAM",
+    "vessel_type": "TANKER",
+    "flag_country": "India",
+    "length_meters": 182.0,
+    "beam_meters": 27.4,
+    "gross_tonnage": 29813,
+    "waypoints": [
+      {
+        "latitude": 13.2050,
+        "longitude": 80.3700,
+        "timestamp": "2017-01-28T02:00:00Z",
+        "speed_knots": 9.4,
+        "course_over_ground": 320.0
+      },
+      {
+        "latitude": 13.2210,
+        "longitude": 80.3580,
+        "timestamp": "2017-01-28T03:00:00Z",
+        "speed_knots": 8.8,
+        "course_over_ground": 315.0
+      },
+      {
+        "latitude": 13.2380,
+        "longitude": 80.3470,
+        "timestamp": "2017-01-28T03:50:00Z",
+        "speed_knots": 8.2,
+        "course_over_ground": 310.0
+      },
+      {
+        "latitude": 13.2420,
+        "longitude": 80.3450,
+        "timestamp": "2017-01-28T04:05:00Z",
+        "speed_knots": 0.4,
+        "course_over_ground": 240.0
+      },
+      {
+        "latitude": 13.2415,
+        "longitude": 80.3455,
+        "timestamp": "2017-01-28T05:30:00Z",
+        "speed_knots": 0.2,
+        "course_over_ground": 180.0
+      },
+      {
+        "latitude": 13.2410,
+        "longitude": 80.3460,
+        "timestamp": "2017-01-28T09:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 160.0
+      },
+      {
+        "latitude": 13.2408,
+        "longitude": 80.3462,
+        "timestamp": "2017-01-28T15:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 150.0
+      },
+      {
+        "latitude": 13.2405,
+        "longitude": 80.3465,
+        "timestamp": "2017-01-29T00:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 140.0
+      }
+    ]
+  },
+  {
+    "id": "vessel-track-bw-maple-2017",
+    "case_id": "case_ennore_2017",
+    "mmsi": "235102558",
+    "vessel_name": "BW MAPLE",
+    "vessel_type": "TANKER",
+    "flag_country": "United Kingdom",
+    "length_meters": 226.0,
+    "beam_meters": 36.8,
+    "gross_tonnage": 48400,
+    "waypoints": [
+      {
+        "latitude": 13.2550,
+        "longitude": 80.3320,
+        "timestamp": "2017-01-28T03:30:00Z",
+        "speed_knots": 6.2,
+        "course_over_ground": 135.0
+      },
+      {
+        "latitude": 13.2430,
+        "longitude": 80.3440,
+        "timestamp": "2017-01-28T04:00:00Z",
+        "speed_knots": 4.5,
+        "course_over_ground": 130.0
+      },
+      {
+        "latitude": 13.2410,
+        "longitude": 80.3480,
+        "timestamp": "2017-01-28T04:30:00Z",
+        "speed_knots": 0.8,
+        "course_over_ground": 110.0
+      },
+      {
+        "latitude": 13.2380,
+        "longitude": 80.3540,
+        "timestamp": "2017-01-28T06:00:00Z",
+        "speed_knots": 0.2,
+        "course_over_ground": 90.0
+      },
+      {
+        "latitude": 13.2370,
+        "longitude": 80.3550,
+        "timestamp": "2017-01-28T12:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 80.0
+      },
+      {
+        "latitude": 13.2365,
+        "longitude": 80.3555,
+        "timestamp": "2017-01-29T00:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 75.0
+      }
+    ]
+  },
+  {
+    "id": "vessel-track-desh-shanti-2017",
+    "case_id": "case_ennore_2017",
+    "mmsi": "419614000",
+    "vessel_name": "DESH SHANTI",
+    "vessel_type": "TANKER",
+    "flag_country": "India",
+    "length_meters": 274.0,
+    "beam_meters": 48.0,
+    "gross_tonnage": 84500,
+    "waypoints": [
+      {
+        "latitude": 13.1200,
+        "longitude": 80.4600,
+        "timestamp": "2017-01-28T00:00:00Z",
+        "speed_knots": 0.2,
+        "course_over_ground": 45.0
+      },
+      {
+        "latitude": 13.1205,
+        "longitude": 80.4605,
+        "timestamp": "2017-01-28T08:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 45.0
+      },
+      {
+        "latitude": 13.1202,
+        "longitude": 80.4602,
+        "timestamp": "2017-01-28T16:00:00Z",
+        "speed_knots": 0.2,
+        "course_over_ground": 50.0
+      },
+      {
+        "latitude": 13.1208,
+        "longitude": 80.4608,
+        "timestamp": "2017-01-29T00:00:00Z",
+        "speed_knots": 0.1,
+        "course_over_ground": 40.0
+      }
+    ]
+  },
+  {
+    "id": "vessel-track-maersk-kinloss-2017",
+    "case_id": "case_ennore_2017",
+    "mmsi": "477142400",
+    "vessel_name": "MAERSK KINLOSS",
+    "vessel_type": "CARGO",
+    "flag_country": "Hong Kong",
+    "length_meters": 299.0,
+    "beam_meters": 40.0,
+    "gross_tonnage": 74500,
+    "waypoints": [
+      {
+        "latitude": 13.4800,
+        "longitude": 80.4900,
+        "timestamp": "2017-01-28T01:00:00Z",
+        "speed_knots": 17.6,
+        "course_over_ground": 195.0
+      },
+      {
+        "latitude": 13.3500,
+        "longitude": 80.4650,
+        "timestamp": "2017-01-28T02:30:00Z",
+        "speed_knots": 17.4,
+        "course_over_ground": 195.0
+      },
+      {
+        "latitude": 13.2000,
+        "longitude": 80.4400,
+        "timestamp": "2017-01-28T04:00:00Z",
+        "speed_knots": 17.5,
+        "course_over_ground": 195.0
+      },
+      {
+        "latitude": 13.0500,
+        "longitude": 80.4150,
+        "timestamp": "2017-01-28T05:30:00Z",
+        "speed_knots": 17.4,
+        "course_over_ground": 195.0
+      }
+    ]
+  },
+  {
+    "id": "vessel-track-tci-suraksha-2017",
+    "case_id": "case_ennore_2017",
+    "mmsi": "419069500",
+    "vessel_name": "TCI SURAKSHA",
+    "vessel_type": "CARGO",
+    "flag_country": "India",
+    "length_meters": 105.0,
+    "beam_meters": 16.0,
+    "gross_tonnage": 4500,
+    "waypoints": [
+      {
+        "latitude": 13.1000,
+        "longitude": 80.3500,
+        "timestamp": "2017-01-28T16:00:00Z",
+        "speed_knots": 11.4,
+        "course_over_ground": 15.0
+      },
+      {
+        "latitude": 13.2500,
+        "longitude": 80.3700,
+        "timestamp": "2017-01-28T18:00:00Z",
+        "speed_knots": 11.2,
+        "course_over_ground": 15.0
+      },
+      {
+        "latitude": 13.4000,
+        "longitude": 80.3900,
+        "timestamp": "2017-01-28T20:00:00Z",
+        "speed_knots": 11.3,
+        "course_over_ground": 15.0
+      }
+    ]
+  }
+]

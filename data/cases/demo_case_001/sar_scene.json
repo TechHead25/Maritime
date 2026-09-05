@@ -1,0 +1,24 @@
+{
+  "synthetic": true,
+  "data_classification": "SYNTHETIC_BENCHMARK_DATA",
+  "id": "sar-scene-demo-001",
+  "case_id": "demo-case-001",
+  "satellite_platform": "Sentinel-1A (Synthetic Simulation)",
+  "sensor_mode": "IW",
+  "polarization": "VV",
+  "acquisition_timestamp": "2026-09-01T14:30:00Z",
+  "footprint_polygon": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [101.5, 2.3],
+        [102.5, 2.3],
+        [102.5, 3.2],
+        [101.5, 3.2],
+        [101.5, 2.3]
+      ]
+    ]
+  },
+  "image_path": "data/sar/synthetic_malacca_20260901.tiff",
+  "pixel_resolution_meters": 10.0
+}

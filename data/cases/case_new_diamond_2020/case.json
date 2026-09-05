@@ -1,0 +1,46 @@
+{
+  "id": "case_new_diamond_2020",
+  "title": "MT New Diamond Fire & Bunker Discharge (Bay of Bengal)",
+  "description": "Historical forensic investigation of the Very Large Crude Carrier (VLCC) MT New Diamond engine room fire and subsequent heavy fuel oil spill 38 nautical miles off eastern Sri Lanka in September 2020.",
+  "status": "ATTRIBUTION_COMPLETED",
+  "region_of_interest": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          81.5,
+          6.5
+        ],
+        [
+          84.5,
+          6.5
+        ],
+        [
+          84.5,
+          9.0
+        ],
+        [
+          81.5,
+          9.0
+        ],
+        [
+          81.5,
+          6.5
+        ]
+      ]
+    ]
+  },
+  "created_at": "2020-09-03T12:45:00Z",
+  "updated_at": "2026-09-05T16:59:51.502632+00:00",
+  "metadata": {
+    "synthetic": false,
+    "incident_vessel": "MT NEW DIAMOND",
+    "mmsi": "371584000",
+    "imo": "9199347",
+    "spill_substance": "IFO-380 Heavy Fuel Oil & Engine Bilge",
+    "incident_location": "Off Sangamankanda Point, Sri Lanka (07\u00b045'N, 082\u00b030'E)",
+    "sar_satellite": "Sentinel-1A (Copernicus CDSE)",
+    "ocean_model": "CMEMS Global Ocean Physics Analysis & Forecast",
+    "wind_model": "ECMWF ERA5 Atmospheric Reanalysis"
+  }
+}

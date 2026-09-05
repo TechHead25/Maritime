@@ -1,0 +1,14 @@
+{
+  "time_step_minutes": 30,
+  "max_hours_backward": 48.0,
+  "particle_count": 500,
+  "wind_leeway_factor": 0.03,
+  "current_advection_factor": 1.0,
+  "horizontal_diffusivity_m2_s": 2.5,
+  "random_seed": 42,
+  "estimated_release_hours_ago": 14.0,
+  "release_window_half_width_hours": 2.0,
+  "max_cpa_distance_km": 50.0,
+  "use_synthetic_slick": true,
+  "bypass_cache": false
+}
