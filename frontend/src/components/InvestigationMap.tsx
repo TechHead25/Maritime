@@ -310,10 +310,16 @@ export const InvestigationMap: React.FC<Props> = ({
           scrollWheelZoom={true}
           style={{ width: '100%', height: '100%' }}
         >
-          {/* CartoDB Dark Matter tile layer */}
+          {/* Esri World Dark Gray tile layer (watermark-free, zero API key required) */}
           <TileLayer
-            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.esri.com/">Esri</a>'
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+            maxZoom={16}
+          />
+          <TileLayer
+            attribution=''
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+            maxZoom={16}
           />
 
           {/* 1. SAR Swath Footprint */}

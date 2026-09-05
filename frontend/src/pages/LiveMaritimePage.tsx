@@ -75,9 +75,9 @@ const REGION_COORDINATES: Record<string, { center: [number, number]; zoom: numbe
     label: 'Arabian Sea (West Coast & Gulf)',
   },
   GLOBAL: {
-    center: [10.0, 80.0],
+    center: [15.0, 75.0],
     zoom: 4,
-    label: 'Global Maritime (High Seas)',
+    label: 'Global Maritime (High Seas & Corridors)',
   },
 };
 
@@ -143,7 +143,7 @@ export const LiveMaritimePage: React.FC = () => {
   const [vessels, setVessels] = useState<LiveVessel[]>([]);
   const [selectedMmsi, setSelectedMmsi] = useState<string | null>(queryMmsi);
   const [selectedVessel, setSelectedVessel] = useState<VesselDetailedInfo | null>(null);
-  const [region, setRegion] = useState<string>('SRI_LANKA_SOUTH');
+  const [region, setRegion] = useState<string>('GLOBAL');
   const [vesselTypeFilter, setVesselTypeFilter] = useState<string>('ALL');
   const [minSpeedKnots, setMinSpeedKnots] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -518,8 +518,14 @@ export const LiveMaritimePage: React.FC = () => {
           />
 
           <TileLayer
-            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.esri.com/">Esri</a>'
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+            maxZoom={16}
+          />
+          <TileLayer
+            attribution=''
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+            maxZoom={16}
           />
 
           {/* Vessel Markers */}

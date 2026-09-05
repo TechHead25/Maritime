@@ -283,13 +283,13 @@ class LiveAISService:
         self,
         api_key: Optional[str] = None,
         ws_url: Optional[str] = None,
-        default_region: str = "SRI_LANKA_SOUTH",
+        default_region: str = "GLOBAL",
         retention_hours: float = 12.0,
     ):
         self.api_key = api_key or os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
         self.ws_url = ws_url or os.getenv("AIS_WS_URL", "wss://stream.aisstream.io/v0/stream")
         self.current_region = default_region
-        self.active_bbox = PREDEFINED_REGIONS.get(default_region, PREDEFINED_REGIONS["SRI_LANKA_SOUTH"])
+        self.active_bbox = PREDEFINED_REGIONS.get(default_region, PREDEFINED_REGIONS["GLOBAL"])
 
         # Components
         self.validator = AISMessageValidator()
