@@ -18,6 +18,7 @@ import {
   fetchLiveVesselDetails,
   updateLiveSubscription,
   createInvestigationFromVessel,
+  getLiveStreamUrl,
 } from '../services/api';
 import { VesselIntelligenceModal } from '../components/VesselIntelligenceModal';
 
@@ -192,7 +193,7 @@ export const LiveMaritimePage: React.FC = () => {
 
   // Connect to backend Server-Sent Events (SSE) stream
   useEffect(() => {
-    const sseUrl = '/api/live/stream';
+    const sseUrl = getLiveStreamUrl();
     const es = new EventSource(sseUrl);
     eventSourceRef.current = es;
 

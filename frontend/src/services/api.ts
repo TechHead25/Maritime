@@ -5,7 +5,8 @@ import {
   FullInvestigationResponse,
 } from '../types';
 
-const API_BASE = '/api';
+const ENV_API_URL = import.meta.env.VITE_API_URL ? String(import.meta.env.VITE_API_URL).replace(/\/$/, '') : '';
+const API_BASE = ENV_API_URL ? `${ENV_API_URL}/api` : '/api';
 
 export async function fetchHealth(): Promise<HealthStatus> {
   const res = await fetch(`${API_BASE}/health`);
