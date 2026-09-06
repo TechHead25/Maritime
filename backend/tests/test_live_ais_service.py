@@ -12,6 +12,7 @@ Validates:
 
 from datetime import datetime, timedelta, timezone
 import json
+import os
 import pytest
 from fastapi.testclient import TestClient
 
@@ -275,3 +276,25 @@ def test_api_live_subscription_endpoint(client):
 
     # Reset back to Sri Lanka
     client.post("/api/live/subscription", json={"region_name": "SRI_LANKA_SOUTH"})
+
+
+def test_seed_cache_loading_and_persistence(tmp_path):
+    # Test loading verified seed vessels into isolated state
+    state = CurrentVesselState()
+    tracks = HistoricalTrackStore()
+    state.load_cache("data/ais/live_seed_vessels.json")
+    tracks.load_seed_tracks("data/ais/live_seed_vessels.json")
+
+    assert state.count() >= 5
+    v = state.get("371584000")
+    assert v is not None
+    assert v["vessel_name"] == "MT NEW DIAMOND"
+    assert v["vessel_type"] == "TANKER"
+
+    t = tracks.get_track("371584000")
+    assert len(t) >= 3
+
+    # Test cache saving
+    dump_path = str(tmp_path / "test_cache.json")
+    state.save_cache(dump_path)
+    assert os.path.exists(dump_path)

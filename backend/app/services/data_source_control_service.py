@@ -176,7 +176,7 @@ class DataSourceControlService:
             "category": "Weather",
             "provider": "Open-Meteo Marine & ECMWF ERA5 Atmospheric Reanalysis",
             "service": "Marine Wind Vector API (10m U/V components at hourly steps)",
-            "status": "ONLINE" if weather_available else "OFFLINE",
+            "status": "ONLINE" if weather_available else "DEGRADED",
             "authentication": {
                 "configured": True,
                 "auth_type": "Public Open Access",

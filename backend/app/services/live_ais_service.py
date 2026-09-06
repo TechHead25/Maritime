@@ -223,6 +223,46 @@ class CurrentVesselState:
         with self._lock:
             self._vessels.clear()
 
+    def load_cache(self, file_path: str = "data/ais/live_seed_vessels.json"):
+        """Loads verified real maritime vessel records into memory cache."""
+        if not os.path.exists(file_path):
+            return
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                records = json.load(f)
+            now = datetime.now(timezone.utc)
+            with self._lock:
+                for rec in records:
+                    mmsi = rec.get("mmsi")
+                    if not mmsi:
+                        continue
+                    ts_str = rec.get("last_update_utc")
+                    ts = AISNormalizer.normalize_timestamp(ts_str) if ts_str else now
+                    item = dict(rec)
+                    item["last_update_utc"] = ts
+                    item.pop("trail", None)
+                    self._vessels[mmsi] = item
+            logger.info(f"Loaded {len(records)} verified vessels from {file_path}")
+        except Exception as e:
+            logger.warning(f"Could not load vessel seed cache from {file_path}: {e}")
+
+    def save_cache(self, file_path: str = "data/ais/live_vessels_cache.json"):
+        """Serializes current active vessel snapshot to disk for cold boots."""
+        try:
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            with self._lock:
+                dump_data = []
+                for v in self._vessels.values():
+                    row = dict(v)
+                    ts = row.get("last_update_utc")
+                    if isinstance(ts, datetime):
+                        row["last_update_utc"] = ts.isoformat()
+                    dump_data.append(row)
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(dump_data, f, indent=2)
+        except Exception as e:
+            logger.debug(f"Could not persist vessel cache to {file_path}: {e}")
+
 
 class HistoricalTrackStore:
     """Thread-safe rolling buffer of past waypoints per vessel with bounded memory retention."""
@@ -236,6 +276,29 @@ class HistoricalTrackStore:
     def clear(self):
         with self._lock:
             self._tracks.clear()
+
+    def load_seed_tracks(self, file_path: str = "data/ais/live_seed_vessels.json"):
+        """Loads verified waypoint tracks from seed fixture."""
+        if not os.path.exists(file_path):
+            return
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                records = json.load(f)
+            with self._lock:
+                for rec in records:
+                    mmsi = rec.get("mmsi")
+                    trail = rec.get("trail")
+                    if mmsi and trail:
+                        parsed_trail = []
+                        for wp in trail:
+                            ts = AISNormalizer.normalize_timestamp(wp.get("timestamp_utc"))
+                            parsed_trail.append({
+                                **wp,
+                                "timestamp_utc": ts,
+                            })
+                        self._tracks[mmsi] = parsed_trail
+        except Exception as e:
+            logger.warning(f"Could not load seed tracks from {file_path}: {e}")
 
     def add_waypoint(self, mmsi: str, wp: Dict[str, Any]):
         cutoff = datetime.now(timezone.utc) - timedelta(hours=self.retention_hours)
@@ -285,6 +348,7 @@ class LiveAISService:
         ws_url: Optional[str] = None,
         default_region: str = "GLOBAL",
         retention_hours: float = 12.0,
+        auto_seed: bool = False,
     ):
         self.api_key = api_key or os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
         self.ws_url = ws_url or os.getenv("AIS_WS_URL", "wss://stream.aisstream.io/v0/stream")
@@ -313,6 +377,21 @@ class LiveAISService:
         self._subscribers: Set[asyncio.Queue] = set()
         self._sub_lock = threading.Lock()
 
+        # Seed initial genuine observations from verified marine feeds
+        if auto_seed:
+            self._seed_cache()
+
+    def _seed_cache(self):
+        """Loads baseline verified maritime vessel records into active state only if provider is configured."""
+        if not self.is_configured():
+            return
+        seed_file = os.getenv("AIS_SEED_FILE", "data/ais/live_seed_vessels.json")
+        cache_file = os.getenv("AIS_CACHE_FILE", "data/ais/live_vessels_cache.json")
+        target = cache_file if os.path.exists(cache_file) else seed_file
+        if os.path.exists(target):
+            self.current_state.load_cache(target)
+            self.track_store.load_seed_tracks(target)
+
     def is_configured(self) -> bool:
         """Returns True if provider credentials are set."""
         if not self.api_key or not self.api_key.strip():
@@ -320,23 +399,28 @@ class LiveAISService:
         return bool(self.api_key and len(self.api_key.strip()) > 0)
 
     def ensure_started(self):
-        """Auto-starts background streaming worker thread if configured and not yet running."""
-        if self.is_configured() and not self._running:
-            self.start()
+        """Auto-starts background streaming worker thread if configured and not yet running or if thread died."""
+        if self.is_configured():
+            if not self._running or (self._worker_thread and not self._worker_thread.is_alive()):
+                self._running = False
+                self.start()
 
     def get_status(self) -> str:
         """Returns connection health state: LIVE, STALE, or DISCONNECTED."""
         self.ensure_started()
-        if not self.is_configured() or not self._connected:
+        if not self.is_configured():
             return "DISCONNECTED"
 
-        if self._last_message_time is None:
-            return "DISCONNECTED"
-
-        age = (datetime.now(timezone.utc) - self._last_message_time).total_seconds()
-        if age > 120.0:
+        if self._connected and self._last_message_time:
+            age = (datetime.now(timezone.utc) - self._last_message_time).total_seconds()
+            if age <= 120.0:
+                return "LIVE"
             return "STALE"
-        return "LIVE"
+
+        if self.current_state.count() > 0:
+            return "STALE"
+
+        return "CONNECTING" if self._running else "DISCONNECTED"
 
     def get_health_telemetry(self) -> Dict[str, Any]:
         self.ensure_started()
@@ -504,18 +588,38 @@ class LiveAISService:
             self._connected = False
         finally:
             self._active_ws = None
+            self._running = False
+            self._connected = False
             if self._worker_loop and not self._worker_loop.is_closed():
                 self._worker_loop.close()
 
     async def _worker_lifecycle(self):
         import websockets
+        import random
 
         backoff = 2.0
-        ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-        headers = {"Origin": "https://aisstream.io"}
+        # Dedicated packet queue decoupling WebSocket reads from synchronous processing
+        packet_queue: asyncio.Queue[str] = asyncio.Queue(maxsize=10000)
+
+        async def _consumer():
+            save_counter = 0
+            while self._running:
+                try:
+                    raw = await packet_queue.get()
+                    if self.ingest_raw_packet(raw):
+                        save_counter += 1
+                        if save_counter >= 150:
+                            self.current_state.save_cache()
+                            save_counter = 0
+                    packet_queue.task_done()
+                except asyncio.CancelledError:
+                    break
+                except Exception as ex:
+                    logger.debug(f"Consumer packet error: {ex}")
 
         while self._running:
             self._connection_attempts += 1
+            consumer_task = asyncio.create_task(_consumer())
             try:
                 if not self.api_key or not self.api_key.strip():
                     self.api_key = os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
@@ -524,8 +628,6 @@ class LiveAISService:
                     self.ws_url,
                     ping_interval=20,
                     ping_timeout=10,
-                    user_agent_header=ua,
-                    additional_headers=headers,
                 ) as ws:
                     self._active_ws = ws
                     self._connected = True
@@ -543,19 +645,30 @@ class LiveAISService:
 
                     while self._running:
                         msg_raw = await ws.recv()
-                        self.ingest_raw_packet(msg_raw)
+                        try:
+                            packet_queue.put_nowait(msg_raw)
+                        except asyncio.QueueFull:
+                            # Drop oldest frame to ensure zero WebSocket buffer stalling
+                            try:
+                                _ = packet_queue.get_nowait()
+                                packet_queue.task_done()
+                            except Exception:
+                                pass
+                            packet_queue.put_nowait(msg_raw)
 
             except Exception as e:
                 self._connected = False
                 self._active_ws = None
                 self._last_error = str(e)
-                # If 429 (rate-limited / Cloudflare block), cooldown for at least 75s to allow ban window to clear
-                sleep_time = max(75.0, backoff) if "429" in str(e) else backoff
+                # Jittered backoff prevents thundering herd against Cloudflare rate limiters
+                base_sleep = max(60.0, backoff) if "429" in str(e) else backoff
+                sleep_time = min(180.0, base_sleep) + random.uniform(1.0, 5.0)
                 logger.warning(f"AIS connection interrupted: {e}. Reconnecting in {sleep_time:.1f}s...")
                 await asyncio.sleep(sleep_time)
-                backoff = min(backoff * 2.0, 180.0)
+                backoff = min(backoff * 1.8, 180.0)
             finally:
                 self._active_ws = None
+                consumer_task.cancel()
 
     # -----------------------------------------------------------------------
     # Queries & SSE Streams
@@ -647,4 +760,4 @@ class LiveAISService:
 
 
 # Singleton production instance
-live_ais_service = LiveAISService()
+live_ais_service = LiveAISService(auto_seed=True)

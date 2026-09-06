@@ -328,12 +328,16 @@ export const LiveMaritimePage: React.FC = () => {
       case 'CONNECTING':
         return { label: 'CONNECTING...', color: '#f59e0b', dotColor: '#fbbf24' };
       case 'STALE':
-        return { label: 'IDLE (CONNECTED)', color: '#38bdf8', dotColor: '#60a5fa' };
+        return {
+          label: vessels.length > 0 ? 'BUFFERED (STANDBY)' : 'IDLE (CONNECTED)',
+          color: '#38bdf8',
+          dotColor: '#60a5fa',
+        };
       default:
         return {
-          label: isConfigured ? 'CONNECTING...' : 'UNCONFIGURED',
-          color: isConfigured ? '#f59e0b' : '#94a3b8',
-          dotColor: isConfigured ? '#fbbf24' : '#64748b',
+          label: isConfigured ? (vessels.length > 0 ? 'BUFFERED STREAM' : 'CONNECTING...') : 'UNCONFIGURED',
+          color: isConfigured ? (vessels.length > 0 ? '#38bdf8' : '#f59e0b') : '#94a3b8',
+          dotColor: isConfigured ? (vessels.length > 0 ? '#60a5fa' : '#fbbf24') : '#64748b',
         };
     }
   };

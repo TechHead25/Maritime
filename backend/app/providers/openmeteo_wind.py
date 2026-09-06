@@ -47,8 +47,11 @@ class OpenMeteoMarineWindProvider(WindDataProvider):
         if os.path.exists(self.local_archive_dir) and any(f.endswith((".nc", ".json")) for f in os.listdir(self.local_archive_dir)):
             return True
         try:
-            res = requests.get("https://marine-api.open-meteo.com/v1/marine?latitude=0&longitude=0&hourly=wind_speed_10m", timeout=3.0)
-            return res.status_code == 200
+            res = requests.get(
+                "https://marine-api.open-meteo.com/v1/marine?latitude=0&longitude=0&hourly=wind_speed_10m",
+                timeout=max(6.0, self.timeout_seconds),
+            )
+            return res.status_code in (200, 429)  # 429 means endpoint is online but rate-limited
         except Exception:
             return False
 
