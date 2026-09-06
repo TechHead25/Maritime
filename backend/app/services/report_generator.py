@@ -16,9 +16,14 @@ from pathlib import Path
 import tempfile
 from typing import Any, Dict, List, Optional, Tuple
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    HAS_MATPLOTLIB = True
+except Exception:
+    HAS_MATPLOTLIB = False
+    plt = None
 import numpy as np
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
@@ -109,6 +114,9 @@ def generate_report_map_figures(
     output_dir: Path,
 ) -> Tuple[str, str]:
     """Generates high-resolution diagnostic plot images for embedding into the PDF report."""
+    if not HAS_MATPLOTLIB or plt is None:
+        return "", ""
+
     os.makedirs(output_dir, exist_ok=True)
     sar_img_path = str(output_dir / "report_sar_detection.png")
     drift_img_path = str(output_dir / "report_drift_ais.png")
