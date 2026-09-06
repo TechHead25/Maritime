@@ -494,6 +494,99 @@ def get_sar_candidates(
     return response
 
 
+@api_router.get(
+    "/cases/{case_id}/sar-image",
+    tags=["SAR Detection & Lookalikes"],
+    summary="Retrieve Processed SAR Radar Imagery & Diagnostics",
+)
+def get_case_sar_image(
+    case_id: str = Path(..., pattern=r"^[a-zA-Z0-9_\-]+$", min_length=1, max_length=128, description="The unique identifier of the investigation case"),
+    view: str = Query("diagnostics", description="View type: 'diagnostics' (6-panel suite) or 'detection' (radar slick crop)"),
+    force_refresh: bool = Query(False, description="Bypass cache and re-render image"),
+):
+    """Dynamically generates and streams high-resolution case-specific SAR radar diagnostics or slick detection plot."""
+    import io
+    from fastapi.responses import StreamingResponse
+    from backend.app.services.sar_visualizer import sar_visualizer
+
+    case = case_service.get_case(case_id)
+    if not case:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Investigation case with ID '{case_id}' was not found.",
+        )
+
+    sar_scenes = case_service.sar_scenes.get(case_id, [])
+    if not sar_scenes:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No SAR scene metadata available for case '{case_id}'.",
+        )
+    primary_scene = sar_scenes[0]
+
+    slicks = case_service.slicks.get(case_id, [])
+    if not slicks:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No slick detection available for case '{case_id}'.",
+        )
+    primary_slick = slicks[0]
+
+    # Ingest / build georeferenced SAR raster tailored to this case
+    if case_id == "case_new_diamond_2020" or "new-diamond" in primary_scene.id:
+        from backend.app.providers.sar_adapter import HistoricalSARAdapter
+        sar_prov = HistoricalSARAdapter(seed=42)
+        raster = sar_prov.fetch_raster(primary_scene)
+    else:
+        # Determine ROI coordinates for this case
+        top_lon = 80.15
+        top_lat = 13.50
+        if primary_scene.footprint_polygon and primary_scene.footprint_polygon.coordinates:
+            coords = primary_scene.footprint_polygon.coordinates[0]
+            top_lon = min(c[0] for c in coords)
+            top_lat = max(c[1] for c in coords)
+        elif case.region_of_interest and case.region_of_interest.coordinates:
+            coords = case.region_of_interest.coordinates[0]
+            top_lon = min(c[0] for c in coords)
+            top_lat = max(c[1] for c in coords)
+        elif primary_slick.centroid and primary_slick.centroid.coordinates:
+            c_lon, c_lat = primary_slick.centroid.coordinates
+            top_lon = c_lon - 0.25
+            top_lat = c_lat + 0.25
+
+        raster = SyntheticSARGenerator.create_synthetic_scene(
+            top_left_lon=round(top_lon, 4),
+            top_left_lat=round(top_lat, 4),
+            seed=42,
+        )
+
+    try:
+        img_bytes = sar_visualizer.get_or_render_sar_image(
+            case_id=case_id,
+            view=view,
+            scene=primary_scene,
+            slick=primary_slick,
+            raster=raster,
+            force_refresh=force_refresh,
+        )
+        return StreamingResponse(
+            io.BytesIO(img_bytes),
+            media_type="image/png",
+            headers={
+                "Cache-Control": "public, max-age=3600",
+                "X-Case-ID": case_id,
+                "X-SAR-View": view,
+            },
+        )
+    except Exception as e:
+        logger.error(f"Failed to render SAR image for case '{case_id}': {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to generate SAR imagery: {str(e)}",
+        )
+
+
+
 # ---------------------------------------------------------------------------
 # Investigation PDF Report Generation Endpoints
 # ---------------------------------------------------------------------------

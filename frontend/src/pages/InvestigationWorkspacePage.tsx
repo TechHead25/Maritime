@@ -745,6 +745,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
       <SARAnalysisModal
         isOpen={isSarModalOpen}
         onClose={() => setIsSarModalOpen(false)}
+        caseId={selectedCaseId || details?.case?.id || 'case_new_diamond_2020'}
         sarScene={primarySar}
         slick={primarySlick}
       />
