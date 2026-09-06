@@ -354,7 +354,7 @@ class LiveAISService:
         }
 
     def set_active_region(self, region_name: str, custom_bbox: Optional[BoundingBox] = None):
-        """Updates active subscription region."""
+        """Updates active subscription region without closing connection."""
         if custom_bbox:
             self.current_region = "CUSTOM_VIEWPORT"
             self.active_bbox = custom_bbox
@@ -365,12 +365,21 @@ class LiveAISService:
             raise ValueError(f"Unknown predefined region '{region_name}'. Available: {list(PREDEFINED_REGIONS.keys())}")
         logger.info(f"Updated live AIS subscription region: {self.current_region} -> {self.active_bbox.as_tuple}")
 
-        # If currently streaming on an active socket, close it cleanly to force immediate resubscription to new bbox
+        # Send updated bounding box over the existing socket without disconnecting
         if self._active_ws and self._worker_loop and self._worker_loop.is_running():
+            b = self.active_bbox
+            sub_message = {
+                "APIKey": self.api_key,
+                "BoundingBoxes": [[[b.min_lat, b.min_lon], [b.max_lat, b.max_lon]]],
+                "FilterMessageTypes": ["PositionReport", "ShipStaticData"],
+            }
             try:
-                self._worker_loop.call_soon_threadsafe(lambda: asyncio.create_task(self._active_ws.close()))
-            except Exception:
-                pass
+                self._worker_loop.call_soon_threadsafe(
+                    lambda: asyncio.create_task(self._active_ws.send(json.dumps(sub_message)))
+                )
+                logger.info(f"Resubscribed live AIS bounding box over active socket to {self.current_region}")
+            except Exception as e:
+                logger.warning(f"Could not update active AIS subscription on open socket: {e}")
 
     def ingest_raw_packet(self, raw_json_str: str) -> bool:
         """Processes an incoming raw AIS frame through validator and normalizer."""
@@ -501,17 +510,26 @@ class LiveAISService:
     async def _worker_lifecycle(self):
         import websockets
 
-        backoff = 1.0
+        backoff = 2.0
+        ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+        headers = {"Origin": "https://aisstream.io"}
+
         while self._running:
             self._connection_attempts += 1
             try:
                 if not self.api_key or not self.api_key.strip():
                     self.api_key = os.getenv("AISSTREAM_API_KEY") or os.getenv("AIS_PROVIDER_KEY")
                 logger.info(f"Connecting to live AIS stream at {self.ws_url} (Region: {self.current_region})...")
-                async with websockets.connect(self.ws_url, ping_interval=20, ping_timeout=10) as ws:
+                async with websockets.connect(
+                    self.ws_url,
+                    ping_interval=20,
+                    ping_timeout=10,
+                    user_agent_header=ua,
+                    additional_headers=headers,
+                ) as ws:
                     self._active_ws = ws
                     self._connected = True
-                    backoff = 1.0
+                    backoff = 2.0
                     self._last_message_time = datetime.now(timezone.utc)
 
                     b = self.active_bbox
@@ -531,10 +549,11 @@ class LiveAISService:
                 self._connected = False
                 self._active_ws = None
                 self._last_error = str(e)
-                sleep_time = max(8.0, backoff) if "429" in str(e) else backoff
+                # If 429 (rate-limited / Cloudflare block), cooldown for at least 75s to allow ban window to clear
+                sleep_time = max(75.0, backoff) if "429" in str(e) else backoff
                 logger.warning(f"AIS connection interrupted: {e}. Reconnecting in {sleep_time:.1f}s...")
                 await asyncio.sleep(sleep_time)
-                backoff = min(backoff * 2.0, 60.0)
+                backoff = min(backoff * 2.0, 180.0)
             finally:
                 self._active_ws = None
 

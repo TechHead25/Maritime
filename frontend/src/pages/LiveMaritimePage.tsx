@@ -149,6 +149,7 @@ export const LiveMaritimePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [status, setStatus] = useState<string>('DISCONNECTED');
   const [isConfigured, setIsConfigured] = useState<boolean>(true);
+  const [isOverlayDismissed, setIsOverlayDismissed] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [isChangingRegion, setIsChangingRegion] = useState<boolean>(false);
   const [isCreatingInvestigation, setIsCreatingInvestigation] = useState<boolean>(false);
@@ -266,6 +267,7 @@ export const LiveMaritimePage: React.FC = () => {
   // Handle region subscription change
   const handleRegionChange = async (newRegion: string) => {
     setIsChangingRegion(true);
+    setIsOverlayDismissed(false);
     setRegion(newRegion);
     try {
       await updateLiveSubscription({ region_name: newRegion });
@@ -603,37 +605,57 @@ export const LiveMaritimePage: React.FC = () => {
           )}
         </MapContainer>
 
-        {/* Empty Overlay */}
-        {filteredVessels.length === 0 && !loading && (
+        {/* Sleek Floating Status Notice (Non-blocking, Dismissible) */}
+        {filteredVessels.length === 0 && !loading && !isOverlayDismissed && (
           <div style={{
             position: 'absolute',
-            top: '50%',
+            bottom: '24px',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: 'rgba(15, 23, 42, 0.92)',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'rgba(15, 23, 42, 0.94)',
             border: '1px solid #334155',
             borderRadius: '8px',
-            padding: '1.5rem 2rem',
-            textAlign: 'center',
-            maxWidth: '480px',
+            padding: '0.85rem 1.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            maxWidth: '560px',
             zIndex: 1000,
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.6)',
+            backdropFilter: 'blur(8px)',
           }}>
-            <Radio size={28} color="#94a3b8" style={{ margin: '0 auto 0.75rem' }} />
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', margin: '0 0 0.4rem' }}>
-              {!isConfigured
-                ? 'Live AIS Stream Unconfigured'
-                : status === 'DISCONNECTED'
-                ? 'Connecting to Live AIS Stream...'
-                : 'Awaiting Transponder Signals'}
-            </h3>
-            <p style={{ fontSize: '0.75rem', color: '#94a3b8', margin: 0, lineHeight: 1.4 }}>
-              {!isConfigured
-                ? 'Server-side AIS streaming credentials (AISSTREAM_API_KEY) are not configured. The platform strictly enforces zero synthetic data generation; no simulated vessels are shown.'
-                : status === 'DISCONNECTED'
-                ? 'Connecting to the live satellite AIS telemetry feed. Vessels will appear in real time once transponders broadcast.'
-                : `Live stream is connected. Awaiting position reports for ${mapConfig.label}. Vessels will appear in real time as transponders broadcast.`}
-            </p>
+            <Radio size={22} color={status === 'LIVE' ? '#34d399' : '#f59e0b'} style={{ flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.15rem' }}>
+                {!isConfigured
+                  ? 'Live AIS Stream Unconfigured'
+                  : status === 'DISCONNECTED'
+                  ? 'Connecting to Live AIS Stream...'
+                  : 'Awaiting Transponder Signals'}
+              </div>
+              <div style={{ fontSize: '0.72rem', color: '#94a3b8', lineHeight: 1.35 }}>
+                {!isConfigured
+                  ? 'Server-side credentials (AISSTREAM_API_KEY) are not set. Zero synthetic data generated.'
+                  : status === 'DISCONNECTED'
+                  ? 'Connecting to the live satellite/terrestrial AIS feed. Stream will update automatically.'
+                  : `Stream is connected. Awaiting vessel broadcasts for ${mapConfig.label}.`}
+              </div>
+            </div>
+            <button
+              onClick={() => setIsOverlayDismissed(true)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#64748b',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                padding: '0.2rem 0.4rem',
+                flexShrink: 0,
+              }}
+              title="Dismiss notice"
+            >
+              ✕
+            </button>
           </div>
         )}
       </div>
