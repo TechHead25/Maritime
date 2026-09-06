@@ -22,6 +22,7 @@ import { RightIntelligencePanel } from '../components/RightIntelligencePanel';
 import { InvestigationMap } from '../components/InvestigationMap';
 import { SynchronizedTimeline } from '../components/SynchronizedTimeline';
 import { NewInvestigationModal } from '../components/NewInvestigationModal';
+import { SARAnalysisModal } from '../components/SARAnalysisModal';
 import {
   Plus,
   CheckCircle2,
@@ -59,6 +60,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
 
   // Modals
   const [isNewModalOpen, setIsNewModalOpen] = useState<boolean>(false);
+  const [isSarModalOpen, setIsSarModalOpen] = useState<boolean>(false);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState<boolean>(false);
   const [comparisonResult, setComparisonResult] = useState<any>(null);
   const [compareRunA, setCompareRunA] = useState<string>('');
@@ -176,6 +178,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
         setSelectedSlick(null);
         setSelectedVessel(null);
       }
+    } else if (sec === 'sar') {
+      setIsSarModalOpen(true);
     } else if (sec === 'reports') {
       handleExportReport();
     }
@@ -564,6 +568,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
           onSelectCandidateByMmsi={handleSelectCandidateByMmsi}
           onFollowVesselToggle={(mmsi) => setFollowMmsi(followMmsi === mmsi ? undefined : mmsi)}
           isFollowingVessel={Boolean(followMmsi && selectedCandidateScore && followMmsi === selectedCandidateScore.mmsi)}
+          onOpenSarModal={() => setIsSarModalOpen(true)}
         />
       </div>
 
@@ -704,6 +709,14 @@ export const InvestigationWorkspacePage: React.FC = () => {
           setSelectedCaseId(newCase.id);
           navigate(`/app/investigations/${newCase.id}`);
         }}
+      />
+
+      {/* Sentinel-1 SAR Radar Imagery & Diagnostics Modal */}
+      <SARAnalysisModal
+        isOpen={isSarModalOpen}
+        onClose={() => setIsSarModalOpen(false)}
+        sarScene={primarySar}
+        slick={primarySlick}
       />
     </div>
   );

@@ -20,10 +20,42 @@ interface Props {
 }
 
 const PRESET_REGIONS = [
-  { name: 'Sri Lanka (Southern Shipping Corridor)', minLon: 80.0, minLat: 5.0, maxLon: 83.5, maxLat: 9.0 },
-  { name: 'Strait of Malacca (Chokepoint)', minLon: 99.0, minLat: 1.0, maxLon: 104.5, maxLat: 5.0 },
-  { name: 'Bay of Bengal (Regional)', minLon: 80.0, minLat: 10.0, maxLon: 93.0, maxLat: 21.0 },
-  { name: 'Arabian Sea (West Coast)', minLon: 68.0, minLat: 15.0, maxLon: 75.0, maxLat: 24.0 },
+  {
+    name: 'MT New Diamond Benchmark (2020)',
+    minLon: 80.0,
+    minLat: 5.0,
+    maxLon: 83.5,
+    maxLat: 9.0,
+    incidentTime: '2020-09-03T12:45',
+    title: 'MT New Diamond Crude Oil Spill Analysis',
+    description: 'Sentinel-1A SAR observed oil slick and candidate vessel attribution off eastern Sri Lanka.',
+  },
+  {
+    name: 'Ennore Port Collision Benchmark (2017)',
+    minLon: 80.2,
+    minLat: 13.1,
+    maxLon: 80.5,
+    maxLat: 13.4,
+    incidentTime: '2017-01-28T04:00',
+    title: 'Ennore Port Tanker Collision Forensic Attribution',
+    description: 'Heavy fuel oil bunker spill investigation in coastal Chennai approaches.',
+  },
+  {
+    name: 'Strait of Malacca (Chokepoint)',
+    minLon: 99.0,
+    minLat: 1.0,
+    maxLon: 104.5,
+    maxLat: 5.0,
+    title: 'Malacca Chokepoint Maritime Oil-Spill Investigation',
+  },
+  {
+    name: 'Arabian Sea (West Coast)',
+    minLon: 68.0,
+    minLat: 15.0,
+    maxLon: 75.0,
+    maxLat: 24.0,
+    title: 'Arabian Sea Commercial Lane Spill Investigation',
+  },
 ];
 
 export const NewInvestigationModal: React.FC<Props> = ({
@@ -34,11 +66,9 @@ export const NewInvestigationModal: React.FC<Props> = ({
   const [step, setStep] = useState<1 | 2>(1);
 
   // Form Fields
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [incidentTime, setIncidentTime] = useState<string>(
-    new Date(Date.now() - 24 * 3600 * 1000).toISOString().slice(0, 16)
-  );
+  const [title, setTitle] = useState<string>('MT New Diamond Oil Spill Forensic Analysis');
+  const [description, setDescription] = useState<string>('Sentinel-1A SAR observed oil slick and candidate vessel attribution off eastern Sri Lanka.');
+  const [incidentTime, setIncidentTime] = useState<string>('2020-09-03T12:45');
 
   // Area of Interest Coordinates
   const [minLon, setMinLon] = useState<number>(80.0);
@@ -68,6 +98,15 @@ export const NewInvestigationModal: React.FC<Props> = ({
     setMinLat(preset.minLat);
     setMaxLon(preset.maxLon);
     setMaxLat(preset.maxLat);
+    if ((preset as any).incidentTime) {
+      setIncidentTime((preset as any).incidentTime);
+    }
+    if ((preset as any).title) {
+      setTitle((preset as any).title);
+    }
+    if ((preset as any).description) {
+      setDescription((preset as any).description);
+    }
   };
 
   const handleQueryProvidersAndAssess = async () => {
@@ -443,28 +482,43 @@ export const NewInvestigationModal: React.FC<Props> = ({
                   </div>
 
                   {/* Partial Data Override Toggle */}
-                  {readinessData.overall_readiness === 'PARTIAL' && (
-                    <label style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.6rem',
-                      backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                      border: '1px solid rgba(245, 158, 11, 0.3)',
-                      borderRadius: '6px',
-                      padding: '0.75rem 1rem',
-                      fontSize: '0.75rem',
-                      color: '#fbbf24',
-                      cursor: 'pointer',
-                    }}>
-                      <input
-                        type="checkbox"
-                        checked={allowPartialData}
-                        onChange={(e) => setAllowPartialData(e.target.checked)}
-                      />
-                      <span>
-                        <strong>Explicit Override:</strong> Allow forensic execution with partial observational data (e.g. dark vessel hypothesis / single-modality drift).
-                      </span>
-                    </label>
+                  {readinessData.overall_readiness !== 'READY' && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                      <div style={{
+                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        border: '1px solid rgba(56, 189, 248, 0.3)',
+                        borderRadius: '6px',
+                        padding: '0.75rem 1rem',
+                        fontSize: '0.74rem',
+                        color: '#38bdf8',
+                        lineHeight: 1.45,
+                      }}>
+                        <strong>💡 Satellite SAR Temporal Overpass Guidance:</strong><br />
+                        European Space Agency (ESA) Sentinel-1 C-band SAR satellites operate on a 6–12 day orbital repeat cycle. If no satellite scene exists on your custom date, check <strong>Explicit Override</strong> below to proceed with forensic drift and AIS vessel attribution, or click <strong>← Back to Parameters</strong> and select the <strong>MT New Diamond Benchmark</strong> preset to evaluate full 4-factor satellite SAR detection.
+                      </div>
+
+                      <label style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.6rem',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        border: '1px solid rgba(245, 158, 11, 0.3)',
+                        borderRadius: '6px',
+                        padding: '0.75rem 1rem',
+                        fontSize: '0.75rem',
+                        color: '#fbbf24',
+                        cursor: 'pointer',
+                      }}>
+                        <input
+                          type="checkbox"
+                          checked={allowPartialData}
+                          onChange={(e) => setAllowPartialData(e.target.checked)}
+                        />
+                        <span>
+                          <strong>Explicit Override:</strong> Allow forensic execution with partial observational data (e.g. dark vessel hypothesis / single-modality drift).
+                        </span>
+                      </label>
+                    </div>
                   )}
                 </div>
               )}

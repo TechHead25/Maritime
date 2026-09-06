@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Radio,
   FileText,
+  Satellite,
 } from 'lucide-react';
 import {
   AttributionScore,
@@ -32,6 +33,7 @@ interface Props {
   onSelectCandidateByMmsi: (mmsi: string) => void;
   onFollowVesselToggle?: (mmsi: string) => void;
   isFollowingVessel?: boolean;
+  onOpenSarModal?: () => void;
 }
 
 export const RightIntelligencePanel: React.FC<Props> = ({
@@ -43,6 +45,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
   onSelectCandidateByMmsi,
   onFollowVesselToggle,
   isFollowingVessel = false,
+  onOpenSarModal,
 }) => {
   const navigate = useNavigate();
   const [activeEvidenceTab, setActiveEvidenceTab] = useState<'breakdown' | 'evidence' | 'uncertainty'>('breakdown');
@@ -178,6 +181,29 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                   : 'Analysis complete. No candidate vessels intersected the reconstructed release envelope during the estimated discharge window.'}
               </p>
             </div>
+
+            {onOpenSarModal && (
+              <button
+                onClick={onOpenSarModal}
+                style={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #0284c7',
+                  color: '#38bdf8',
+                  padding: '0.55rem 0.85rem',
+                  borderRadius: '6px',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 2px 8px rgba(2, 132, 199, 0.2)',
+                }}
+              >
+                <Satellite size={15} /> Inspect Sentinel-1 SAR Radar Imagery & Diagnostics
+              </button>
+            )}
 
             {/* Key Metric Blocks */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
@@ -328,6 +354,29 @@ export const RightIntelligencePanel: React.FC<Props> = ({
               <p style={{ fontSize: '0.75rem', color: '#e2e8f0', margin: 0 }}>
                 SAR dark-patch extraction matched spatial damping characteristics of heavy mineral hydrocarbons. Lookalike probability was suppressed based on morphological aspect ratio and ocean wind state.
               </p>
+              {onOpenSarModal && (
+                <button
+                  onClick={onOpenSarModal}
+                  style={{
+                    backgroundColor: '#0284c7',
+                    border: 'none',
+                    color: '#ffffff',
+                    padding: '0.5rem 0.85rem',
+                    borderRadius: '4px',
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.4rem',
+                    marginTop: '0.35rem',
+                    boxShadow: '0 2px 8px rgba(2, 132, 199, 0.3)',
+                  }}
+                >
+                  <Satellite size={14} /> Open Sentinel-1 SAR Radar Analysis & Diagnostics
+                </button>
+              )}
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
