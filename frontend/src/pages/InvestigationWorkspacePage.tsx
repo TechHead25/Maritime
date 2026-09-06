@@ -15,6 +15,8 @@ import {
   fetchCaseRuns,
   compareCaseRuns,
   downloadReportPdf,
+  fetchSurveillanceAlerts,
+  triggerSurveillanceScan,
 } from '../services/api';
 import { ConsoleHeader } from '../components/ConsoleHeader';
 import { ConsoleNavPanel, ConsoleNavSection } from '../components/ConsoleNavPanel';
@@ -86,6 +88,36 @@ export const InvestigationWorkspacePage: React.FC = () => {
   const [isTimelinePlaying, setIsTimelinePlaying] = useState<boolean>(false);
   const [timelineSpeed, setTimelineSpeed] = useState<number>(5);
 
+  // Satellite Surveillance State
+  const [isSurveillanceScanning, setIsSurveillanceScanning] = useState<boolean>(false);
+  const [surveillanceAlerts, setSurveillanceAlerts] = useState<any[]>([]);
+
+  const loadSurveillanceAlerts = async () => {
+    try {
+      const alerts = await fetchSurveillanceAlerts(50);
+      setSurveillanceAlerts(alerts);
+    } catch (e) {
+      console.warn('Failed to fetch surveillance alerts:', e);
+    }
+  };
+
+  const handleTriggerSurveillanceScan = async () => {
+    try {
+      setIsSurveillanceScanning(true);
+      setToastMessage('Initiating automated satellite radar surveillance pass across high-risk sectors...');
+      const sweep = await triggerSurveillanceScan();
+      await loadCasesList();
+      await loadSurveillanceAlerts();
+      setToastMessage(
+        `Surveillance sweep completed: ${sweep.sectors_scanned} sectors scanned, ${sweep.spills_detected} oil slicks detected & analyzed.`
+      );
+    } catch (err: any) {
+      setError(`Surveillance sweep failed: ${err.message}`);
+    } finally {
+      setIsSurveillanceScanning(false);
+    }
+  };
+
   // Synchronize route parameter
   useEffect(() => {
     if (routeCaseId && routeCaseId !== selectedCaseId) {
@@ -108,6 +140,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
 
   useEffect(() => {
     loadCasesList();
+    loadSurveillanceAlerts();
   }, []);
 
   // Load Case Details & Historical Runs
@@ -419,6 +452,9 @@ export const InvestigationWorkspacePage: React.FC = () => {
           isDownloadingReport={isDownloadingReport}
           canCompare={runs.length >= 2}
           onOpenCompare={handleOpenCompare}
+          isSurveillanceScanning={isSurveillanceScanning}
+          onTriggerSurveillanceScan={handleTriggerSurveillanceScan}
+          surveillanceAlertsCount={surveillanceAlerts.length}
         />
       )}
 

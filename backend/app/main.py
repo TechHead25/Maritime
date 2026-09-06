@@ -45,7 +45,22 @@ async def lifespan(app: FastAPI):
             logger.info("Live AIS service running in passive mode (AISSTREAM_API_KEY unconfigured).")
     except Exception as e:
         logger.warning(f"Could not auto-start live AIS worker on startup: {e}")
+
+    try:
+        from backend.app.services.satellite_watcher_service import satellite_watcher_service
+        logger.info("Initializing Automated Satellite Surveillance Watcher...")
+        satellite_watcher_service.start()
+    except Exception as e:
+        logger.warning(f"Could not start satellite surveillance watcher on startup: {e}")
+
     yield
+
+    try:
+        from backend.app.services.satellite_watcher_service import satellite_watcher_service
+        satellite_watcher_service.stop()
+    except Exception:
+        pass
+
     try:
         from backend.app.services.live_ais_service import live_ais_service
         live_ais_service.stop()

@@ -27,6 +27,9 @@ interface Props {
   isDownloadingReport?: boolean;
   canCompare?: boolean;
   onOpenCompare?: () => void;
+  isSurveillanceScanning?: boolean;
+  onTriggerSurveillanceScan?: () => void;
+  surveillanceAlertsCount?: number;
 }
 
 export const ConsoleHeader: React.FC<Props> = ({
@@ -42,6 +45,9 @@ export const ConsoleHeader: React.FC<Props> = ({
   isDownloadingReport = false,
   canCompare = false,
   onOpenCompare,
+  isSurveillanceScanning = false,
+  onTriggerSurveillanceScan,
+  surveillanceAlertsCount = 0,
 }) => {
   const getStatusBadge = (status: CaseStatus) => {
     switch (status) {
@@ -202,6 +208,44 @@ export const ConsoleHeader: React.FC<Props> = ({
 
       {/* Right: Actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+        {onTriggerSurveillanceScan && (
+          <button
+            onClick={onTriggerSurveillanceScan}
+            disabled={isSurveillanceScanning}
+            style={{
+              backgroundColor: 'rgba(56, 189, 248, 0.12)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              color: '#38bdf8',
+              padding: '0.42rem 0.85rem',
+              borderRadius: '5px',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              cursor: isSurveillanceScanning ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              transition: 'all 0.15s ease',
+            }}
+            title="Scan satellite radar footprints across high-risk sectors for automated spill anomalies"
+          >
+            <RefreshCw size={13} className={isSurveillanceScanning ? 'spin-icon' : ''} />
+            {isSurveillanceScanning ? 'Sweeping Satellites...' : 'Sweep Satellites'}
+            {surveillanceAlertsCount > 0 && (
+              <span style={{
+                backgroundColor: '#ef4444',
+                color: '#ffffff',
+                borderRadius: '10px',
+                padding: '0.05rem 0.35rem',
+                fontSize: '0.65rem',
+                fontWeight: 700,
+                marginLeft: '0.2rem',
+              }}>
+                {surveillanceAlertsCount}
+              </span>
+            )}
+          </button>
+        )}
+
         {canCompare && onOpenCompare && (
           <button
             onClick={onOpenCompare}

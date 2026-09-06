@@ -1,0 +1,36 @@
+[
+  {
+    "alert_id": "alert_3a60073b",
+    "case_id": "case__auto_detected__satellite_spil_20170128_e9403d",
+    "case_title": "[AUTO-DETECTED] Satellite Spill Alert \u2014 Ennore & Chennai Coastal Approaches",
+    "sector_id": "ennore_chennai",
+    "sector_name": "Ennore & Chennai Coastal Approaches",
+    "detected_at_utc": "2026-09-06T13:22:47.392206+00:00",
+    "satellite_platform": "Sentinel-1A C-SAR (10m GRD)",
+    "slick_area_sq_km": 2.92,
+    "confidence_score": 0.717,
+    "damping_ratio_db": 4.4,
+    "lookalike_probability": 0.28,
+    "status": "AUTO_DETECTED_PENDING_REVIEW",
+    "top_candidate_name": "BW MAPLE",
+    "top_candidate_score": 86.5,
+    "message": "Oil slick (2.92 km\u00b2) detected via CFAR damping (4.4 dB). Ranked candidate: BW MAPLE (86.5 pts)."
+  },
+  {
+    "alert_id": "alert_1709902a",
+    "case_id": "case__auto_detected__satellite_spil_20170128_f39e8f",
+    "case_title": "[AUTO-DETECTED] Satellite Spill Alert \u2014 Ennore & Chennai Coastal Approaches",
+    "sector_id": "ennore_chennai",
+    "sector_name": "Ennore & Chennai Coastal Approaches",
+    "detected_at_utc": "2026-09-06T13:23:38.292871+00:00",
+    "satellite_platform": "Sentinel-1A C-SAR (10m GRD)",
+    "slick_area_sq_km": 2.92,
+    "confidence_score": 0.717,
+    "damping_ratio_db": 4.4,
+    "lookalike_probability": 0.28,
+    "status": "AUTO_DETECTED_PENDING_REVIEW",
+    "top_candidate_name": "BW MAPLE",
+    "top_candidate_score": 86.5,
+    "message": "Oil slick (2.92 km\u00b2) detected via CFAR damping (4.4 dB). Ranked candidate: BW MAPLE (86.5 pts)."
+  }
+]

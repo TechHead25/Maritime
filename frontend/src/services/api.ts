@@ -460,7 +460,80 @@ export async function apiGetAuditLogs(limit: number = 100): Promise<any[]> {
   return res.json();
 }
 
+// ---------------------------------------------------------------------------
+// Automated Satellite Surveillance API
+// ---------------------------------------------------------------------------
 
+export interface SurveillanceStatus {
+  watcher_running: boolean;
+  is_running?: boolean;
+  scan_interval_seconds: number;
+  last_scan_utc: string | null;
+  total_monitored_sectors: number;
+  total_alerts: number;
+  sectors: Array<{
+    id: string;
+    name: string;
+    min_lon: number;
+    min_lat: number;
+    max_lon: number;
+    max_lat: number;
+    priority: string;
+    description: string;
+    last_scanned_utc: string | null;
+    total_detections: number;
+  }>;
+}
 
+export interface SurveillanceAlertItem {
+  alert_id: string;
+  case_id: string;
+  case_title: string;
+  sector_id: string;
+  sector_name: string;
+  detected_at_utc: string;
+  satellite_platform: string;
+  slick_area_sq_km: number;
+  confidence_score: number;
+  damping_ratio_db: number;
+  lookalike_probability: number;
+  status: string;
+  top_candidate_name?: string;
+  top_candidate_score?: number;
+  message: string;
+}
 
+export async function fetchSurveillanceStatus(): Promise<SurveillanceStatus> {
+  const res = await fetch(`${API_BASE}/surveillance/status`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch surveillance status: ${res.status}`);
+  }
+  return res.json();
+}
 
+export async function fetchSurveillanceAlerts(limit: number = 50): Promise<SurveillanceAlertItem[]> {
+  const res = await fetch(`${API_BASE}/surveillance/alerts?limit=${limit}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch surveillance alerts: ${res.status}`);
+  }
+  return res.json();
+}
+
+export async function triggerSurveillanceScan(sectorId?: string): Promise<{
+  status: string;
+  scanned_at_utc: string;
+  sectors_scanned: number;
+  spills_detected: number;
+  alerts: SurveillanceAlertItem[];
+}> {
+  const res = await fetch(`${API_BASE}/surveillance/scan-now`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(sectorId ? { sector_id: sectorId } : {}),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Surveillance scan failed: ${res.status}`);
+  }
+  return res.json();
+}

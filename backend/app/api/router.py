@@ -1111,7 +1111,37 @@ def create_investigation_from_vessel(payload: InvestigationFromVesselRequest):
         )
 
 
+# ===========================================================================
+# Automated Satellite Surveillance Endpoints
+# ===========================================================================
+
+@api_router.get("/surveillance/status", tags=["Satellite Surveillance"])
+def get_surveillance_status():
+    """Retrieve operational status, monitored sectors, and stats for the automated satellite surveillance worker."""
+    from backend.app.services.satellite_watcher_service import satellite_watcher_service
+    return satellite_watcher_service.get_status()
 
 
+@api_router.get("/surveillance/alerts", tags=["Satellite Surveillance"])
+def get_surveillance_alerts(limit: int = Query(50, ge=1, le=200)):
+    """Retrieve historical automated detection alerts and their associated forensic case links."""
+    from backend.app.services.satellite_watcher_service import satellite_watcher_service
+    return satellite_watcher_service.get_alerts(limit=limit)
 
 
+class ScanSectorRequest(BaseModel):
+    sector_id: Optional[str] = Field(None, description="Specific sector ID to scan (or null to sweep all active sectors)")
+
+
+@api_router.post("/surveillance/scan-now", tags=["Satellite Surveillance"])
+def trigger_surveillance_sweep(request: Optional[ScanSectorRequest] = None):
+    """Trigger an on-demand satellite surveillance pass across monitored sectors.
+    
+    Checks SAR satellite observation footprints, applies CFAR slick detection, runs lookalike
+    rejection against ECMWF wind patterns, and auto-spawns cases with full backward drift
+    attribution when confident slicks are detected.
+    """
+    from backend.app.services.satellite_watcher_service import satellite_watcher_service
+    sector_id = request.sector_id if request else None
+    result = satellite_watcher_service.run_scan_cycle(sector_id=sector_id)
+    return result
