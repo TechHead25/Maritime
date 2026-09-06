@@ -14,7 +14,7 @@ import {
   pollInvestigationProgress,
   fetchCaseRuns,
   compareCaseRuns,
-  getReportDownloadUrl,
+  downloadReportPdf,
 } from '../services/api';
 import { ConsoleHeader } from '../components/ConsoleHeader';
 import { ConsoleNavPanel, ConsoleNavSection } from '../components/ConsoleNavPanel';
@@ -282,14 +282,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
     if (!selectedCaseId) return;
     try {
       setIsDownloadingReport(true);
-      const url = getReportDownloadUrl(selectedCaseId);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `Maritime_Investigation_Report_${selectedCaseId}.pdf`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      setToastMessage('Forensic dossier download initiated.');
+      await downloadReportPdf(selectedCaseId);
+      setToastMessage('Forensic dossier compiled & downloaded successfully.');
       setTimeout(() => setToastMessage(null), 6000);
     } catch (e: any) {
       setError(`Failed to export report: ${e.message}`);

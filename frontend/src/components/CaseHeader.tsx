@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InvestigationCase, SARScene, SlickDetection } from '../types';
+import { downloadReportPdf } from '../services/api';
 
 interface Props {
   caseItem: InvestigationCase;
@@ -33,18 +34,12 @@ export const CaseHeader: React.FC<Props> = ({
   const handleDownloadPdf = async () => {
     try {
       setIsDownloadingPdf(true);
-      const url = `http://localhost:8000/api/cases/${caseItem.id}/report/pdf`;
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `Maritime_Oil_Investigation_Report_${caseItem.id}.pdf`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (e) {
+      await downloadReportPdf(caseItem.id);
+    } catch (e: any) {
       console.error('Failed to trigger PDF download:', e);
-      alert('Failed to download PDF report. Ensure backend server is running.');
+      alert(`Failed to download PDF report: ${e.message || 'Ensure backend server is running.'}`);
     } finally {
-      setTimeout(() => setIsDownloadingPdf(false), 2000);
+      setIsDownloadingPdf(false);
     }
   };
 

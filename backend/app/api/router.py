@@ -538,6 +538,18 @@ def download_investigation_report_pdf(
     )
 
 
+@api_router.get(
+    "/cases/{case_id}/report",
+    tags=["Investigation Report"],
+    summary="Download Maritime Oil-Spill Investigation Report (PDF Alias)",
+)
+def download_investigation_report_alias(
+    case_id: str = Path(..., pattern=r"^[a-zA-Z0-9_\-]+$", min_length=1, max_length=128, description="The unique identifier of the investigation case")
+):
+    """Alias route supporting /cases/{case_id}/report by returning the compiled PDF dossier."""
+    return download_investigation_report_pdf(case_id=case_id)
+
+
 # ---------------------------------------------------------------------------
 # Data Sources & Provider Health Endpoints
 # ---------------------------------------------------------------------------

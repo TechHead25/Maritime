@@ -5,8 +5,9 @@ import {
   ShieldCheck,
   Search,
   RefreshCw,
+  AlertCircle,
 } from 'lucide-react';
-import { fetchCases, fetchCaseDetails } from '../services/api';
+import { fetchCases, fetchCaseDetails, downloadReportPdf } from '../services/api';
 
 interface ReportRow {
   caseId: string;
@@ -25,6 +26,8 @@ export const ReportsPage: React.FC = () => {
   const [reports, setReports] = useState<ReportRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [downloadingCaseId, setDownloadingCaseId] = useState<string | null>(null);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
 
   const loadReports = async () => {
     setLoading(true);
@@ -58,6 +61,19 @@ export const ReportsPage: React.FC = () => {
       console.error('Failed to load reports:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDownload = async (caseId: string) => {
+    try {
+      setDownloadingCaseId(caseId);
+      setDownloadError(null);
+      await downloadReportPdf(caseId);
+    } catch (err: any) {
+      console.error('Failed to download report PDF:', err);
+      setDownloadError(err.message || 'Failed to download PDF dossier. Please ensure the backend is available.');
+    } finally {
+      setDownloadingCaseId(null);
     }
   };
 
@@ -103,6 +119,40 @@ export const ReportsPage: React.FC = () => {
           <RefreshCw size={14} /> Refresh Reports
         </button>
       </div>
+
+      {/* Download Error Notice */}
+      {downloadError && (
+        <div style={{
+          backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          border: '1px solid rgba(239, 68, 68, 0.4)',
+          borderRadius: '8px',
+          padding: '0.75rem 1rem',
+          color: '#f87171',
+          fontSize: '0.82rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '0.5rem',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <AlertCircle size={16} />
+            <span>{downloadError}</span>
+          </div>
+          <button
+            onClick={() => setDownloadError(null)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#f87171',
+              cursor: 'pointer',
+              fontSize: '0.85rem',
+              fontWeight: 700,
+            }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* Filter and Search Bar */}
       <div style={{
@@ -245,25 +295,34 @@ export const ReportsPage: React.FC = () => {
                     {/* Action */}
                     <td style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>
                       <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
-                        <a
-                          href={r.pdfUrl}
-                          target="_blank"
-                          rel="noreferrer"
+                        <button
+                          onClick={() => handleDownload(r.caseId)}
+                          disabled={downloadingCaseId === r.caseId}
                           style={{
                             backgroundColor: '#0284c7',
                             color: '#ffffff',
+                            border: 'none',
                             padding: '0.35rem 0.75rem',
                             borderRadius: '4px',
                             fontSize: '0.75rem',
                             fontWeight: 600,
-                            textDecoration: 'none',
+                            cursor: downloadingCaseId === r.caseId ? 'wait' : 'pointer',
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '0.3rem',
+                            gap: '0.35rem',
+                            opacity: downloadingCaseId === r.caseId ? 0.75 : 1,
                           }}
                         >
-                          <Download size={13} /> Download PDF
-                        </a>
+                          {downloadingCaseId === r.caseId ? (
+                            <>
+                              <RefreshCw size={13} className="spin-icon" /> Compiling PDF...
+                            </>
+                          ) : (
+                            <>
+                              <Download size={13} /> Download PDF
+                            </>
+                          )}
+                        </button>
 
                         <button
                           onClick={() => navigate(`/app/investigations/${r.caseId}`)}

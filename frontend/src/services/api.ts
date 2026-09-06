@@ -68,7 +68,32 @@ export async function runInvestigation(
 }
 
 export function getReportDownloadUrl(caseId: string): string {
-  return `${API_BASE}/cases/${caseId}/report`;
+  return `${API_BASE}/cases/${caseId}/report/pdf`;
+}
+
+export async function downloadReportPdf(caseId: string, customFilename?: string): Promise<void> {
+  const url = `${API_BASE}/cases/${caseId}/report/pdf`;
+  const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(url, { headers });
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.detail || `Failed to download PDF dossier (${res.status} ${res.statusText})`);
+  }
+
+  const blob = await res.blob();
+  const blobUrl = window.URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = blobUrl;
+  link.setAttribute('download', customFilename || `Maritime_Oil_Investigation_Report_${caseId}.pdf`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  window.URL.revokeObjectURL(blobUrl);
 }
 
 export async function createInvestigation(formData: FormData): Promise<InvestigationCase> {

@@ -41,3 +41,13 @@ def test_api_download_investigation_report_pdf():
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment; filename=" in response.headers.get("content-disposition", "")
     assert len(response.content) > 10000
+
+
+def test_api_download_investigation_report_alias():
+    case_service.reload_cases_from_disk()
+
+    response = client.get("/api/cases/case_new_diamond_2020/report")
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/pdf"
+    assert "attachment; filename=" in response.headers.get("content-disposition", "")
+    assert len(response.content) > 10000
