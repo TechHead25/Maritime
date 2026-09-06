@@ -13,10 +13,11 @@ import logging
 import os
 from typing import Any, Dict, List
 
-from fastapi import FastAPI, Request, status
+from fastapi import FastAPI, Request, Response, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from backend.app.api.router import api_router
@@ -120,36 +121,67 @@ app.add_middleware(
 
 
 # ---------------------------------------------------------------------------
-# Global Exception Handlers
+# Global Exception Handlers (with CORS Header Preservation)
 # ---------------------------------------------------------------------------
+
+def _cors_response(response: Response, request: Request) -> Response:
+    origin = request.headers.get("origin")
+    if origin:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "*"
+        response.headers["Access-Control-Allow-Headers"] = "*"
+        response.headers["Access-Control-Expose-Headers"] = "*"
+    else:
+        response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    """Handles HTTPExceptions with CORS headers preserved."""
+    resp = JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "error": exc.detail,
+            "status_code": exc.status_code,
+            "detail": exc.detail,
+            "path": request.url.path,
+        },
+    )
+    return _cors_response(resp, request)
+
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """Handles Pydantic validation failures with structured, non-leaking error responses."""
+    """Handles Pydantic validation failures with structured error responses and CORS headers."""
     logger.warning(f"Request validation error for {request.url.path}: {exc.errors()}")
-    return JSONResponse(
+    resp = JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={
             "error": "RequestValidationError",
             "message": "The submitted payload failed schema validation.",
             "details": exc.errors(),
             "path": request.url.path,
-        }
+        },
     )
+    return _cors_response(resp, request)
 
 
 @app.exception_handler(Exception)
 async def generic_exception_handler(request: Request, exc: Exception):
-    """Catches unhandled server exceptions, logs full stack trace, and returns safe error payload."""
+    """Catches unhandled server exceptions, logs full stack trace, and returns CORS-enabled error payload."""
     logger.error(f"Unhandled exception on {request.url.path}: {exc}", exc_info=True)
-    return JSONResponse(
+    resp = JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={
             "error": "InternalServerError",
-            "message": "An unexpected error occurred while processing the forensic analysis request.",
+            "message": f"An unexpected error occurred while processing the forensic request: {str(exc)}",
+            "detail": str(exc),
             "path": request.url.path,
-        }
+        },
     )
+    return _cors_response(resp, request)
 
 
 # ---------------------------------------------------------------------------

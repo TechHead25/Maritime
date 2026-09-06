@@ -13,6 +13,7 @@ import io
 import math
 import os
 from pathlib import Path
+import tempfile
 from typing import Any, Dict, List, Optional, Tuple
 
 import matplotlib
@@ -423,8 +424,8 @@ class InvestigationReportGenerator:
         # -------------------------------------------------------------------
         elements.append(Paragraph("3. Satellite SAR Slick Detection & Geometry", h1_style))
         
-        # Generate and embed diagnostic maps
-        fig_dir = Path("docs/report_figures")
+        # Generate and embed diagnostic maps in system temp directory (container safe)
+        fig_dir = Path(tempfile.gettempdir()) / "maritime_report_figures"
         sar_plot_img, drift_plot_img = generate_report_map_figures(response, fig_dir)
 
         slick = response.slicks[0] if response.slicks else None

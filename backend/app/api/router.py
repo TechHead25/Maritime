@@ -507,6 +507,8 @@ def download_investigation_report_pdf(
     case_id: str = Path(..., pattern=r"^[a-zA-Z0-9_\-]+$", min_length=1, max_length=128, description="The unique identifier of the investigation case")
 ):
     """Generates and streams the official Maritime Oil-Spill Investigation Report in PDF format."""
+    import pathlib
+    import tempfile
     from fastapi.responses import FileResponse
     from backend.app.services.report_generator import report_generator
 
@@ -517,25 +519,30 @@ def download_investigation_report_pdf(
             detail=f"Investigation case with ID '{case_id}' was not found."
         )
 
-    # Run full investigation pipeline to ensure latest verified metrics
+    # Run full investigation pipeline and generate PDF
     try:
         pipeline_resp = pipeline_service.run_pipeline(case_id=case_id)
+
+        output_dir = pathlib.Path(tempfile.gettempdir()) / "maritime_reports"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        pdf_output_path = str(output_dir / f"Investigation_Report_{case_id}.pdf")
+
+        report_generator.generate_pdf(response=pipeline_resp, output_path=pdf_output_path)
+
+        if not os.path.exists(pdf_output_path) or os.path.getsize(pdf_output_path) == 0:
+            raise RuntimeError(f"Generated PDF report missing or empty at {pdf_output_path}")
+
+        return FileResponse(
+            path=pdf_output_path,
+            media_type="application/pdf",
+            filename=f"Maritime_Oil_Investigation_Report_{case_id}.pdf",
+        )
     except Exception as e:
-        logger.error(f"Error executing pipeline for report generation: {e}")
+        logger.error(f"Error executing pipeline or generating PDF report: {e}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to compile investigation report metrics: {str(e)}"
         )
-
-    pdf_output_path = f"docs/Investigation_Report_{case_id}.pdf"
-    os.makedirs(os.path.dirname(pdf_output_path), exist_ok=True)
-    report_generator.generate_pdf(response=pipeline_resp, output_path=pdf_output_path)
-
-    return FileResponse(
-        path=pdf_output_path,
-        media_type="application/pdf",
-        filename=f"Maritime_Oil_Investigation_Report_{case_id}.pdf",
-    )
 
 
 @api_router.get(
