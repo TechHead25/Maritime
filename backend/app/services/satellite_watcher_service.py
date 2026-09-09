@@ -90,13 +90,13 @@ class SurveillanceAlert:
 DEFAULT_SECTORS: List[MonitoredSector] = [
     MonitoredSector(
         id="sri_lanka_south",
-        name="Sri Lanka Southern Tanker Corridor",
+        name="Sri Lanka Southern Tanker Corridor (Dondra Head Offshore)",
         min_lon=80.0,
-        min_lat=5.0,
-        max_lon=83.5,
-        max_lat=9.0,
+        min_lat=5.2,
+        max_lon=82.5,
+        max_lat=5.9,
         priority="HIGH",
-        description="High-density east-west crude oil tanker transit route south of Dondra Head and eastern Sri Lanka.",
+        description="High-density east-west crude oil tanker transit corridor south of Dondra Head in open ocean (purely maritime waters).",
     ),
     MonitoredSector(
         id="ennore_chennai",
@@ -343,6 +343,8 @@ class SatelliteWatcherService:
                     min_lat=sector.min_lat,
                     max_lon=sector.max_lon,
                     max_lat=sector.max_lat,
+                    center_lon=center_lon,
+                    center_lat=center_lat,
                 )
                 case_id = created_case.id
 

@@ -120,3 +120,21 @@ def test_api_surveillance_scan_now(test_client):
         assert img_resp.status_code == 200
         assert img_resp.headers["content-type"] == "image/png"
 
+
+def test_sri_lanka_south_offshore_coordinate_verification(isolated_watcher):
+    """Verify Sri Lanka south tanker sector is located strictly offshore and does not intersect land."""
+    sector = isolated_watcher.sectors.get("sri_lanka_south")
+    assert sector is not None
+    # Sector must be situated south of Dondra Head (latitudes < 6.0 deg N in deep ocean)
+    assert sector.max_lat <= 6.0
+    assert sector.min_lat >= 5.0
+    # Longitude corridor spans 80.0 to 82.5 deg E
+    assert 80.0 <= sector.min_lon < sector.max_lon <= 83.0
+
+    # Sector center should be deep ocean
+    c_lon = (sector.min_lon + sector.max_lon) / 2.0
+    c_lat = (sector.min_lat + sector.max_lat) / 2.0
+    assert 5.2 <= c_lat <= 5.8
+    assert 80.5 <= c_lon <= 82.0
+
+

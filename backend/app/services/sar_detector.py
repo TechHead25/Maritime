@@ -547,6 +547,9 @@ class SyntheticSARGenerator:
         sea_mean_db: float = -14.0,
         sea_std_db: float = 1.2,
         seed: int = 42,
+        include_island: bool = True,
+        slick_row_col: Optional[Tuple[float, float]] = None,
+        slick_orientation_deg: float = 48.5,
     ) -> SARRaster:
         """Creates a synthetic SAR scene with sea clutter, an oil slick, an island, and a lookalike."""
         rng = np.random.RandomState(seed)
@@ -556,20 +559,26 @@ class SyntheticSARGenerator:
 
         # 2. Insert Mineral Oil Slick (Elongated dark patch with -8.5 dB damping)
         r_grid, c_grid = np.indices((height, width))
-        cr, cc = 111.5, 170.1
-        angle_rad = math.radians(48.5)
+        if slick_row_col is not None:
+            cr, cc = float(slick_row_col[0]), float(slick_row_col[1])
+        else:
+            cr, cc = 111.5, 170.1
+        angle_rad = math.radians(slick_orientation_deg)
         rot_c = (c_grid - cc) * math.cos(angle_rad) + (r_grid - cr) * math.sin(angle_rad)
         rot_r = -(c_grid - cc) * math.sin(angle_rad) + (r_grid - cr) * math.cos(angle_rad)
 
         slick_mask = ((rot_c / 28.0) ** 2 + (rot_r / 9.0) ** 2) <= 1.0
         data[slick_mask] += rng.normal(loc=-8.0, scale=0.6, size=np.sum(slick_mask))
 
-        # 3. Insert High-Backscatter Land Island (Top-Left corner, > -4 dB)
-        island_mask = ((r_grid - 40.0) ** 2 + (c_grid - 50.0) ** 2) <= (22.0 ** 2)
-        data[island_mask] = rng.normal(loc=-3.0, scale=1.0, size=np.sum(island_mask))
+        # 3. Insert High-Backscatter Land Island (Top-Left corner, > -4 dB) if requested
+        if include_island:
+            island_mask = ((r_grid - 40.0) ** 2 + (c_grid - 50.0) ** 2) <= (22.0 ** 2)
+            data[island_mask] = rng.normal(loc=-3.0, scale=1.0, size=np.sum(island_mask))
 
         # 4. Insert Low-Wind Lookalike (Calm sea basin in bottom-left, -4.5 dB damping, large circular)
-        low_wind_mask = ((r_grid - 240.0) ** 2 + (c_grid - 70.0) ** 2) <= (45.0 ** 2)
+        lookalike_r = 240.0 if abs(cr - 240.0) > 40 else 60.0
+        lookalike_c = 70.0 if abs(cc - 70.0) > 40 else 230.0
+        low_wind_mask = ((r_grid - lookalike_r) ** 2 + (c_grid - lookalike_c) ** 2) <= (45.0 ** 2)
         data[low_wind_mask] += rng.normal(loc=-4.0, scale=0.8, size=np.sum(low_wind_mask))
 
         return SARRaster(

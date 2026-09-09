@@ -554,10 +554,31 @@ def get_case_sar_image(
             top_lon = c_lon - 0.25
             top_lat = c_lat + 0.25
 
+        # Compute case-unique seed and dynamic slick pixel placement
+        case_seed = abs(hash(case_id)) % 1000003
+        pixel_size_deg = 0.002
+        slick_rc = None
+        if primary_slick.centroid and primary_slick.centroid.coordinates:
+            sc_lon, sc_lat = primary_slick.centroid.coordinates
+            # Calculate pixel position relative to top_left
+            col_px = (sc_lon - top_lon) / pixel_size_deg
+            row_px = (top_lat - sc_lat) / pixel_size_deg
+            if 15 <= col_px <= 285 and 15 <= row_px <= 285:
+                slick_rc = (row_px, col_px)
+
+        # For Ennore / coastal cases, keep island/land feature; for deep ocean cases, omit land island
+        is_offshore = "south" in case_id.lower() or "ocean" in case_id.lower() or "diamond" in case_id.lower()
+
         raster = SyntheticSARGenerator.create_synthetic_scene(
+            width=300,
+            height=300,
             top_left_lon=round(top_lon, 4),
             top_left_lat=round(top_lat, 4),
-            seed=42,
+            pixel_size_deg=pixel_size_deg,
+            seed=case_seed,
+            include_island=not is_offshore,
+            slick_row_col=slick_rc,
+            slick_orientation_deg=primary_slick.major_axis_orientation_deg or 48.5,
         )
 
     try:

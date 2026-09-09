@@ -56,6 +56,8 @@ class CaseCreationService:
         min_lat: float = 5.0,
         max_lon: float = 85.0,
         max_lat: float = 10.0,
+        center_lon: Optional[float] = None,
+        center_lat: Optional[float] = None,
         ais_filename: Optional[str] = None,
         ais_content: Optional[bytes] = None,
         sar_filename: Optional[str] = None,
@@ -149,7 +151,9 @@ class CaseCreationService:
             max_lon=max_lon,
             max_lat=max_lat,
             incident_dt=incident_dt,
-            case_id=case_id
+            case_id=case_id,
+            center_lon=center_lon,
+            center_lat=center_lat,
         )
 
         # 7. Process Environmental data
@@ -159,7 +163,9 @@ class CaseCreationService:
             min_lon=min_lon,
             min_lat=min_lat,
             max_lon=max_lon,
-            max_lat=max_lat
+            max_lat=max_lat,
+            center_lon=center_lon,
+            center_lat=center_lat,
         )
 
         # 8. Construct Case model & Region of Interest polygon
@@ -235,9 +241,14 @@ class CaseCreationService:
         max_lon: float,
         max_lat: float,
         incident_dt: datetime,
-        case_id: str
+        case_id: str,
+        center_lon: Optional[float] = None,
+        center_lat: Optional[float] = None,
     ) -> Tuple[SARScene, SlickDetection]:
         """Parses uploaded SAR scene or generates canonical Sentinel-1 metadata and slick."""
+        c_lon = center_lon if center_lon is not None else (min_lon + max_lon) / 2.0
+        c_lat = center_lat if center_lat is not None else (min_lat + max_lat) / 2.0
+
         if sar_file and sar_file.exists() and sar_file.suffix.lower() == ".json":
             try:
                 with open(sar_file, "r", encoding="utf-8") as f:
@@ -248,7 +259,7 @@ class CaseCreationService:
                         id=f"slick_{case_id[:8]}",
                         sar_scene_id=scene.id,
                         slick_polygon=scene.footprint_polygon or SlickPolygon(coordinates=[[[min_lon, min_lat], [max_lon, min_lat], [max_lon, max_lat], [min_lon, min_lat]]]),
-                        centroid=GeoPoint(coordinates=[(min_lon + max_lon) / 2.0, (min_lat + max_lat) / 2.0]),
+                        centroid=GeoPoint(coordinates=[c_lon, c_lat]),
                         area_sq_km=4.5,
                         perimeter_km=12.0,
                         major_axis_orientation_deg=45.0,
@@ -260,9 +271,6 @@ class CaseCreationService:
                 logger.warning(f"Could not parse uploaded SAR JSON: {e}, falling back to generated SAR scene.")
 
         # Default Sentinel-1A scene and slick
-        c_lon = (min_lon + max_lon) / 2.0
-        c_lat = (min_lat + max_lat) / 2.0
-        
         footprint = SlickPolygon(coordinates=[[
             [min_lon, min_lat],
             [max_lon, min_lat],
@@ -310,11 +318,13 @@ class CaseCreationService:
         min_lon: float,
         min_lat: float,
         max_lon: float,
-        max_lat: float
+        max_lat: float,
+        center_lon: Optional[float] = None,
+        center_lat: Optional[float] = None,
     ) -> Dict[str, Any]:
         """Validates environmental files or constructs canonical hydrodynamic vectors."""
-        c_lon = (min_lon + max_lon) / 2.0
-        c_lat = (min_lat + max_lat) / 2.0
+        c_lon = center_lon if center_lon is not None else (min_lon + max_lon) / 2.0
+        c_lat = center_lat if center_lat is not None else (min_lat + max_lat) / 2.0
 
         ocean_data = {
             "source": "CMEMS Global Ocean Physics Reanalysis (GLORYS12V1)",
