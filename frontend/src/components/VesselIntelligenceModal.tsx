@@ -122,8 +122,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
       padding: '1rem',
     }}>
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '10px',
         width: '100%',
         maxWidth: '820px',
@@ -136,8 +136,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
         {/* Header */}
         <div style={{
           padding: '1.25rem 1.5rem',
-          borderBottom: '1px solid #1e293b',
-          backgroundColor: '#090d16',
+          borderBottom: '1px solid var(--glass-border)',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
@@ -184,8 +184,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
             <button
               onClick={handleTrackLive}
               style={{
-                backgroundColor: '#1e293b',
-                border: '1px solid #0284c7',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#38bdf8',
                 padding: '0.35rem 0.75rem',
                 borderRadius: '5px',
@@ -246,8 +246,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
           display: 'flex',
           gap: '0.5rem',
           padding: '0.65rem 1.5rem 0',
-          borderBottom: '1px solid #1e293b',
-          backgroundColor: '#090d16',
+          borderBottom: '1px solid var(--glass-border)',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         }}>
           <button
             onClick={() => setActiveTab('kinematics')}
@@ -286,7 +286,7 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
           {error && (
             <div style={{
               backgroundColor: 'rgba(239, 68, 68, 0.12)',
-              border: '1px solid #ef4444',
+              border: '1px solid var(--glass-border)',
               color: '#f87171',
               padding: '0.85rem',
               borderRadius: '6px',
@@ -330,8 +330,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
 
                   {/* Coordinates & Nav Status */}
                   <div style={{
-                    backgroundColor: '#111827',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     borderRadius: '6px',
                     padding: '1rem',
                     display: 'flex',
@@ -376,8 +376,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
 
                   {/* Signal Integrity & AIS Gaps */}
                   <div style={{
-                    backgroundColor: '#111827',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     borderRadius: '6px',
                     padding: '1rem',
                     display: 'flex',
@@ -435,8 +435,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
                     gap: '0.85rem',
-                    backgroundColor: '#111827',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     borderRadius: '6px',
                     padding: '1rem',
                     fontSize: '0.78rem',
@@ -510,8 +510,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
                       <div
                         key={inv.case_id}
                         style={{
-                          backgroundColor: '#111827',
-                          border: '1px solid #1e293b',
+                          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                          border: '1px solid var(--glass-border)',
                           borderRadius: '6px',
                           padding: '1rem',
                           display: 'flex',
@@ -552,8 +552,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
                             navigate(`/app/investigations/${inv.case_id}`);
                           }}
                           style={{
-                            backgroundColor: '#1e293b',
-                            border: '1px solid #334155',
+                            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                            border: '1px solid var(--glass-border)',
                             color: '#38bdf8',
                             padding: '0.35rem 0.75rem',
                             borderRadius: '4px',
@@ -585,8 +585,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
                       <div
                         key={idx}
                         style={{
-                          backgroundColor: '#111827',
-                          border: '1px solid #1e293b',
+                          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                          border: '1px solid var(--glass-border)',
                           borderRadius: '6px',
                           padding: '0.85rem 1rem',
                           display: 'flex',
@@ -621,8 +621,8 @@ export const VesselIntelligenceModal: React.FC<Props> = ({
 };
 
 const statCardStyle: React.CSSProperties = {
-  backgroundColor: '#111827',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   borderRadius: '6px',
   padding: '0.75rem 1rem',
   display: 'flex',

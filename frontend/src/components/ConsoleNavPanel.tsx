@@ -76,8 +76,8 @@ export const ConsoleNavPanel: React.FC<Props> = ({
   return (
     <aside style={{
       width: '220px',
-      backgroundColor: '#0c1322',
-      border: '1px solid #1e293b',
+      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '0.75rem 0.5rem',
       display: 'flex',
@@ -88,7 +88,7 @@ export const ConsoleNavPanel: React.FC<Props> = ({
     }}>
       <div style={{
         padding: '0.4rem 0.6rem 0.6rem',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--glass-border)',
         marginBottom: '0.35rem',
       }}>
         <span style={{
@@ -166,8 +166,8 @@ export const ConsoleNavPanel: React.FC<Props> = ({
       <div style={{
         marginTop: 'auto',
         padding: '0.65rem',
-        borderTop: '1px solid #1e293b',
-        backgroundColor: '#090d16',
+        borderTop: '1px solid var(--glass-border)',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         borderRadius: '6px',
         fontSize: '0.62rem',
         color: '#64748b',

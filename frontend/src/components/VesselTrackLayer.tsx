@@ -159,7 +159,7 @@ export const VesselTrackLayer: React.FC<Props> = ({
                           borderRadius: '4px',
                           fontWeight: 700,
                           fontSize: '0.75rem',
-                          border: '1px solid #334155',
+                          border: '1px solid var(--glass-border)',
                         }}>
                           #{score.rank} • {score.total_score.toFixed(1)}/100
                         </span>
@@ -183,7 +183,7 @@ export const VesselTrackLayer: React.FC<Props> = ({
                     )}
 
                     {cand && (
-                      <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px solid #334155', fontSize: '0.75rem', color: '#cbd5e1' }}>
+                      <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px solid var(--glass-border)', fontSize: '0.75rem', color: '#cbd5e1' }}>
                         <strong>CPA Distance:</strong> {cand.closest_point_of_approach_km.toFixed(2)} km
                       </div>
                     )}

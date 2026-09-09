@@ -17,7 +17,7 @@ export const AppShell: React.FC<Props> = ({
       {/* Top Intelligence Header Bar */}
       <header style={{
         backgroundColor: 'var(--bg-secondary)',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--glass-border)',
         padding: '0.75rem 1.5rem',
         position: 'sticky',
         top: 0,
@@ -65,7 +65,7 @@ export const AppShell: React.FC<Props> = ({
               fontSize: '0.75rem',
               color: health ? '#10b981' : '#ef4444',
               backgroundColor: '#0f172a',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               padding: '0.3rem 0.6rem',
               borderRadius: '9999px',
             }}>
@@ -90,7 +90,7 @@ export const AppShell: React.FC<Props> = ({
       {/* Footer */}
       <footer style={{
         backgroundColor: 'var(--bg-secondary)',
-        borderTop: '1px solid #1e293b',
+        borderTop: '1px solid var(--glass-border)',
         padding: '0.9rem 1.5rem',
         fontSize: '0.75rem',
         color: 'var(--text-muted)',

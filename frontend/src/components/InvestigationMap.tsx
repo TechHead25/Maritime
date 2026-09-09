@@ -84,8 +84,8 @@ export const InvestigationMap: React.FC<Props> = ({
   return (
     <div style={{
       position: 'relative',
-      backgroundColor: '#0c1322',
-      border: '1px solid #1e293b',
+      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       overflow: 'hidden',
       height: '100%',
@@ -105,7 +105,7 @@ export const InvestigationMap: React.FC<Props> = ({
       }}>
         <div style={{
           backgroundColor: 'rgba(15, 23, 42, 0.92)',
-          border: '1px solid #334155',
+          border: '1px solid var(--glass-border)',
           borderRadius: '6px',
           padding: '0.35rem 0.65rem',
           display: 'flex',
@@ -157,7 +157,7 @@ export const InvestigationMap: React.FC<Props> = ({
           onClick={() => setIsControlsOpen(!isControlsOpen)}
           style={{
             backgroundColor: isControlsOpen ? '#0284c7' : 'rgba(15, 23, 42, 0.92)',
-            border: '1px solid #334155',
+            border: '1px solid var(--glass-border)',
             color: '#f8fafc',
             padding: '0.35rem 0.65rem',
             borderRadius: '6px',
@@ -184,7 +184,7 @@ export const InvestigationMap: React.FC<Props> = ({
           right: 12,
           zIndex: 1000,
           backgroundColor: 'rgba(12, 19, 34, 0.96)',
-          border: '1px solid #334155',
+          border: '1px solid var(--glass-border)',
           borderRadius: '8px',
           padding: '1rem',
           width: '280px',
@@ -195,7 +195,7 @@ export const InvestigationMap: React.FC<Props> = ({
           backdropFilter: 'blur(10px)',
           fontSize: '0.75rem',
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1e293b', paddingBottom: '0.4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.4rem' }}>
             <strong style={{ color: '#f8fafc' }}>Map Layer Visibility</strong>
             <button
               onClick={() => setIsControlsOpen(false)}
@@ -248,7 +248,7 @@ export const InvestigationMap: React.FC<Props> = ({
             </label>
           </div>
 
-          <div style={{ borderTop: '1px solid #1e293b', paddingTop: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <strong style={{ color: '#cbd5e1', fontSize: '0.70rem' }}>Layer Opacity Controls</strong>
 
             <div>
@@ -408,7 +408,7 @@ export const InvestigationMap: React.FC<Props> = ({
           left: 12,
           zIndex: 1000,
           backgroundColor: 'rgba(15, 23, 42, 0.92)',
-          border: '1px solid #334155',
+          border: '1px solid var(--glass-border)',
           borderRadius: '6px',
           padding: '0.6rem 0.85rem',
           fontSize: '0.72rem',
@@ -430,7 +430,7 @@ export const InvestigationMap: React.FC<Props> = ({
                 <span>Detected Oil Slick (Sentinel-1 SAR)</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <span style={{ width: '12px', height: '12px', backgroundColor: '#38bdf8', borderRadius: '50%', display: 'inline-block', border: '1px solid #fff' }} />
+                <span style={{ width: '12px', height: '12px', backgroundColor: '#38bdf8', borderRadius: '50%', display: 'inline-block', border: '1px solid var(--glass-border)' }} />
                 <span>Reconstructed Origin Centroid (T_peak)</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>

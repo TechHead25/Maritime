@@ -194,7 +194,7 @@ export const DataSourcesPage: React.FC = () => {
       {toastMessage && (
         <div style={{
           backgroundColor: 'rgba(16, 185, 129, 0.2)',
-          border: '1px solid #10b981',
+          border: '1px solid var(--glass-border)',
           color: '#34d399',
           padding: '0.65rem 1rem',
           borderRadius: '6px',
@@ -209,8 +209,8 @@ export const DataSourcesPage: React.FC = () => {
 
       {/* Header Banner */}
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '8px',
         padding: '1.25rem 1.5rem',
         display: 'flex',
@@ -227,7 +227,7 @@ export const DataSourcesPage: React.FC = () => {
               height: '32px',
               borderRadius: '6px',
               backgroundColor: 'rgba(2, 132, 199, 0.15)',
-              border: '1px solid #0284c7',
+              border: '1px solid var(--glass-border)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -249,8 +249,8 @@ export const DataSourcesPage: React.FC = () => {
             onClick={loadControlCenter}
             disabled={loading}
             style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               color: '#cbd5e1',
               padding: '0.45rem 0.95rem',
               borderRadius: '5px',
@@ -315,8 +315,8 @@ export const DataSourcesPage: React.FC = () => {
             <div
               key={p.id}
               style={{
-                backgroundColor: '#0c1322',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '8px',
                 padding: '1.25rem',
                 display: 'flex',
@@ -333,8 +333,8 @@ export const DataSourcesPage: React.FC = () => {
                     width: '32px',
                     height: '32px',
                     borderRadius: '6px',
-                    backgroundColor: '#111827',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -391,8 +391,8 @@ export const DataSourcesPage: React.FC = () => {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: '0.65rem',
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '6px',
                 padding: '0.85rem',
                 fontSize: '0.75rem',
@@ -450,7 +450,7 @@ export const DataSourcesPage: React.FC = () => {
               {p.errors && (
                 <div style={{
                   backgroundColor: 'rgba(239, 68, 68, 0.10)',
-                  border: '1px solid #ef4444',
+                  border: '1px solid var(--glass-border)',
                   borderRadius: '6px',
                   padding: '0.65rem 0.85rem',
                   fontSize: '0.72rem',
@@ -464,8 +464,8 @@ export const DataSourcesPage: React.FC = () => {
               {/* Fallback configuration info */}
               {p.fallback_configured && p.fallback_provider && (
                 <div style={{
-                  backgroundColor: '#090d16',
-                  border: '1px solid #1e293b',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                  border: '1px solid var(--glass-border)',
                   borderRadius: '6px',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.68rem',
@@ -485,8 +485,8 @@ export const DataSourcesPage: React.FC = () => {
                   onClick={() => handlePing(p.id)}
                   disabled={isPinging}
                   style={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #334155',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#38bdf8',
                     padding: '0.42rem 0.85rem',
                     borderRadius: '5px',
@@ -507,8 +507,8 @@ export const DataSourcesPage: React.FC = () => {
                 <button
                   onClick={() => handleOpenConfig(p)}
                   style={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #334155',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#cbd5e1',
                     padding: '0.42rem 0.85rem',
                     borderRadius: '5px',
@@ -545,8 +545,8 @@ export const DataSourcesPage: React.FC = () => {
           padding: '1rem',
         }}>
           <div style={{
-            backgroundColor: '#0c1322',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '10px',
             width: '100%',
             maxWidth: '560px',
@@ -575,8 +575,8 @@ export const DataSourcesPage: React.FC = () => {
 
             {/* Security Guardrail Notice */}
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               fontSize: '0.72rem',
@@ -606,8 +606,8 @@ export const DataSourcesPage: React.FC = () => {
                   value={configTimeout}
                   onChange={(e) => setConfigTimeout(Number(e.target.value))}
                   style={{
-                    backgroundColor: '#131b2e',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#f8fafc',
                     padding: '0.4rem 0.65rem',
                     borderRadius: '4px',
@@ -627,8 +627,8 @@ export const DataSourcesPage: React.FC = () => {
                   value={configRateLimit}
                   onChange={(e) => setConfigRateLimit(Number(e.target.value))}
                   style={{
-                    backgroundColor: '#131b2e',
-                    border: '1px solid #1e293b',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#f8fafc',
                     padding: '0.4rem 0.65rem',
                     borderRadius: '4px',
@@ -644,8 +644,8 @@ export const DataSourcesPage: React.FC = () => {
               <button
                 onClick={() => setConfigModalProvider(null)}
                 style={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                  border: '1px solid var(--glass-border)',
                   color: '#cbd5e1',
                   padding: '0.45rem 0.85rem',
                   borderRadius: '5px',

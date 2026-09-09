@@ -55,7 +55,7 @@ export const CaseHeader: React.FC<Props> = ({
   return (
     <div style={{
       backgroundColor: '#0f172a',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem 1.5rem',
       marginBottom: '1rem',
@@ -125,9 +125,9 @@ export const CaseHeader: React.FC<Props> = ({
             onClick={handleDownloadPdf}
             disabled={isDownloadingPdf}
             style={{
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               color: '#f8fafc',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               padding: '0.60rem 1.0rem',
               borderRadius: '6px',
               fontSize: '0.82rem',

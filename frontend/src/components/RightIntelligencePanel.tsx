@@ -74,8 +74,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
   return (
     <aside style={{
       width: '440px',
-      backgroundColor: '#0c1322',
-      border: '1px solid #1e293b',
+      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       display: 'flex',
       flexDirection: 'column',
@@ -86,11 +86,11 @@ export const RightIntelligencePanel: React.FC<Props> = ({
       {/* Header Bar with Context Mode & Deselect */}
       <div style={{
         padding: '0.75rem 1rem',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--glass-border)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#090d16',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span style={{ color: '#38bdf8' }}>
@@ -116,8 +116,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
           <button
             onClick={onClearSelection}
             style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               color: '#94a3b8',
               padding: '0.2rem 0.5rem',
               borderRadius: '4px',
@@ -140,8 +140,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
           <>
             {/* Scientific Transparency Notice */}
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.75rem',
               fontSize: '0.72rem',
@@ -165,7 +165,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
             {/* Forensic Summary Statement */}
             <div style={{
               backgroundColor: 'rgba(2, 132, 199, 0.12)',
-              border: '1px solid #0284c7',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               display: 'flex',
@@ -187,7 +187,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                 onClick={onOpenSarModal}
                 style={{
                   backgroundColor: '#0f172a',
-                  border: '1px solid #0284c7',
+                  border: '1px solid var(--glass-border)',
                   color: '#38bdf8',
                   padding: '0.55rem 0.85rem',
                   borderRadius: '6px',
@@ -265,8 +265,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
             {/* Priority Candidate Quick List */}
             {details?.attribution_scores && details.attribution_scores.length > 0 && (
               <div style={{
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '6px',
                 padding: '0.85rem',
                 display: 'flex',
@@ -293,7 +293,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                         alignItems: 'center',
                         padding: '0.55rem 0.75rem',
                         borderRadius: '4px',
-                        border: '1px solid #1e293b',
+                        border: '1px solid var(--glass-border)',
                         backgroundColor: idx === 0 ? 'rgba(239, 68, 68, 0.12)' : '#131b2e',
                         color: '#f8fafc',
                         cursor: 'pointer',
@@ -338,7 +338,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{
               backgroundColor: 'rgba(239, 68, 68, 0.12)',
-              border: '1px solid #ef4444',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               display: 'flex',
@@ -407,8 +407,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
 
             {/* Geometry & Sensor Provenance */}
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               display: 'flex',
@@ -449,8 +449,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
         {mode === 'vessel' && selectedVessel && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               display: 'flex',
@@ -469,8 +469,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                 <button
                   onClick={() => navigate(`/app/live?mmsi=${selectedVessel.mmsi}`)}
                   style={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #0284c7',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#38bdf8',
                     padding: '0.25rem 0.55rem',
                     borderRadius: '4px',
@@ -491,8 +491,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                     setIsProfileModalOpen(true);
                   }}
                   style={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #334155',
+                    backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                    border: '1px solid var(--glass-border)',
                     color: '#cbd5e1',
                     padding: '0.25rem 0.55rem',
                     borderRadius: '4px',
@@ -527,8 +527,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
             </div>
 
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               fontSize: '0.75rem',
@@ -551,7 +551,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
             {/* Candidate Header Summary */}
             <div style={{
               backgroundColor: 'rgba(239, 68, 68, 0.12)',
-              border: '1px solid #ef4444',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               display: 'flex',
@@ -578,8 +578,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                   <button
                     onClick={() => navigate(`/app/live?mmsi=${selectedCandidateScore.mmsi}`)}
                     style={{
-                      backgroundColor: '#1e293b',
-                      border: '1px solid #0284c7',
+                      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                      border: '1px solid var(--glass-border)',
                       color: '#38bdf8',
                       padding: '0.28rem 0.55rem',
                       borderRadius: '4px',
@@ -601,8 +601,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                       setIsProfileModalOpen(true);
                     }}
                     style={{
-                      backgroundColor: '#1e293b',
-                      border: '1px solid #334155',
+                      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                      border: '1px solid var(--glass-border)',
                       color: '#cbd5e1',
                       padding: '0.28rem 0.55rem',
                       borderRadius: '4px',
@@ -623,7 +623,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
                       onClick={() => onFollowVesselToggle(selectedCandidateScore.mmsi)}
                       style={{
                         backgroundColor: isFollowingVessel ? '#0284c7' : '#1e293b',
-                        border: '1px solid #334155',
+                        border: '1px solid var(--glass-border)',
                         color: '#ffffff',
                         padding: '0.28rem 0.55rem',
                         borderRadius: '4px',
@@ -656,7 +656,7 @@ export const RightIntelligencePanel: React.FC<Props> = ({
             </div>
 
             {/* Sub-Tabs: Breakdown / Evidence Chain / Uncertainty */}
-            <div style={{ display: 'flex', gap: '0.4rem', borderBottom: '1px solid #1e293b', paddingBottom: '0.4rem' }}>
+            <div style={{ display: 'flex', gap: '0.4rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.4rem' }}>
               <button
                 onClick={() => setActiveEvidenceTab('breakdown')}
                 style={tabButtonStyle(activeEvidenceTab === 'breakdown')}
@@ -709,8 +709,8 @@ export const RightIntelligencePanel: React.FC<Props> = ({
 };
 
 const metricCardStyle: React.CSSProperties = {
-  backgroundColor: '#111827',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   borderRadius: '6px',
   padding: '0.65rem 0.8rem',
   display: 'flex',
@@ -740,7 +740,7 @@ const observedTagStyle: React.CSSProperties = {
   padding: '0.1rem 0.35rem',
   borderRadius: '3px',
   backgroundColor: 'rgba(16, 185, 129, 0.15)',
-  border: '1px solid #10b981',
+  border: '1px solid var(--glass-border)',
   color: '#34d399',
 };
 
@@ -750,7 +750,7 @@ const derivedTagStyle: React.CSSProperties = {
   padding: '0.1rem 0.35rem',
   borderRadius: '3px',
   backgroundColor: 'rgba(2, 132, 199, 0.15)',
-  border: '1px solid #0284c7',
+  border: '1px solid var(--glass-border)',
   color: '#38bdf8',
 };
 
@@ -760,7 +760,7 @@ const assumptionTagStyle: React.CSSProperties = {
   padding: '0.1rem 0.35rem',
   borderRadius: '3px',
   backgroundColor: 'rgba(245, 158, 11, 0.15)',
-  border: '1px solid #f59e0b',
+  border: '1px solid var(--glass-border)',
   color: '#fbbf24',
 };
 
@@ -770,7 +770,7 @@ const uncertaintyTagStyle: React.CSSProperties = {
   padding: '0.1rem 0.35rem',
   borderRadius: '3px',
   backgroundColor: 'rgba(168, 85, 247, 0.15)',
-  border: '1px solid #a855f7',
+  border: '1px solid var(--glass-border)',
   color: '#c084fc',
 };
 

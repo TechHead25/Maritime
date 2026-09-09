@@ -177,8 +177,8 @@ export const NewInvestigationModal: React.FC<Props> = ({
       padding: '1rem',
     }}>
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '10px',
         width: '100%',
         maxWidth: '740px',
@@ -191,7 +191,7 @@ export const NewInvestigationModal: React.FC<Props> = ({
         {/* Header */}
         <div style={{
           padding: '1.25rem 1.5rem',
-          borderBottom: '1px solid #1e293b',
+          borderBottom: '1px solid var(--glass-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -263,8 +263,8 @@ export const NewInvestigationModal: React.FC<Props> = ({
 
               {/* Area of Interest & Presets */}
               <div style={{
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '6px',
                 padding: '1rem',
                 display: 'flex',
@@ -280,8 +280,8 @@ export const NewInvestigationModal: React.FC<Props> = ({
                         type="button"
                         onClick={() => handleSelectPreset(preset)}
                         style={{
-                          backgroundColor: '#1e293b',
-                          border: '1px solid #334155',
+                          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                          border: '1px solid var(--glass-border)',
                           color: '#94a3b8',
                           padding: '0.2rem 0.45rem',
                           borderRadius: '3px',
@@ -447,8 +447,8 @@ export const NewInvestigationModal: React.FC<Props> = ({
                         <div
                           key={key}
                           style={{
-                            backgroundColor: '#111827',
-                            border: '1px solid #1e293b',
+                            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                            border: '1px solid var(--glass-border)',
                             borderRadius: '6px',
                             padding: '0.85rem',
                             display: 'flex',
@@ -527,12 +527,12 @@ export const NewInvestigationModal: React.FC<Props> = ({
 
           {/* Feedback Messages */}
           {evalError && (
-            <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid #ef4444', padding: '0.65rem', borderRadius: '4px', color: '#f87171', fontSize: '0.75rem' }}>
+            <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid var(--glass-border)', padding: '0.65rem', borderRadius: '4px', color: '#f87171', fontSize: '0.75rem' }}>
               {evalError}
             </div>
           )}
           {submitError && (
-            <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid #ef4444', padding: '0.65rem', borderRadius: '4px', color: '#f87171', fontSize: '0.75rem' }}>
+            <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid var(--glass-border)', padding: '0.65rem', borderRadius: '4px', color: '#f87171', fontSize: '0.75rem' }}>
               {submitError}
             </div>
           )}
@@ -541,11 +541,11 @@ export const NewInvestigationModal: React.FC<Props> = ({
         {/* Footer Actions */}
         <div style={{
           padding: '1rem 1.5rem',
-          borderTop: '1px solid #1e293b',
+          borderTop: '1px solid var(--glass-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: '#090d16',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         }}>
           {step === 2 ? (
             <button
@@ -553,7 +553,7 @@ export const NewInvestigationModal: React.FC<Props> = ({
               onClick={() => setStep(1)}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid #334155',
+                border: '1px solid var(--glass-border)',
                 color: '#94a3b8',
                 padding: '0.45rem 0.95rem',
                 borderRadius: '4px',
@@ -573,7 +573,7 @@ export const NewInvestigationModal: React.FC<Props> = ({
               onClick={onClose}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid #334155',
+                border: '1px solid var(--glass-border)',
                 color: '#cbd5e1',
                 padding: '0.45rem 0.95rem',
                 borderRadius: '4px',
@@ -648,8 +648,8 @@ const labelStyle: React.CSSProperties = {
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  backgroundColor: '#131b2e',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   color: '#f8fafc',
   padding: '0.45rem 0.65rem',
   borderRadius: '4px',
@@ -660,8 +660,8 @@ const inputStyle: React.CSSProperties = {
 
 const selectStyle: React.CSSProperties = {
   width: '100%',
-  backgroundColor: '#131b2e',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   color: '#f8fafc',
   padding: '0.35rem 0.5rem',
   borderRadius: '4px',
@@ -671,8 +671,8 @@ const selectStyle: React.CSSProperties = {
 };
 
 const providerBoxStyle: React.CSSProperties = {
-  backgroundColor: '#111827',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   borderRadius: '6px',
   padding: '0.65rem 0.85rem',
 };

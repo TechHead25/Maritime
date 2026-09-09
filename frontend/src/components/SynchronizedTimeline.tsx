@@ -107,9 +107,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
 
   return (
     <div style={{
-      backgroundColor: '#090d16',
-      borderTop: '1px solid #1e293b',
-      borderBottom: '1px solid #1e293b',
+      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+      borderTop: '1px solid var(--glass-border)',
+      borderBottom: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '0.9rem 1.25rem',
       marginBottom: '1rem',
@@ -127,7 +127,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
               <span style={{ fontFamily: 'monospace', fontSize: '1.05rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '0.04em' }}>
                 {formatUTCTimestamp(currentTime)}
               </span>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#38bdf8', backgroundColor: '#0c4a6e40', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid #0284c7' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#38bdf8', backgroundColor: '#0c4a6e40', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                 {calculateRelativeHours(currentTime, endTime)}
               </span>
             </div>
@@ -145,7 +145,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
               fontWeight: 700,
               backgroundColor: '#78350f40',
               color: '#f59e0b',
-              border: '1px solid #f59e0b',
+              border: '1px solid var(--glass-border)',
               padding: '0.2rem 0.55rem',
               borderRadius: '4px',
               animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -159,7 +159,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
               fontWeight: 700,
               backgroundColor: '#ef444425',
               color: '#ef4444',
-              border: '1px solid #ef4444',
+              border: '1px solid var(--glass-border)',
               padding: '0.2rem 0.55rem',
               borderRadius: '4px',
             }}>
@@ -170,10 +170,10 @@ export const SynchronizedTimeline: React.FC<Props> = ({
             <span style={{
               fontSize: '0.70rem',
               color: '#94a3b8',
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               padding: '0.2rem 0.50rem',
               borderRadius: '4px',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
             }}>
               Drift Swarm: 1σ Spread ±{closestCloud.cloud.dispersion_radius_km.toFixed(2)} km
             </span>
@@ -194,7 +194,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
               width: `${Math.max(1, releaseEndPercent - releaseStartPercent)}%`,
               height: '8px',
               backgroundColor: '#f59e0b55',
-              border: '1px solid #f59e0b',
+              border: '1px solid var(--glass-border)',
               borderRadius: '3px',
               pointerEvents: 'none',
               zIndex: 1,
@@ -242,9 +242,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
             title="Jump to Horizon Start"
             style={{
               fontSize: '0.75rem',
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               color: '#cbd5e1',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               padding: '0.25rem 0.55rem',
               cursor: 'pointer',
@@ -259,9 +259,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
             title="Step backward 15 minutes"
             style={{
               fontSize: '0.75rem',
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               color: '#cbd5e1',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               padding: '0.25rem 0.55rem',
               cursor: 'pointer',
@@ -293,9 +293,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
             title="Step forward 15 minutes"
             style={{
               fontSize: '0.75rem',
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               color: '#cbd5e1',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               padding: '0.25rem 0.55rem',
               cursor: 'pointer',
@@ -313,7 +313,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
                 fontSize: '0.75rem',
                 backgroundColor: '#78350f30',
                 color: '#f59e0b',
-                border: '1px solid #f59e0b',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '4px',
                 padding: '0.25rem 0.55rem',
                 cursor: 'pointer',
@@ -329,9 +329,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
             title="Jump to Satellite Pass (T_obs)"
             style={{
               fontSize: '0.75rem',
-              backgroundColor: '#1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               color: '#cbd5e1',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               padding: '0.25rem 0.55rem',
               cursor: 'pointer',
@@ -348,7 +348,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
               fontSize: '0.75rem',
               backgroundColor: '#0f172a',
               color: '#94a3b8',
-              border: '1px solid #334155',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               padding: '0.25rem 0.55rem',
               cursor: 'pointer',
@@ -372,7 +372,7 @@ export const SynchronizedTimeline: React.FC<Props> = ({
                   fontWeight: playbackSpeed === spd ? 700 : 500,
                   backgroundColor: playbackSpeed === spd ? '#0284c7' : '#1e293b',
                   color: playbackSpeed === spd ? '#f8fafc' : '#94a3b8',
-                  border: '1px solid #334155',
+                  border: '1px solid var(--glass-border)',
                   borderRadius: '3px',
                   padding: '0.15rem 0.35rem',
                   cursor: 'pointer',
@@ -396,9 +396,9 @@ export const SynchronizedTimeline: React.FC<Props> = ({
                 }}
                 style={{
                   fontSize: '0.72rem',
-                  backgroundColor: '#1e293b',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
                   color: '#f8fafc',
-                  border: '1px solid #334155',
+                  border: '1px solid var(--glass-border)',
                   borderRadius: '4px',
                   padding: '0.2rem 0.4rem',
                   cursor: 'pointer',

@@ -33,7 +33,7 @@ export const CaseOverview: React.FC<CaseOverviewProps> = ({ details, onRunPipeli
             <span style={{
               backgroundColor: '#3b82f620',
               color: 'var(--accent-cyan)',
-              border: '1px solid #3b82f640',
+              border: '1px solid var(--glass-border)',
               padding: '0.2rem 0.6rem',
               borderRadius: '6px',
               fontSize: '0.75rem',
@@ -44,7 +44,7 @@ export const CaseOverview: React.FC<CaseOverviewProps> = ({ details, onRunPipeli
             <span style={{
               backgroundColor: '#10b98120',
               color: '#10b981',
-              border: '1px solid #10b98140',
+              border: '1px solid var(--glass-border)',
               padding: '0.2rem 0.6rem',
               borderRadius: '6px',
               fontSize: '0.75rem',

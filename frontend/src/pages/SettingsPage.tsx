@@ -65,7 +65,7 @@ export const SettingsPage: React.FC = () => {
       {saveSuccess && (
         <div style={{
           backgroundColor: 'rgba(16, 185, 129, 0.12)',
-          border: '1px solid #10b981',
+          border: '1px solid var(--glass-border)',
           color: '#34d399',
           padding: '0.75rem 1.25rem',
           borderRadius: '6px',
@@ -351,8 +351,8 @@ export const SettingsPage: React.FC = () => {
 };
 
 const panelCardStyle: React.CSSProperties = {
-  backgroundColor: '#0c1322',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   borderRadius: '8px',
   padding: '1.25rem',
   display: 'flex',
@@ -364,7 +364,7 @@ const panelHeaderStyle: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  borderBottom: '1px solid #1e293b',
+  borderBottom: '1px solid var(--glass-border)',
   paddingBottom: '0.75rem',
 };
 
@@ -391,8 +391,8 @@ const labelStyle: React.CSSProperties = {
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  backgroundColor: '#131b2e',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   color: '#f8fafc',
   padding: '0.45rem 0.65rem',
   borderRadius: '4px',
@@ -409,8 +409,8 @@ const hintStyle: React.CSSProperties = {
 };
 
 const credentialBoxStyle: React.CSSProperties = {
-  backgroundColor: '#111827',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   borderRadius: '6px',
   padding: '0.75rem',
 };

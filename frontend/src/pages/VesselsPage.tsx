@@ -88,8 +88,8 @@ export const VesselsPage: React.FC = () => {
         <button
           onClick={loadVessels}
           style={{
-            backgroundColor: '#1e293b',
-            border: '1px solid #334155',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             color: '#cbd5e1',
             padding: '0.45rem 0.85rem',
             borderRadius: '6px',
@@ -110,10 +110,10 @@ export const VesselsPage: React.FC = () => {
         display: 'flex',
         gap: '1rem',
         alignItems: 'center',
-        backgroundColor: '#0c1322',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         padding: '0.85rem 1rem',
         borderRadius: '8px',
-        border: '1px solid #1e293b',
+        border: '1px solid var(--glass-border)',
         flexWrap: 'wrap',
       }}>
         {/* Search */}
@@ -121,8 +121,8 @@ export const VesselsPage: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          backgroundColor: '#131b2e',
-          border: '1px solid #1e293b',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '6px',
           padding: '0.4rem 0.75rem',
           flex: '1 1 260px',
@@ -149,8 +149,8 @@ export const VesselsPage: React.FC = () => {
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
           style={{
-            backgroundColor: '#131b2e',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             color: '#f8fafc',
             fontSize: '0.80rem',
             borderRadius: '6px',
@@ -183,8 +183,8 @@ export const VesselsPage: React.FC = () => {
 
       {/* Vessels Data Table */}
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '8px',
         overflow: 'hidden',
       }}>
@@ -200,7 +200,7 @@ export const VesselsPage: React.FC = () => {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.80rem' }}>
               <thead>
-                <tr style={{ backgroundColor: '#111827', borderBottom: '1px solid #1e293b', color: '#64748b', textAlign: 'left' }}>
+                <tr style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', borderBottom: '1px solid var(--glass-border)', color: '#64748b', textAlign: 'left' }}>
                   <th style={{ padding: '0.75rem 1rem' }}>VESSEL NAME & MMSI</th>
                   <th style={{ padding: '0.75rem 1rem' }}>TYPE</th>
                   <th style={{ padding: '0.75rem 1rem' }}>FLAG</th>
@@ -218,7 +218,7 @@ export const VesselsPage: React.FC = () => {
                   return (
                     <tr
                       key={v.mmsi}
-                      style={{ borderBottom: '1px solid #1e293b', transition: 'background 0.15s' }}
+                      style={{ borderBottom: '1px solid var(--glass-border)', transition: 'background 0.15s' }}
                     >
                       {/* Name & MMSI */}
                       <td style={{ padding: '0.75rem 1rem' }}>
@@ -281,8 +281,8 @@ export const VesselsPage: React.FC = () => {
                         <button
                           onClick={() => navigate('/app/live')}
                           style={{
-                            backgroundColor: '#1e293b',
-                            border: '1px solid #334155',
+                            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                            border: '1px solid var(--glass-border)',
                             color: '#38bdf8',
                             padding: '0.3rem 0.65rem',
                             borderRadius: '4px',

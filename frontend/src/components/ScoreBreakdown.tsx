@@ -30,7 +30,7 @@ export const ScoreBreakdown: React.FC<Props> = ({ score }) => {
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem',
       marginBottom: '1rem',
@@ -63,7 +63,7 @@ export const ScoreBreakdown: React.FC<Props> = ({ score }) => {
             />
             <Tooltip
               formatter={(value: any, _name: any, props: any) => [`${value} / ${props?.payload?.max ?? 40} pts`, 'Score Contribution']}
-              contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', color: '#f8fafc', fontSize: '0.8rem' }}
+              contentStyle={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', borderColor: '#334155', color: '#f8fafc', fontSize: '0.8rem' }}
             />
             <Bar dataKey="score" radius={[0, 4, 4, 0]}>
               {data.map((entry, index) => (

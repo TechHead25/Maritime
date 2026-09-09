@@ -72,8 +72,8 @@ export const SARAnalysisModal: React.FC<Props> = ({
       padding: '1.25rem',
     }}>
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '12px',
         width: '100%',
         maxWidth: '1100px',
@@ -86,11 +86,11 @@ export const SARAnalysisModal: React.FC<Props> = ({
         {/* Modal Header */}
         <div style={{
           padding: '1rem 1.5rem',
-          borderBottom: '1px solid #1e293b',
+          borderBottom: '1px solid var(--glass-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: '#090d16',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
@@ -161,8 +161,8 @@ export const SARAnalysisModal: React.FC<Props> = ({
               target="_blank"
               rel="noreferrer"
               style={{
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#f8fafc',
                 padding: '0.4rem 0.75rem',
                 borderRadius: '6px',
@@ -202,7 +202,7 @@ export const SARAnalysisModal: React.FC<Props> = ({
           gap: '0.5rem',
           padding: '0.65rem 1.5rem',
           backgroundColor: '#0f172a',
-          borderBottom: '1px solid #1e293b',
+          borderBottom: '1px solid var(--glass-border)',
         }}>
           <button
             onClick={() => {
@@ -293,8 +293,8 @@ export const SARAnalysisModal: React.FC<Props> = ({
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
             gap: '0.75rem',
-            backgroundColor: '#090d16',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '8px',
             padding: '0.85rem 1rem',
           }}>
@@ -334,8 +334,8 @@ export const SARAnalysisModal: React.FC<Props> = ({
 
           {/* Image Display Card */}
           <div style={{
-            backgroundColor: '#090d16',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '8px',
             overflow: 'hidden',
             display: 'flex',
@@ -343,8 +343,8 @@ export const SARAnalysisModal: React.FC<Props> = ({
           }}>
             <div style={{
               padding: '0.6rem 1rem',
-              backgroundColor: '#131b2e',
-              borderBottom: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              borderBottom: '1px solid var(--glass-border)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -394,7 +394,7 @@ export const SARAnalysisModal: React.FC<Props> = ({
                   textAlign: 'center',
                   color: '#f87171',
                   backgroundColor: '#1e1b2e',
-                  border: '1px solid #7f1d1d',
+                  border: '1px solid var(--glass-border)',
                   borderRadius: '6px',
                 }}>
                   <p style={{ margin: 0, fontWeight: 600 }}>SAR Radar Image Unavailable</p>
@@ -418,7 +418,7 @@ export const SARAnalysisModal: React.FC<Props> = ({
                       maxHeight: '480px',
                       objectFit: 'contain',
                       borderRadius: '4px',
-                      border: '1px solid #334155',
+                      border: '1px solid var(--glass-border)',
                       cursor: 'zoom-in',
                       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
                       display: isImgLoading ? 'none' : 'block',
@@ -432,7 +432,7 @@ export const SARAnalysisModal: React.FC<Props> = ({
           {/* Scientific Interpretation Card */}
           <div style={{
             backgroundColor: 'rgba(15, 23, 42, 0.6)',
-            border: '1px solid #1e293b',
+            border: '1px solid var(--glass-border)',
             borderRadius: '8px',
             padding: '1rem',
             display: 'flex',
@@ -449,11 +449,11 @@ export const SARAnalysisModal: React.FC<Props> = ({
               Mineral hydrocarbon oil films dramatically dampen capillary and short gravity waves on the ocean surface, creating distinctive dark patches of suppressed radar backscatter in Synthetic Aperture Radar (SAR) imagery.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginTop: '0.25rem' }}>
-              <div style={{ backgroundColor: '#090d16', padding: '0.65rem', borderRadius: '4px', border: '1px solid #1e293b' }}>
+              <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                 <strong style={{ color: '#f8fafc', display: 'block', marginBottom: '0.2rem' }}>Natural Biogenic Slick Discrimination:</strong>
                 Natural algae and plant secretions lack high morphological aspect ratios (ratio &lt; 1.5) and disperse rapidly. For case <em>{caseId}</em>, the calculated perimeter-to-area ratio and edge gradient rule out biogenic origin with {(slick?.confidence_score ? (slick.confidence_score * 100).toFixed(1) : '92.4')}% confidence.
               </div>
-              <div style={{ backgroundColor: '#090d16', padding: '0.65rem', borderRadius: '4px', border: '1px solid #1e293b' }}>
+              <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                 <strong style={{ color: '#f8fafc', display: 'block', marginBottom: '0.2rem' }}>Wind-Shadow Rejection:</strong>
                 Atmospheric surface wind at observation was verified above the 2.5 m/s calm threshold, confirming that the observed radar depression is genuine physical hydrocarbon surface damping rather than a calm-water wind shadow.
               </div>

@@ -1,619 +1,328 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Compass,
-  Satellite,
-  Waves,
-  Radio,
-  FileCheck2,
-  ShieldCheck,
-  ArrowRight,
-  Search,
-  Activity,
-  Database,
-  Lock,
-  Eye,
-  GitBranch,
-  BarChart3,
-} from 'lucide-react';
+import { Shield, Ship, Droplets, ArrowRight, Database, Lock, Activity } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // Scroll-based Video Scrubbing Effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current || !videoRef.current) return;
+      
+      const { top, height } = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate how far we've scrolled past the top of the container
+      const scrollPosition = -top;
+      // The total scrollable distance is the container height minus the viewport height
+      const totalScrollable = height - windowHeight;
+      
+      if (scrollPosition >= 0 && scrollPosition <= totalScrollable) {
+        const rawProgress = scrollPosition / totalScrollable;
+        const progress = Math.max(0, Math.min(1, rawProgress));
+        setScrollProgress(progress);
+        
+        // Update video time if metadata is loaded
+        if (videoRef.current.duration) {
+          // Add a small requestAnimationFrame smoothing
+          requestAnimationFrame(() => {
+            if (videoRef.current) {
+               videoRef.current.currentTime = progress * videoRef.current.duration;
+            }
+          });
+        }
+      } else if (scrollPosition < 0) {
+        setScrollProgress(0);
+        if (videoRef.current && videoRef.current.duration) videoRef.current.currentTime = 0;
+      } else {
+        setScrollProgress(1);
+        if (videoRef.current && videoRef.current.duration) videoRef.current.currentTime = videoRef.current.duration;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial call
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: '#0a0f1d',
-      color: '#f8fafc',
-      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      lineHeight: 1.6,
-    }}>
-      {/* Navigation Header */}
-      <header style={{
-        position: 'sticky',
+    <div style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-main)', minHeight: '100vh', overflow: 'hidden' }}>
+      {/* Navbar (Glass) */}
+      <nav style={{
+        position: 'fixed',
         top: 0,
-        zIndex: 100,
-        backgroundColor: 'rgba(10, 15, 29, 0.92)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(51, 65, 85, 0.5)',
-        padding: '0.85rem 2rem',
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        padding: '1rem 2rem',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'space-between',
+        alignItems: 'center',
+        background: 'rgba(4, 9, 20, 0.65)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Shield color="var(--accent-cyan)" size={24} />
+          <span style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>
+            MARITIME<span style={{ color: 'var(--accent-cyan)' }}>_OIL</span>
+          </span>
+        </div>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          <button style={navLinkStyle}>Capabilities</button>
+          <button style={navLinkStyle}>Intelligence</button>
+          <button style={navLinkStyle}>Security</button>
+          <button
+            onClick={() => navigate('/app')}
+            style={{
+              backgroundColor: 'var(--accent-blue)',
+              color: '#fff',
+              padding: '0.6rem 1.5rem',
+              borderRadius: '8px',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              boxShadow: '0 4px 15px rgba(14, 165, 233, 0.4)',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+          >
+            Enter Workspace <ArrowRight size={16} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Main Scroll Scrubbing Container */}
+      {/* We make this container very tall so the user has to scroll a lot, allowing fine scrubbing control */}
+      <div ref={containerRef} style={{ height: '400vh', position: 'relative' }}>
+        
+        {/* Sticky Video Background */}
+        <div style={{
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          width: '100%',
+          overflow: 'hidden',
+          zIndex: 0,
+        }}>
+          {/* Overlay to ensure text readability */}
           <div style={{
-            width: '36px',
-            height: '36px',
-            borderRadius: '8px',
-            backgroundColor: '#0284c7',
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(4, 9, 20, 0.8) 0%, rgba(4, 9, 20, 0.4) 50%, rgba(4, 9, 20, 0.95) 100%)',
+            zIndex: 1,
+          }} />
+          
+          <video
+            ref={videoRef}
+            src="https://cdn.pixabay.com/video/2020/05/25/40141-424783353_large.mp4" 
+            muted
+            playsInline
+            preload="auto"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.6,
+            }}
+          />
+          
+          {/* Dynamic Content based on scroll progress overlaid on the sticky video */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 2,
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'column',
             justifyContent: 'center',
-            color: '#ffffff',
-            boxShadow: '0 0 16px rgba(2, 132, 199, 0.4)',
+            alignItems: 'center',
+            padding: '0 2rem',
+            textAlign: 'center',
           }}>
-            <Compass size={22} />
-          </div>
-          <div>
-            <div style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-0.02em', color: '#ffffff' }}>
-              Maritime Oil-Spill Attribution Intelligence
-            </div>
-            <div style={{ fontSize: '0.70rem', color: '#94a3b8', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-              Environmental Intelligence & Forensic Decision Support
-            </div>
-          </div>
-        </div>
-
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.85rem' }}>
-          <button onClick={() => scrollToSection('overview')} style={navLinkStyle}>Overview</button>
-          <button onClick={() => scrollToSection('pipeline')} style={navLinkStyle}>Pipeline</button>
-          <button onClick={() => scrollToSection('capabilities')} style={navLinkStyle}>Capabilities</button>
-          <button onClick={() => scrollToSection('data-sources')} style={navLinkStyle}>Data Sources</button>
-          <button onClick={() => scrollToSection('workflow')} style={navLinkStyle}>Workflow</button>
-          <button onClick={() => scrollToSection('security')} style={navLinkStyle}>Security</button>
-          <button
-            onClick={() => navigate('/app')}
-            style={{
-              backgroundColor: '#0284c7',
-              color: '#ffffff',
-              border: 'none',
-              padding: '0.55rem 1.15rem',
-              borderRadius: '6px',
-              fontWeight: 600,
-              fontSize: '0.85rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            Launch Platform <ArrowRight size={15} />
-          </button>
-        </nav>
-      </header>
-
-      {/* 1. Hero Section */}
-      <section style={{
-        padding: '5.5rem 2rem 4.5rem',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        textAlign: 'center',
-      }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.35rem 0.85rem',
-          backgroundColor: 'rgba(2, 132, 199, 0.12)',
-          border: '1px solid rgba(2, 132, 199, 0.35)',
-          borderRadius: '20px',
-          color: '#38bdf8',
-          fontSize: '0.78rem',
-          fontWeight: 600,
-          marginBottom: '1.75rem',
-          letterSpacing: '0.04em',
-        }}>
-          <ShieldCheck size={14} /> HISTORICAL FORENSIC ATTRIBUTION SYSTEM
-        </div>
-
-        <h1 style={{
-          fontSize: '3.1rem',
-          fontWeight: 800,
-          lineHeight: 1.18,
-          letterSpacing: '-0.03em',
-          color: '#f8fafc',
-          maxWidth: '960px',
-          margin: '0 auto 1.5rem',
-        }}>
-          Independent, Explainable Forensic Attribution for Maritime Oil Spills
-        </h1>
-
-        <p style={{
-          fontSize: '1.15rem',
-          color: '#94a3b8',
-          maxWidth: '780px',
-          margin: '0 auto 2.5rem',
-          lineHeight: 1.65,
-        }}>
-          Reconstruct marine discharge incidents through satellite SAR radar imagery, backward Lagrangian hydrodynamic drift modeling, and spatiotemporal AIS vessel interception. Designed for environmental authorities and maritime investigators.
-        </p>
-
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <button
-            onClick={() => navigate('/app')}
-            style={{
-              backgroundColor: '#0284c7',
-              color: '#ffffff',
-              border: 'none',
-              padding: '0.85rem 1.85rem',
-              borderRadius: '6px',
-              fontWeight: 600,
-              fontSize: '0.95rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 4px 18px rgba(2, 132, 199, 0.35)',
-            }}
-          >
-            Launch Forensic Workspace <ArrowRight size={18} />
-          </button>
-          <button
-            onClick={() => scrollToSection('pipeline')}
-            style={{
-              backgroundColor: 'rgba(30, 41, 59, 0.7)',
-              color: '#cbd5e1',
-              border: '1px solid #334155',
-              padding: '0.85rem 1.65rem',
-              borderRadius: '6px',
-              fontWeight: 600,
-              fontSize: '0.95rem',
-              cursor: 'pointer',
-            }}
-          >
-            Explore Scientific Pipeline
-          </button>
-        </div>
-      </section>
-
-      {/* 2. Product Overview Section */}
-      <section id="overview" style={sectionWrapperStyle}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>PRODUCT OVERVIEW</div>
-          <h2 style={sectionTitleStyle}>Decision Support for Environmental Forensics</h2>
-          <p style={sectionSubtitleStyle}>
-            A specialized decision-support platform providing objective, mathematical attribution intelligence without speculative legal accusations.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><FileCheck2 size={22} color="#38bdf8" /></div>
-            <h3 style={cardTitleStyle}>Forensic Decision Support</h3>
-            <p style={cardTextStyle}>
-              The system serves as an investigative aid for maritime agencies, coast guards, and environmental regulators. Attribution rankings are accompanied by complete mathematical evidence and uncertainty bounds.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><GitBranch size={22} color="#10b981" /></div>
-            <h3 style={cardTitleStyle}>Verifiable Evidence Chain</h3>
-            <p style={cardTextStyle}>
-              Every attribution score is decomposed into five verifiable factors: spatiotemporal proximity, trajectory drift alignment, vessel risk profile, navigational anomalies, and AIS transponder continuity.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><Eye size={22} color="#a855f7" /></div>
-            <h3 style={cardTitleStyle}>Transparent Scientific Integrity</h3>
-            <p style={cardTextStyle}>
-              Sensor observations are strictly decoupled from model-derived estimates and assumptions. Results are communicated via probability distributions rather than false coordinate certainties.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. How the Intelligence Pipeline Works */}
-      <section id="pipeline" style={{ ...sectionWrapperStyle, backgroundColor: '#0c1322' }}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>FORENSIC ARCHITECTURE</div>
-          <h2 style={sectionTitleStyle}>How the Intelligence Pipeline Works</h2>
-          <p style={sectionSubtitleStyle}>
-            Every investigation strictly executes through seven deterministic data processing phases.
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '900px', margin: '0 auto' }}>
-          {[
-            { step: '01', title: 'SAR Imagery Acquisition', desc: 'Sentinel-1 C-band synthetic aperture radar imagery is ingested and calibrated.', icon: Satellite },
-            { step: '02', title: 'Slick Detection & Lookalike Classification', desc: 'CFAR adaptive thresholding isolates dark patches and rejects low-wind calm water lookalikes.', icon: Search },
-            { step: '03', title: 'Backward Hydrodynamic Drift Simulation', desc: 'Monte Carlo particle back-tracking combines CMEMS ocean currents and ERA5 surface winds.', icon: Waves },
-            { step: '04', title: 'Origin Estimation & Release Window', desc: 'Dispersion envelope calculates the probable discharge centroid and time window.', icon: Activity },
-            { step: '05', title: 'AIS Vessel Interception & Interpolation', desc: 'Regional vessel tracks are filtered and interpolated across the estimated release envelope.', icon: Radio },
-            { step: '06', title: 'Multi-Factor Attribution Scoring', desc: 'Five-factor forensic scoring matrix calculates explainable proximity and anomaly indices.', icon: BarChart3 },
-            { step: '07', title: 'Evidentiary Dossier Export', desc: 'Audit-ready PDF and JSON evidence packages are compiled with cryptographic SHA-256 validation.', icon: FileCheck2 },
-          ].map((item, idx) => (
-            <div key={idx} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.25rem',
-              backgroundColor: '#131b2e',
-              border: '1px solid #1e293b',
-              padding: '1.25rem 1.5rem',
-              borderRadius: '8px',
-            }}>
-              <div style={{
-                fontSize: '1.1rem',
-                fontWeight: 800,
-                color: '#0284c7',
-                fontFamily: 'monospace',
-                minWidth: '32px',
-              }}>
-                {item.step}
-              </div>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '6px',
-                backgroundColor: '#1e293b',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#38bdf8',
-                flexShrink: 0,
-              }}>
-                <item.icon size={20} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.2rem' }}>
-                  {item.title}
-                </div>
-                <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                  {item.desc}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Capabilities Section */}
-      <section id="capabilities" style={sectionWrapperStyle}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>TECHNICAL CAPABILITIES</div>
-          <h2 style={sectionTitleStyle}>Core Forensic Capabilities</h2>
-          <p style={sectionSubtitleStyle}>
-            Rigorous mathematical and physical engines built for precision maritime analysis.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
-          {[
-            { title: 'Adaptive CFAR Detection', desc: 'Constant False Alarm Rate spatial windowing isolates oil slicks under variable sea clutter.' },
-            { title: 'Monte Carlo Drift Swarms', desc: 'Simulates 200 to 1,000+ stochastic particles driven by oceanographic advection and turbulent diffusion.' },
-            { title: 'Spline Waypoint Interpolation', desc: 'High-frequency cubic trajectory interpolation accounts for non-uniform AIS transmission intervals.' },
-            { title: 'CPA Distance Computation', desc: 'Calculates Closest Point of Approach relative to the dispersion envelope at the discharge timestamp.' },
-            { title: 'AIS Anomaly Detection', desc: 'Automatically flags suspicious transponder gaps, speed drops, and course alterations.' },
-            { title: 'Calibrated Uncertainty', desc: 'Conveys geographic dispersion radiuses and temporal confidence intervals.' },
-          ].map((cap, i) => (
-            <div key={i} style={{ ...cardStyle, padding: '1.35rem' }}>
-              <h3 style={{ ...cardTitleStyle, fontSize: '0.95rem' }}>{cap.title}</h3>
-              <p style={{ ...cardTextStyle, fontSize: '0.80rem' }}>{cap.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Data Sources Section */}
-      <section id="data-sources" style={{ ...sectionWrapperStyle, backgroundColor: '#0c1322' }}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>DATA PROVENANCE</div>
-          <h2 style={sectionTitleStyle}>Multi-Source Sensor Integration</h2>
-          <p style={sectionSubtitleStyle}>
-            Direct ingestion from established European and global earth observation and maritime monitoring infrastructures.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
-          <div style={cardStyle}>
-            <div style={{ ...iconBoxStyle, backgroundColor: '#0284c715' }}><Satellite size={22} color="#38bdf8" /></div>
-            <div style={{ fontSize: '0.70rem', fontWeight: 700, color: '#38bdf8', marginBottom: '0.35rem' }}>SAR SATELLITE</div>
-            <h3 style={cardTitleStyle}>Copernicus Sentinel-1</h3>
-            <p style={cardTextStyle}>
-              Level-1 Ground Range Detected (GRD) C-band radar backscatter imagery providing day/night, all-weather ocean surface observation.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={{ ...iconBoxStyle, backgroundColor: '#10b98115' }}><Radio size={22} color="#10b981" /></div>
-            <div style={{ fontSize: '0.70rem', fontWeight: 700, color: '#10b981', marginBottom: '0.35rem' }}>VESSEL TELEMETRY</div>
-            <h3 style={cardTitleStyle}>AIS Transponder Feeds</h3>
-            <p style={cardTextStyle}>
-              Terrestrial receiver networks and satellite constellations recording vessel MMSI, GPS waypoints, speed over ground, and course.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={{ ...iconBoxStyle, backgroundColor: '#38bdf815' }}><Waves size={22} color="#38bdf8" /></div>
-            <div style={{ fontSize: '0.70rem', fontWeight: 700, color: '#38bdf8', marginBottom: '0.35rem' }}>HYDRODYNAMICS</div>
-            <h3 style={cardTitleStyle}>CMEMS GLORYS12V1</h3>
-            <p style={cardTextStyle}>
-              Copernicus Marine Service global ocean physics reanalysis grids providing eastward ($U$) and northward ($V$) surface current velocities.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={{ ...iconBoxStyle, backgroundColor: '#f59e0b15' }}><Activity size={22} color="#f59e0b" /></div>
-            <div style={{ fontSize: '0.70rem', fontWeight: 700, color: '#f59e0b', marginBottom: '0.35rem' }}>METEOROLOGY</div>
-            <h3 style={cardTitleStyle}>ECMWF ERA5 Winds</h3>
-            <p style={cardTextStyle}>
-              European Centre for Medium-Range Weather Forecasts atmospheric reanalysis 10-meter surface wind vectors for leeway calculations.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Investigation Workflow Section */}
-      <section id="workflow" style={sectionWrapperStyle}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>INVESTIGATION LIFECYCLE</div>
-          <h2 style={sectionTitleStyle}>Structured Forensic Workflow</h2>
-          <p style={sectionSubtitleStyle}>
-            From initial satellite sighting to final court-grade intelligence dossier.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-          {[
-            { phase: 'Phase 1', title: 'Case Setup', desc: 'Define geographic bounds and incident observation time.' },
-            { phase: 'Phase 2', title: 'Data Upload', desc: 'Ingest SAR imagery, AIS CSV tracks, and weather grids.' },
-            { phase: 'Phase 3', title: 'Advection Drift', desc: 'Reconstruct reverse particle trajectory to estimate spill origin.' },
-            { phase: 'Phase 4', title: 'Attribution', desc: 'Score all candidate vessels passing through the discharge window.' },
-            { phase: 'Phase 5', title: 'Audit Export', desc: 'Export verifiable forensic report with complete evidence lineage.' },
-          ].map((w, idx) => (
-            <div key={idx} style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
-              padding: '1.25rem',
-              borderRadius: '8px',
-              borderTop: '3px solid #0284c7',
-            }}>
-              <span style={{ fontSize: '0.70rem', fontWeight: 700, color: '#38bdf8', letterSpacing: '0.04em' }}>{w.phase}</span>
-              <h4 style={{ fontSize: '0.90rem', fontWeight: 700, color: '#f8fafc', margin: '0.4rem 0 0.35rem' }}>{w.title}</h4>
-              <p style={{ fontSize: '0.78rem', color: '#94a3b8', margin: 0 }}>{w.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. Evidence & Explainability */}
-      <section style={{ ...sectionWrapperStyle, backgroundColor: '#0c1322' }}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>OBJECTIVE TRANSPARENCY</div>
-          <h2 style={sectionTitleStyle}>Evidence & Explainability</h2>
-          <p style={sectionSubtitleStyle}>
-            Forensic decision support requires complete clarity on how every conclusion was reached.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', alignItems: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'flex', gap: '0.85rem' }}>
-              <div style={bulletIconStyle}><CheckIcon /></div>
-              <div>
-                <strong style={{ color: '#f8fafc', fontSize: '0.90rem' }}>Non-Accusatory Forensic Phrasing</strong>
-                <p style={{ color: '#94a3b8', fontSize: '0.80rem', marginTop: '0.2rem' }}>
-                  The platform outputs objective, evidence-based statements: "This vessel is the highest-ranked candidate based on available evidence," avoiding unwarranted accusations of guilt.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: 'flex', gap: '0.85rem' }}>
-              <div style={bulletIconStyle}><CheckIcon /></div>
-              <div>
-                <strong style={{ color: '#f8fafc', fontSize: '0.90rem' }}>Transparent Factor Weighting</strong>
-                <p style={{ color: '#94a3b8', fontSize: '0.80rem', marginTop: '0.2rem' }}>
-                  Proximity (35%), Drift Alignment (25%), Vessel Profile (15%), Navigational Anomaly (15%), and AIS Integrity (10%) are individually reported.
-                </p>
-              </div>
-            </div>
-            <div style={{ display: 'flex', gap: '0.85rem' }}>
-              <div style={bulletIconStyle}><CheckIcon /></div>
-              <div>
-                <strong style={{ color: '#f8fafc', fontSize: '0.90rem' }}>Evidence Taxonomy</strong>
-                <p style={{ color: '#94a3b8', fontSize: '0.80rem', marginTop: '0.2rem' }}>
-                  Facts are partitioned into Supporting, Contradicting, Exculpatory, and Uncertainty items for court and regulatory review.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div style={{
-            backgroundColor: '#131b2e',
-            border: '1px solid #1e293b',
-            padding: '1.5rem',
-            borderRadius: '8px',
-            fontFamily: 'monospace',
-            fontSize: '0.78rem',
-            color: '#cbd5e1',
-          }}>
-            <div style={{ color: '#64748b', marginBottom: '0.75rem' }}>// FORMAL ATTRIBUTION VERDICT SPECIFICATION</div>
-            <div style={{ color: '#38bdf8' }}>{'{'}</div>
-            <div style={{ paddingLeft: '1rem' }}>
-              <div>"candidate_name": <span style={{ color: '#34d399' }}>"MT NEW DIAMOND"</span>,</div>
-              <div>"mmsi": <span style={{ color: '#fbbf24' }}>"371584000"</span>,</div>
-              <div>"attribution_score": <span style={{ color: '#f87171' }}>95.8</span>,</div>
-              <div>"risk_level": <span style={{ color: '#f87171' }}>"VERY_HIGH"</span>,</div>
-              <div>"closest_approach_km": <span style={{ color: '#38bdf8' }}>0.082</span>,</div>
-              <div>"discharge_window_cpa": <span style={{ color: '#a855f7' }}>true</span>,</div>
-              <div>"ais_gap_detected": <span style={{ color: '#f87171' }}>true</span>,</div>
-              <div>"verdict_statement": <span style={{ color: '#94a3b8' }}>"This vessel is the highest-ranked candidate..."</span></div>
-            </div>
-            <div style={{ color: '#38bdf8' }}>{'}'}</div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Environmental Intelligence */}
-      <section style={sectionWrapperStyle}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>PHYSICAL DYNAMICS</div>
-          <h2 style={sectionTitleStyle}>Environmental Hydrodynamics</h2>
-          <p style={sectionSubtitleStyle}>
-            Oil drift is governed by ocean surface currents, atmospheric wind leeway, and stochastic turbulent diffusion.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-          <div style={cardStyle}>
-            <h3 style={cardTitleStyle}>Lagrangian Advection Formula</h3>
-            <p style={cardTextStyle}>
-              Particles are advected backwards combining hydrodynamic surface currents and 3% wind leeway:
-            </p>
+            
+            {/* Slide 1: Hero (0-25%) */}
             <div style={{
-              fontFamily: 'monospace',
-              backgroundColor: '#131b2e',
-              padding: '0.65rem 0.85rem',
-              borderRadius: '4px',
-              fontSize: '0.78rem',
-              color: '#38bdf8',
-              margin: '0.5rem 0',
+              position: 'absolute',
+              transition: 'opacity 0.5s ease',
+              opacity: scrollProgress < 0.25 ? 1 : 0,
+              pointerEvents: scrollProgress < 0.25 ? 'auto' : 'none',
+              transform: `translateY(${(scrollProgress * 100)}px)`,
             }}>
-              x(t - Δt) = x(t) - [ u_current + 0.030 · u_wind + u_turb ] · Δt
+              <div className="animate-slide-up" style={{
+                display: 'inline-block',
+                padding: '0.4rem 1rem',
+                backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                borderRadius: '20px',
+                color: 'var(--accent-cyan)',
+                fontWeight: 600,
+                fontSize: '0.85rem',
+                marginBottom: '1.5rem',
+              }}>
+                HISTORICAL MARITIME FORENSICS
+              </div>
+              <h1 style={{ fontSize: '4rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}>
+                Attribution Intelligence<br/>
+                <span style={{ color: 'var(--accent-cyan)' }}>Without Compromise.</span>
+              </h1>
+              <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto 2.5rem', lineHeight: 1.6 }}>
+                Advanced spatiotemporal analytics for historical maritime oil-spill forensic investigations.
+                Uncover origin probability clouds using reverse Lagrangian drift simulations.
+              </p>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                Scroll to explore <br/>
+                <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)' }} />
+              </div>
             </div>
-            <p style={cardTextStyle}>
-              where 0.030 is the standard leeway wind drag factor.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <h3 style={cardTitleStyle}>Monte Carlo Turbulent Perturbation</h3>
-            <p style={cardTextStyle}>
-              Sub-grid scale ocean turbulence is simulated via stochastic random walks scaled by horizontal diffusivity coefficient Kh = 2.5 m²/s.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <h3 style={cardTitleStyle}>Calibration & Validation</h3>
-            <p style={cardTextStyle}>
-              Drift trajectories have been validated against ground truth historical incidents (e.g. MT New Diamond 2020 and Ennore Port 2017) with verified spatial convergence.
-            </p>
+
+            {/* Slide 2: Pipeline (25-50%) */}
+            <div style={{
+              position: 'absolute',
+              transition: 'opacity 0.5s ease',
+              opacity: scrollProgress >= 0.25 && scrollProgress < 0.5 ? 1 : 0,
+              pointerEvents: scrollProgress >= 0.25 && scrollProgress < 0.5 ? 'auto' : 'none',
+            }}>
+              <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', textShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>The Scientific Engine</h2>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 3rem' }}>
+                Multi-factor data fusion bridging SAR backscatter observations with hydrodynamic particle modeling.
+              </p>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+                <div className="glass-card" style={{ padding: '2rem', textAlign: 'left' }}>
+                  <Droplets color="var(--accent-cyan)" size={32} style={{ marginBottom: '1rem' }} />
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#fff' }}>1. Feature Extraction</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                    CFAR-based automated thresholding of Sentinel-1 imagery to isolate mineral oil anomalies from biogenic lookalikes.
+                  </p>
+                </div>
+                <div className="glass-card" style={{ padding: '2rem', textAlign: 'left' }}>
+                  <Activity color="var(--accent-blue)" size={32} style={{ marginBottom: '1rem' }} />
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#fff' }}>2. Backward Advection</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                    High-resolution Lagrangian particle tracking over ocean current and wind stress matrices.
+                  </p>
+                </div>
+                <div className="glass-card" style={{ padding: '2rem', textAlign: 'left' }}>
+                  <Ship color="var(--accent-amber)" size={32} style={{ marginBottom: '1rem' }} />
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#fff' }}>3. AIS Interception</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                    Candidate vessel track interpolation against origin probability envelopes to score attribution.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 3: Evidence & UI (50-75%) */}
+            <div style={{
+              position: 'absolute',
+              transition: 'opacity 0.5s ease',
+              opacity: scrollProgress >= 0.5 && scrollProgress < 0.75 ? 1 : 0,
+              pointerEvents: scrollProgress >= 0.5 && scrollProgress < 0.75 ? 'auto' : 'none',
+            }}>
+              <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '2rem' }}>Explainable Forensics</h2>
+              <div className="glass-panel" style={{ padding: '2.5rem', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
+                <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1rem' }}>Data Integrity First</h3>
+                    <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
+                      All calculations clearly distinguish between directly observed sensor data and model-derived simulations. 
+                      Every evidence block includes quantitative uncertainty mapping.
+                    </p>
+                    <ul style={{ color: 'var(--text-dim)', fontSize: '0.9rem', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <li>✓ Non-accusatory evidence reporting</li>
+                      <li>✓ Source metadata preservation</li>
+                      <li>✓ Multi-factor liability scoring matrix</li>
+                    </ul>
+                  </div>
+                  <div style={{ width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Database size={80} color="var(--accent-blue)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 4: CTA (75-100%) */}
+            <div style={{
+              position: 'absolute',
+              transition: 'opacity 0.5s ease',
+              opacity: scrollProgress >= 0.75 ? 1 : 0,
+              pointerEvents: scrollProgress >= 0.75 ? 'auto' : 'none',
+            }}>
+              <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Ready for Investigation?</h2>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
+                Access the forensic command center to explore case intelligence, verify attribution chains, and review the algorithmic models.
+              </p>
+              <button
+                onClick={() => navigate('/app')}
+                className="animate-pulseGlow"
+                style={{
+                  backgroundColor: 'var(--accent-blue)',
+                  color: '#fff',
+                  padding: '1rem 3rem',
+                  borderRadius: '12px',
+                  fontSize: '1.2rem',
+                  fontWeight: 700,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  boxShadow: '0 10px 25px rgba(14, 165, 233, 0.4)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-3px)'}
+                onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                Access Command Center <Lock size={20} />
+              </button>
+            </div>
+
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 9. Security & Reliability */}
-      <section id="security" style={{ ...sectionWrapperStyle, backgroundColor: '#0c1322' }}>
-        <div style={sectionHeaderStyle}>
-          <div style={sectionEyebrowStyle}>ENTERPRISE GRADE</div>
-          <h2 style={sectionTitleStyle}>Security, Reliability & Air-Gap Ready</h2>
-          <p style={sectionSubtitleStyle}>
-            Engineered for high-security maritime defense, coast guard, and regulatory operations.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><Lock size={20} color="#38bdf8" /></div>
-            <h3 style={cardTitleStyle}>Offline & Air-Gapped Deployable</h3>
-            <p style={cardTextStyle}>
-              Fully operational without an external internet connection using local NetCDF ocean grids and archived AIS datasets.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><ShieldCheck size={20} color="#10b981" /></div>
-            <h3 style={cardTitleStyle}>Input Validation & Sanitization</h3>
-            <p style={cardTextStyle}>
-              Protection against path traversal, archive bombs, and malicious file uploads with strict size limits and MIME validation.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><Database size={20} color="#a855f7" /></div>
-            <h3 style={cardTitleStyle}>Deterministic Reproducibility</h3>
-            <p style={cardTextStyle}>
-              Fixed random seeds and recorded simulation parameters allow identical mathematical replay for court evidence.
-            </p>
-          </div>
-          <div style={cardStyle}>
-            <div style={iconBoxStyle}><FileCheck2 size={20} color="#fbbf24" /></div>
-            <h3 style={cardTitleStyle}>Cryptographic SHA-256 Hashes</h3>
-            <p style={cardTextStyle}>
-              Investigation bundles and report outputs are cryptographically sealed to ensure verifiable data integrity.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Call to Action */}
-      <section style={{
-        padding: '5rem 2rem',
-        maxWidth: '900px',
-        margin: '0 auto',
-        textAlign: 'center',
-      }}>
-        <div style={{
-          backgroundColor: '#111827',
-          border: '1px solid #1e293b',
-          borderRadius: '12px',
-          padding: '3.5rem 2.5rem',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-        }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#ffffff', marginBottom: '1rem' }}>
-            Access the Maritime Intelligence Workspace
-          </h2>
-          <p style={{ fontSize: '1rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto 2rem' }}>
-            Evaluate active marine pollution incidents, inspect satellite SAR slicks, simulate backward particle drift, and rank candidate vessel trajectories.
-          </p>
-          <button
-            onClick={() => navigate('/app')}
-            style={{
-              backgroundColor: '#0284c7',
-              color: '#ffffff',
-              border: 'none',
-              padding: '0.90rem 2.2rem',
-              borderRadius: '6px',
-              fontWeight: 700,
-              fontSize: '1rem',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 4px 20px rgba(2, 132, 199, 0.4)',
-            }}
-          >
-            Launch Platform <ArrowRight size={18} />
-          </button>
-        </div>
-      </section>
-
-      {/* 11. Footer */}
+      {/* Static Footer Section (Appears after scrolling past the tall container) */}
       <footer style={{
-        borderTop: '1px solid #1e293b',
-        backgroundColor: '#080d1a',
-        padding: '2.5rem 2rem',
-        fontSize: '0.80rem',
-        color: '#64748b',
+        backgroundColor: '#030712',
+        borderTop: '1px solid var(--border)',
+        padding: '3rem 2rem',
+        position: 'relative',
+        zIndex: 10,
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-        }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
           <div>
-            <strong style={{ color: '#cbd5e1' }}>Maritime Oil-Spill Attribution Intelligence</strong>
-            <div style={{ marginTop: '0.2rem' }}>
-              Decision Support System for Marine Pollution Forensic Investigation
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <Shield color="var(--text-muted)" size={20} />
+              <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-dim)' }}>
+                SIH26143 / DECISION SUPPORT
+              </span>
             </div>
+            <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', maxWidth: '400px', lineHeight: 1.5 }}>
+              This platform provides objective intelligence based on spatiotemporal and physical evidence models. It does not replace port state validation.
+            </p>
           </div>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <span style={{ color: '#94a3b8' }}>Version 0.1.0</span>
-            <span style={{ color: '#94a3b8' }}>Universal UTC Timestamps</span>
-            <span style={{ color: '#94a3b8' }}>WGS84 EPSG:4326</span>
+          
+          <div style={{ display: 'flex', gap: '3rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <strong style={{ color: '#fff', fontSize: '0.9rem' }}>Technology</strong>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>Sentinel-1 SAR</span>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>Lagrangian Advection</span>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>AIS Telemetry Fusion</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <strong style={{ color: '#fff', fontSize: '0.9rem' }}>Protocol</strong>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>Deterministic Processing</span>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>ISO 8601 UTC Time</span>
+              <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>Zero Fabrication</span>
+            </div>
           </div>
         </div>
       </footer>
@@ -621,96 +330,11 @@ export const LandingPage: React.FC = () => {
   );
 };
 
-// Internal reusable CSS objects
 const navLinkStyle: React.CSSProperties = {
   background: 'none',
-  border: 'none',
-  color: '#94a3b8',
-  cursor: 'pointer',
-  fontSize: '0.85rem',
+  color: 'var(--text-muted)',
+  fontSize: '0.95rem',
   fontWeight: 500,
-  padding: '0.25rem 0',
+  cursor: 'pointer',
+  transition: 'color 0.2s',
 };
-
-const sectionWrapperStyle: React.CSSProperties = {
-  padding: '4.5rem 2rem',
-  maxWidth: '1200px',
-  margin: '0 auto',
-};
-
-const sectionHeaderStyle: React.CSSProperties = {
-  textAlign: 'center',
-  marginBottom: '3rem',
-};
-
-const sectionEyebrowStyle: React.CSSProperties = {
-  fontSize: '0.72rem',
-  fontWeight: 700,
-  letterSpacing: '0.08em',
-  color: '#0284c7',
-  marginBottom: '0.5rem',
-};
-
-const sectionTitleStyle: React.CSSProperties = {
-  fontSize: '2rem',
-  fontWeight: 800,
-  letterSpacing: '-0.02em',
-  color: '#ffffff',
-  margin: '0 0 0.8rem',
-};
-
-const sectionSubtitleStyle: React.CSSProperties = {
-  fontSize: '1rem',
-  color: '#94a3b8',
-  maxWidth: '680px',
-  margin: '0 auto',
-};
-
-const cardStyle: React.CSSProperties = {
-  backgroundColor: '#111827',
-  border: '1px solid #1e293b',
-  borderRadius: '8px',
-  padding: '1.5rem',
-};
-
-const cardTitleStyle: React.CSSProperties = {
-  fontSize: '1.05rem',
-  fontWeight: 700,
-  color: '#f8fafc',
-  margin: '0.5rem 0 0.4rem',
-};
-
-const cardTextStyle: React.CSSProperties = {
-  fontSize: '0.85rem',
-  color: '#94a3b8',
-  lineHeight: 1.6,
-  margin: 0,
-};
-
-const iconBoxStyle: React.CSSProperties = {
-  width: '42px',
-  height: '42px',
-  borderRadius: '8px',
-  backgroundColor: '#1e293b',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: '0.85rem',
-};
-
-const bulletIconStyle: React.CSSProperties = {
-  width: '20px',
-  height: '20px',
-  borderRadius: '50%',
-  backgroundColor: '#0284c720',
-  color: '#38bdf8',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexShrink: 0,
-  marginTop: '0.2rem',
-};
-
-const CheckIcon = () => (
-  <span style={{ fontSize: '11px', fontWeight: 900 }}>✓</span>
-);

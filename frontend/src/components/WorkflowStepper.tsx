@@ -44,7 +44,7 @@ export const WorkflowStepper: React.FC<Props> = ({
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem 1.5rem',
       marginBottom: '1rem',

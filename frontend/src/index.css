@@ -1,17 +1,28 @@
 @import "leaflet/dist/leaflet.css";
 
 :root {
-  --bg-primary: #090e17;
-  --bg-secondary: #0f172a;
-  --bg-card: #1e293b;
-  --bg-card-hover: #273549;
-  --bg-card-border: #334155;
+  --bg-primary: #040914;
+  --bg-secondary: #0a1122;
+  --bg-card: #152238;
+  --bg-card-hover: #1e2e4a;
+  --bg-card-border: #2a3a5a;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(15, 23, 42, 0.4);
+  --glass-bg-hover: rgba(30, 41, 59, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-highlight: rgba(56, 189, 248, 0.25);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(16px);
+  --glass-panel: rgba(12, 19, 34, 0.65);
+
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --accent-cyan: #38bdf8;
-  --accent-blue: #0284c7;
+  --accent-blue: #0ea5e9;
   --accent-amber: #f59e0b;
+  
   --risk-very-high: #ef4444;
   --risk-high: #f97316;
   --risk-medium: #eab308;
@@ -35,6 +46,10 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  /* Add subtle background radial gradient for depth */
+  background-image: radial-gradient(circle at top right, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 #root {
@@ -48,7 +63,7 @@ button {
   border: none;
   border-radius: 6px;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:disabled {
@@ -61,6 +76,58 @@ button:disabled {
   padding: 0 1.25rem;
 }
 
+/* Glass Utility Classes */
+.glass-panel {
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-highlight);
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
@@ -68,16 +135,16 @@ button:disabled {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* Leaflet Dark Customizations */
@@ -88,13 +155,15 @@ button:disabled {
 }
 
 .leaflet-popup-content-wrapper {
-  background: #1e293b !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   color: #f8fafc !important;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .leaflet-popup-tip {
-  background: #1e293b !important;
+  background: rgba(15, 23, 42, 0.85) !important;
 }

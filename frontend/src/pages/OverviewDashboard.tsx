@@ -389,47 +389,56 @@ export const OverviewDashboard: React.FC = () => {
 };
 
 const metricCardStyle: React.CSSProperties = {
-  backgroundColor: '#0c1322',
-  border: '1px solid #1e293b',
-  borderRadius: '8px',
-  padding: '1rem 1.25rem',
+  backgroundColor: 'var(--glass-bg)',
+  backdropFilter: 'var(--glass-blur)',
+  WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
+  boxShadow: 'var(--glass-shadow)',
+  borderRadius: '12px',
+  padding: '1.25rem',
   display: 'flex',
   flexDirection: 'column',
   gap: '0.35rem',
+  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+  cursor: 'default',
 };
 
 const metricLabelStyle: React.CSSProperties = {
   fontSize: '0.68rem',
   fontWeight: 700,
   letterSpacing: '0.04em',
-  color: '#64748b',
+  color: 'var(--text-dim)',
 };
 
 const metricValueStyle: React.CSSProperties = {
-  fontSize: '1.65rem',
+  fontSize: '1.85rem',
   fontWeight: 800,
-  color: '#f8fafc',
+  color: '#ffffff',
   fontFamily: 'monospace',
+  textShadow: '0 2px 10px rgba(255,255,255,0.2)',
 };
 
 const metricSubStyle: React.CSSProperties = {
   fontSize: '0.72rem',
-  color: '#94a3b8',
+  color: 'var(--text-muted)',
 };
 
 const panelContainerStyle: React.CSSProperties = {
-  backgroundColor: '#0c1322',
-  border: '1px solid #1e293b',
-  borderRadius: '8px',
-  padding: '1.25rem',
+  backgroundColor: 'var(--glass-panel)',
+  backdropFilter: 'var(--glass-blur)',
+  WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
+  boxShadow: 'var(--glass-shadow)',
+  borderRadius: '12px',
+  padding: '1.5rem',
 };
 
 const providerRowStyle: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0.55rem 0.65rem',
-  backgroundColor: '#131b2e',
-  borderRadius: '4px',
-  border: '1px solid #1e293b',
+  padding: '0.65rem 0.85rem',
+  backgroundColor: 'rgba(0,0,0,0.2)',
+  borderRadius: '6px',
+  border: '1px solid var(--glass-border)',
 };

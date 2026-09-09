@@ -86,8 +86,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
       padding: '1rem',
     }}>
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '10px',
         width: '100%',
         maxWidth: '520px',
@@ -105,7 +105,7 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               height: '32px',
               borderRadius: '6px',
               backgroundColor: 'rgba(2, 132, 199, 0.15)',
-              border: '1px solid #0284c7',
+              border: '1px solid var(--glass-border)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -134,7 +134,7 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
         {error && (
           <div style={{
             backgroundColor: 'rgba(239, 68, 68, 0.12)',
-            border: '1px solid #ef4444',
+            border: '1px solid var(--glass-border)',
             color: '#f87171',
             padding: '0.6rem 0.85rem',
             borderRadius: '6px',
@@ -150,7 +150,7 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
         {success && (
           <div style={{
             backgroundColor: 'rgba(16, 185, 129, 0.12)',
-            border: '1px solid #10b981',
+            border: '1px solid var(--glass-border)',
             color: '#34d399',
             padding: '0.6rem 0.85rem',
             borderRadius: '6px',
@@ -166,8 +166,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
         {/* Active Session Info */}
         {user ? (
           <div style={{
-            backgroundColor: '#111827',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '8px',
             padding: '1rem',
             display: 'flex',
@@ -225,11 +225,11 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
                     style={{
                       fontSize: '0.62rem',
                       fontFamily: 'monospace',
-                      backgroundColor: '#1e293b',
+                      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
                       color: '#cbd5e1',
                       padding: '0.15rem 0.4rem',
                       borderRadius: '3px',
-                      border: '1px solid #334155',
+                      border: '1px solid var(--glass-border)',
                     }}
                   >
                     {p}
@@ -243,7 +243,7 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               disabled={loading}
               style={{
                 backgroundColor: 'rgba(239, 68, 68, 0.15)',
-                border: '1px solid #ef4444',
+                border: '1px solid var(--glass-border)',
                 color: '#f87171',
                 padding: '0.45rem',
                 borderRadius: '5px',
@@ -262,8 +262,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
           </div>
         ) : (
           <div style={{
-            backgroundColor: '#111827',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '6px',
             padding: '0.85rem',
             fontSize: '0.75rem',
@@ -284,8 +284,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               onClick={() => handleLogin('admin', 'Admin@Enterprise2026!')}
               disabled={loading}
               style={{
-                backgroundColor: '#111827',
-                border: '1px solid #f59e0b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#fbbf24',
                 padding: '0.55rem 0.4rem',
                 borderRadius: '5px',
@@ -307,8 +307,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               onClick={() => handleLogin('analyst', 'Analyst@Forensic2026!')}
               disabled={loading}
               style={{
-                backgroundColor: '#111827',
-                border: '1px solid #38bdf8',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#38bdf8',
                 padding: '0.55rem 0.4rem',
                 borderRadius: '5px',
@@ -330,8 +330,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               onClick={() => handleLogin('viewer', 'Viewer@Maritime2026!')}
               disabled={loading}
               style={{
-                backgroundColor: '#111827',
-                border: '1px solid #10b981',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#34d399',
                 padding: '0.55rem 0.4rem',
                 borderRadius: '5px',
@@ -364,8 +364,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               style={{
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#f8fafc',
                 padding: '0.4rem 0.65rem',
                 borderRadius: '4px',
@@ -380,8 +380,8 @@ export const UserAuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 color: '#f8fafc',
                 padding: '0.4rem 0.65rem',
                 borderRadius: '4px',

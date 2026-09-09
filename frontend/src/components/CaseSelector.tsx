@@ -28,7 +28,7 @@ export const CaseSelector: React.FC<Props> = ({
         style={{
           backgroundColor: '#0f172a',
           color: '#f8fafc',
-          border: '1px solid #334155',
+          border: '1px solid var(--glass-border)',
           padding: '0.35rem 0.75rem',
           borderRadius: '6px',
           fontSize: '0.85rem',

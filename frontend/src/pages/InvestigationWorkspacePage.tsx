@@ -363,8 +363,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
           width: '56px',
           height: '56px',
           borderRadius: '50%',
-          backgroundColor: '#131b2e',
-          border: '1px solid #1e293b',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+          border: '1px solid var(--glass-border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -461,8 +461,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
       {/* Dynamic Job Progress Bar */}
       {isRunningJob && jobProgress && (
         <div style={{
-          backgroundColor: '#0c1322',
-          border: '1px solid #0284c7',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '8px',
           padding: '0.85rem 1.25rem',
           display: 'flex',
@@ -478,7 +478,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
             </span>
           </div>
 
-          <div style={{ width: '100%', height: '6px', backgroundColor: '#1e293b', borderRadius: '3px', overflow: 'hidden' }}>
+          <div style={{ width: '100%', height: '6px', backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', borderRadius: '3px', overflow: 'hidden' }}>
             <div style={{
               width: `${jobProgress.pct}%`,
               height: '100%',
@@ -497,7 +497,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
       {toastMessage && (
         <div style={{
           backgroundColor: 'rgba(16, 185, 129, 0.15)',
-          border: '1px solid #10b981',
+          border: '1px solid var(--glass-border)',
           color: '#34d399',
           padding: '0.65rem 1rem',
           borderRadius: '6px',
@@ -514,7 +514,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
       {error && (
         <div style={{
           backgroundColor: 'rgba(239, 68, 68, 0.15)',
-          border: '1px solid #ef4444',
+          border: '1px solid var(--glass-border)',
           color: '#f87171',
           padding: '0.65rem 1rem',
           borderRadius: '6px',
@@ -619,8 +619,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
           padding: '1rem',
         }}>
           <div style={{
-            backgroundColor: '#0c1322',
-            border: '1px solid #1e293b',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '10px',
             width: '100%',
             maxWidth: '680px',
@@ -681,8 +681,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
 
             {comparisonResult && (
               <div style={{
-                backgroundColor: '#111827',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '6px',
                 padding: '1rem',
                 fontSize: '0.78rem',
@@ -754,8 +754,8 @@ export const InvestigationWorkspacePage: React.FC = () => {
 };
 
 const selectStyle: React.CSSProperties = {
-  backgroundColor: '#131b2e',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   color: '#f8fafc',
   padding: '0.35rem 0.65rem',
   borderRadius: '4px',

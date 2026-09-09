@@ -357,7 +357,7 @@ export const LiveMaritimePage: React.FC = () => {
       {toastMessage && (
         <div style={{
           backgroundColor: 'rgba(16, 185, 129, 0.2)',
-          border: '1px solid #10b981',
+          border: '1px solid var(--glass-border)',
           color: '#34d399',
           padding: '0.65rem 1rem',
           borderRadius: '6px',
@@ -372,8 +372,8 @@ export const LiveMaritimePage: React.FC = () => {
 
       {/* Top Filter Bar */}
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '8px',
         padding: '0.75rem 1.25rem',
         display: 'flex',
@@ -487,8 +487,8 @@ export const LiveMaritimePage: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '0.35rem',
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               color: '#94a3b8',
               borderRadius: '4px',
               padding: '0.35rem 0.65rem',
@@ -509,7 +509,7 @@ export const LiveMaritimePage: React.FC = () => {
         minHeight: '400px',
         borderRadius: '8px',
         overflow: 'hidden',
-        border: '1px solid #1e293b',
+        border: '1px solid var(--glass-border)',
         boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
       }}>
         <MapContainer
@@ -617,7 +617,7 @@ export const LiveMaritimePage: React.FC = () => {
             left: '50%',
             transform: 'translateX(-50%)',
             backgroundColor: 'rgba(15, 23, 42, 0.94)',
-            border: '1px solid #334155',
+            border: '1px solid var(--glass-border)',
             borderRadius: '8px',
             padding: '0.85rem 1.25rem',
             display: 'flex',
@@ -667,8 +667,8 @@ export const LiveMaritimePage: React.FC = () => {
       {/* Selected Vessel Telemetry & Identity Drawer */}
       {selectedVessel && (
         <div style={{
-          backgroundColor: '#0c1322',
-          border: '1px solid #1e293b',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '8px',
           padding: '1.25rem',
           display: 'flex',
@@ -734,8 +734,8 @@ export const LiveMaritimePage: React.FC = () => {
                   setIsProfileModalOpen(true);
                 }}
                 style={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                  border: '1px solid var(--glass-border)',
                   color: '#38bdf8',
                   padding: '0.5rem',
                   borderRadius: '6px',
@@ -782,10 +782,10 @@ export const LiveMaritimePage: React.FC = () => {
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '0.65rem',
-              backgroundColor: '#111827',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
               padding: '0.85rem',
               borderRadius: '6px',
-              border: '1px solid #1e293b',
+              border: '1px solid var(--glass-border)',
               fontSize: '0.78rem',
             }}>
               <div>
@@ -828,8 +828,8 @@ export const LiveMaritimePage: React.FC = () => {
 
             {/* AIS Data Quality & Transponder Continuity */}
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               fontSize: '0.78rem',
@@ -853,8 +853,8 @@ export const LiveMaritimePage: React.FC = () => {
 
             {/* Vessel Particulars */}
             <div style={{
-              backgroundColor: '#111827',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '6px',
               padding: '0.85rem',
               fontSize: '0.78rem',
@@ -888,8 +888,8 @@ export const LiveMaritimePage: React.FC = () => {
 };
 
 const selectStyle: React.CSSProperties = {
-  backgroundColor: '#131b2e',
-  border: '1px solid #1e293b',
+  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+  border: '1px solid var(--glass-border)',
   color: '#f8fafc',
   padding: '0.30rem 0.65rem',
   borderRadius: '4px',

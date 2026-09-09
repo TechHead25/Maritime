@@ -12,7 +12,7 @@ export const UncertaintyPanel: React.FC<Props> = ({
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem',
       marginBottom: '1rem',
@@ -29,7 +29,7 @@ export const UncertaintyPanel: React.FC<Props> = ({
         Estimated spill origins, drift paths, and attribution scores represent probabilistic evidence models and do <strong>not</strong> constitute an automated legal conclusion or accusation of liability.
       </p>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', fontSize: '0.75rem', color: '#cbd5e1', backgroundColor: '#1e293b', padding: '0.6rem 0.75rem', borderRadius: '6px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', fontSize: '0.75rem', color: '#cbd5e1', backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.6rem 0.75rem', borderRadius: '6px' }}>
         <div>
           <span style={{ color: 'var(--text-muted)' }}>Origin Uncertainty: </span>
           <strong style={{ color: 'var(--accent-cyan)' }}>±{uncertaintyRadiusKm.toFixed(2)} km (95% CI)</strong>

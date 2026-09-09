@@ -192,7 +192,7 @@ export const Dashboard: React.FC = () => {
       {toastMessage && (
         <div style={{
           backgroundColor: '#04785715',
-          border: '1px solid #10b981',
+          border: '1px solid var(--glass-border)',
           color: '#10b981',
           padding: '0.90rem 1.25rem',
           borderRadius: '8px',
@@ -223,7 +223,7 @@ export const Dashboard: React.FC = () => {
       {error && (
         <div style={{
           backgroundColor: '#ef444415',
-          border: '1px solid #ef4444',
+          border: '1px solid var(--glass-border)',
           color: '#f87171',
           padding: '1rem 1.25rem',
           borderRadius: '8px',
@@ -387,7 +387,7 @@ export const Dashboard: React.FC = () => {
                 />
               ) : (
                 <div style={{
-                  backgroundColor: '#1e293b',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
                   border: '1px dashed #334155',
                   borderRadius: '8px',
                   padding: '2rem 1.5rem',

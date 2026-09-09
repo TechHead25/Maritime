@@ -14,7 +14,7 @@ export const DataSourcesPanel: React.FC<Props> = ({
   return (
     <div style={{
       backgroundColor: '#0f172a',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem',
       marginBottom: '1rem',
@@ -48,7 +48,7 @@ export const DataSourcesPanel: React.FC<Props> = ({
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', fontSize: '0.78rem' }}>
         {/* SAR Satellite */}
-        <div style={{ backgroundColor: '#1e293b', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.sar_platform ? '#10b981' : '#ef4444'}` }}>
+        <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.sar_platform ? '#10b981' : '#ef4444'}` }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
             <span style={{ color: '#94a3b8', fontSize: '0.68rem', fontWeight: 600 }}>SAR RADAR IMAGERY</span>
             <span style={{ color: dataSources.sar_platform ? '#10b981' : '#ef4444', fontSize: '0.65rem', fontWeight: 700 }}>
@@ -61,7 +61,7 @@ export const DataSourcesPanel: React.FC<Props> = ({
         </div>
 
         {/* AIS Tracks */}
-        <div style={{ backgroundColor: '#1e293b', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.ais_provider !== false ? '#10b981' : '#ef4444'}` }}>
+        <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.ais_provider !== false ? '#10b981' : '#ef4444'}` }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
             <span style={{ color: '#94a3b8', fontSize: '0.68rem', fontWeight: 600 }}>AIS VESSEL TELEMETRY</span>
             <span style={{ color: dataSources.ais_provider !== false ? '#10b981' : '#ef4444', fontSize: '0.65rem', fontWeight: 700 }}>
@@ -74,7 +74,7 @@ export const DataSourcesPanel: React.FC<Props> = ({
         </div>
 
         {/* Ocean Hydrodynamics */}
-        <div style={{ backgroundColor: '#1e293b', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.hydrodynamic_model !== false ? '#38bdf8' : '#ef4444'}` }}>
+        <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.hydrodynamic_model !== false ? '#38bdf8' : '#ef4444'}` }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
             <span style={{ color: '#94a3b8', fontSize: '0.68rem', fontWeight: 600 }}>HYDRODYNAMIC CURRENTS</span>
             <span style={{ color: dataSources.hydrodynamic_model !== false ? '#38bdf8' : '#ef4444', fontSize: '0.65rem', fontWeight: 700 }}>
@@ -87,7 +87,7 @@ export const DataSourcesPanel: React.FC<Props> = ({
         </div>
 
         {/* Atmospheric Winds */}
-        <div style={{ backgroundColor: '#1e293b', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.meteorological_model !== false ? '#38bdf8' : '#ef4444'}` }}>
+        <div style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', padding: '0.65rem 0.85rem', borderRadius: '6px', borderLeft: `3px solid ${dataSources.meteorological_model !== false ? '#38bdf8' : '#ef4444'}` }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
             <span style={{ color: '#94a3b8', fontSize: '0.68rem', fontWeight: 600 }}>ATMOSPHERIC SURFACE WIND</span>
             <span style={{ color: dataSources.meteorological_model !== false ? '#38bdf8' : '#ef4444', fontSize: '0.65rem', fontWeight: 700 }}>

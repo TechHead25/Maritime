@@ -30,7 +30,7 @@ export const CandidateRanking: React.FC<Props> = ({
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem',
       marginBottom: '1rem',
@@ -49,7 +49,7 @@ export const CandidateRanking: React.FC<Props> = ({
       <div style={{
         fontSize: '0.72rem',
         color: '#cbd5e1',
-        backgroundColor: '#1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         padding: '0.45rem 0.75rem',
         borderRadius: '6px',
         marginBottom: '0.85rem',

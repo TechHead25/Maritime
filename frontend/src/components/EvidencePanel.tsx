@@ -53,7 +53,7 @@ export const EvidencePanel: React.FC<Props> = ({ score }) => {
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
-      border: '1px solid #1e293b',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '1.25rem',
       marginBottom: '1rem',
@@ -127,7 +127,7 @@ export const EvidencePanel: React.FC<Props> = ({ score }) => {
               <div
                 key={ev.id}
                 style={{
-                  backgroundColor: '#1e293b',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
                   borderLeft: `3px solid ${theme.border}`,
                   borderRadius: '0 6px 6px 0',
                   padding: '0.75rem 1rem',
@@ -180,22 +180,22 @@ export const EvidencePanel: React.FC<Props> = ({ score }) => {
                 {/* Structured Value Badges */}
                 <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', fontSize: '0.70rem' }}>
                   {ev.calculated_value && (
-                    <span style={{ backgroundColor: '#0f172a', color: '#38bdf8', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid #1e3a8a' }}>
+                    <span style={{ backgroundColor: '#0f172a', color: '#38bdf8', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                       <strong>Observed:</strong> {ev.calculated_value}
                     </span>
                   )}
                   {ev.threshold_used && (
-                    <span style={{ backgroundColor: '#0f172a', color: '#f59e0b', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid #78350f' }}>
+                    <span style={{ backgroundColor: '#0f172a', color: '#f59e0b', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                       <strong>Threshold:</strong> {ev.threshold_used}
                     </span>
                   )}
                   {ev.uncertainty && (
-                    <span style={{ backgroundColor: '#0f172a', color: '#a855f7', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid #581c87' }}>
+                    <span style={{ backgroundColor: '#0f172a', color: '#a855f7', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                       <strong>Uncertainty:</strong> {ev.uncertainty}
                     </span>
                   )}
                   {ev.source && (
-                    <span style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid #334155' }}>
+                    <span style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '0.15rem 0.45rem', borderRadius: '4px', border: '1px solid var(--glass-border)' }}>
                       <strong>Source:</strong> {ev.source}
                     </span>
                   )}

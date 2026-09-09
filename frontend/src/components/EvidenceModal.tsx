@@ -68,7 +68,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ score, onClose }) 
       <div style={{
         backgroundColor: 'var(--bg-secondary)',
         borderRadius: '12px',
-        border: '1px solid #334155',
+        border: '1px solid var(--glass-border)',
         maxWidth: '720px',
         width: '100%',
         maxHeight: '90vh',
@@ -107,7 +107,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ score, onClose }) 
           backgroundColor: '#0f172a',
           padding: '1rem',
           borderRadius: '8px',
-          border: '1px solid #1e293b',
+          border: '1px solid var(--glass-border)',
           marginBottom: '1.25rem'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -211,7 +211,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ score, onClose }) 
                 backgroundColor: '#0f172a',
                 padding: '0.85rem',
                 borderRadius: '8px',
-                border: '1px solid #1e293b',
+                border: '1px solid var(--glass-border)',
                 borderLeft: `4px solid ${theme.border}`
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -243,22 +243,22 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ score, onClose }) 
                 {/* Structured badges */}
                 <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginTop: '0.4rem', fontSize: '0.68rem' }}>
                   {item.calculated_value && (
-                    <span style={{ backgroundColor: '#1e293b', color: '#38bdf8', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                    <span style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', color: '#38bdf8', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
                       <strong>Observed:</strong> {item.calculated_value}
                     </span>
                   )}
                   {item.threshold_used && (
-                    <span style={{ backgroundColor: '#1e293b', color: '#f59e0b', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                    <span style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', color: '#f59e0b', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
                       <strong>Threshold:</strong> {item.threshold_used}
                     </span>
                   )}
                   {item.uncertainty && (
-                    <span style={{ backgroundColor: '#1e293b', color: '#a855f7', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                    <span style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', color: '#a855f7', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
                       <strong>Uncertainty:</strong> {item.uncertainty}
                     </span>
                   )}
                   {item.source && (
-                    <span style={{ backgroundColor: '#1e293b', color: '#94a3b8', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                    <span style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', color: '#94a3b8', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
                       <strong>Source:</strong> {item.source}
                     </span>
                   )}

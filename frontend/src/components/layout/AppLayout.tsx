@@ -67,8 +67,10 @@ export const AppLayout: React.FC = () => {
       {/* 1. Global Application Header */}
       <header style={{
         height: '56px',
-        backgroundColor: '#0c1322',
-        borderBottom: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)',
+        backdropFilter: 'var(--glass-blur)',
+        WebkitBackdropFilter: 'var(--glass-blur)',
+        borderBottom: '1px solid var(--glass-border)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -91,7 +93,7 @@ export const AppLayout: React.FC = () => {
               width: '32px',
               height: '32px',
               borderRadius: '6px',
-              backgroundColor: '#0284c7',
+              backgroundColor: 'var(--accent-blue)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -100,10 +102,10 @@ export const AppLayout: React.FC = () => {
               <Compass size={18} />
             </div>
             <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.01em' }}>
+              <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
                 Maritime Oil-Spill Attribution Intelligence
               </div>
-              <div style={{ fontSize: '0.65rem', color: '#64748b', letterSpacing: '0.04em' }}>
+              <div style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)', letterSpacing: '0.04em' }}>
                 FORENSIC DECISION SUPPORT WORKSPACE
               </div>
             </div>
@@ -140,14 +142,14 @@ export const AppLayout: React.FC = () => {
             alignItems: 'center',
             gap: '0.45rem',
             fontSize: '0.72rem',
-            color: '#94a3b8',
-            backgroundColor: '#131b2e',
-            border: '1px solid #1e293b',
+            color: 'var(--text-muted)',
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            border: '1px solid var(--glass-border)',
             padding: '0.25rem 0.65rem',
             borderRadius: '4px',
             fontFamily: 'monospace',
           }}>
-            <Clock size={13} color="#38bdf8" />
+            <Clock size={13} color="var(--accent-cyan)" />
             <span>{utcTime || 'UTC CLOCK'}</span>
           </div>
 
@@ -159,8 +161,8 @@ export const AppLayout: React.FC = () => {
               alignItems: 'center',
               gap: '0.55rem',
               padding: '0.25rem 0.65rem',
-              backgroundColor: '#131b2e',
-              border: '1px solid #1e293b',
+              backgroundColor: 'rgba(0,0,0,0.2)',
+              border: '1px solid var(--glass-border)',
               borderRadius: '4px',
               fontSize: '0.75rem',
               cursor: 'pointer',
@@ -172,7 +174,7 @@ export const AppLayout: React.FC = () => {
               width: '22px',
               height: '22px',
               borderRadius: '50%',
-              backgroundColor: user?.role === 'ADMIN' ? '#f59e0b' : user?.role === 'VIEWER' ? '#10b981' : '#0284c7',
+              backgroundColor: user?.role === 'ADMIN' ? 'var(--accent-amber)' : user?.role === 'VIEWER' ? '#10b981' : 'var(--accent-blue)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -187,7 +189,7 @@ export const AppLayout: React.FC = () => {
                 {user ? user.full_name : 'Forensic Analyst'}
               </span>
               <span style={{
-                color: user?.role === 'ADMIN' ? '#fbbf24' : user?.role === 'VIEWER' ? '#34d399' : '#38bdf8',
+                color: user?.role === 'ADMIN' ? '#fbbf24' : user?.role === 'VIEWER' ? '#34d399' : 'var(--accent-cyan)',
                 fontSize: '0.65rem',
                 fontWeight: 700,
                 marginLeft: '0.35rem',
@@ -207,8 +209,10 @@ export const AppLayout: React.FC = () => {
         {/* Sidebar */}
         <aside style={{
           width: isSidebarCollapsed ? '64px' : '230px',
-          backgroundColor: '#0c1322',
-          borderRight: '1px solid #1e293b',
+          backgroundColor: 'var(--glass-panel)',
+          backdropFilter: 'var(--glass-blur)',
+          WebkitBackdropFilter: 'var(--glass-blur)',
+          borderRight: '1px solid var(--glass-border)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',

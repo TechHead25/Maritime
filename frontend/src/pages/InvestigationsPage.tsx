@@ -104,10 +104,10 @@ export const InvestigationsPage: React.FC = () => {
         display: 'flex',
         gap: '1rem',
         alignItems: 'center',
-        backgroundColor: '#0c1322',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
         padding: '0.85rem 1rem',
         borderRadius: '8px',
-        border: '1px solid #1e293b',
+        border: '1px solid var(--glass-border)',
         flexWrap: 'wrap',
       }}>
         {/* Search */}
@@ -115,8 +115,8 @@ export const InvestigationsPage: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          backgroundColor: '#131b2e',
-          border: '1px solid #1e293b',
+          backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '6px',
           padding: '0.4rem 0.75rem',
           flex: '1 1 260px',
@@ -145,8 +145,8 @@ export const InvestigationsPage: React.FC = () => {
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             style={{
-              backgroundColor: '#131b2e',
-              border: '1px solid #1e293b',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               color: '#f8fafc',
               fontSize: '0.80rem',
               borderRadius: '6px',
@@ -167,7 +167,7 @@ export const InvestigationsPage: React.FC = () => {
           onClick={loadCases}
           style={{
             background: 'none',
-            border: '1px solid #1e293b',
+            border: '1px solid var(--glass-border)',
             color: '#94a3b8',
             padding: '0.4rem 0.75rem',
             borderRadius: '6px',
@@ -197,8 +197,8 @@ export const InvestigationsPage: React.FC = () => {
 
       {/* Investigations Table */}
       <div style={{
-        backgroundColor: '#0c1322',
-        border: '1px solid #1e293b',
+        backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        border: '1px solid var(--glass-border)',
         borderRadius: '8px',
         overflow: 'hidden',
       }}>
@@ -214,7 +214,7 @@ export const InvestigationsPage: React.FC = () => {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.80rem' }}>
               <thead>
-                <tr style={{ backgroundColor: '#111827', borderBottom: '1px solid #1e293b', color: '#64748b', textAlign: 'left' }}>
+                <tr style={{ backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)', borderBottom: '1px solid var(--glass-border)', color: '#64748b', textAlign: 'left' }}>
                   <th style={{ padding: '0.75rem 1rem' }}>CASE TITLE & ID</th>
                   <th style={{ padding: '0.75rem 1rem' }}>STATUS</th>
                   <th style={{ padding: '0.75rem 1rem' }}>INCIDENT DATE (UTC)</th>
@@ -233,7 +233,7 @@ export const InvestigationsPage: React.FC = () => {
                     <tr
                       key={c.id}
                       style={{
-                        borderBottom: '1px solid #1e293b',
+                        borderBottom: '1px solid var(--glass-border)',
                         transition: 'background-color 0.15s',
                       }}
                     >

@@ -101,8 +101,8 @@ export const ConsoleHeader: React.FC<Props> = ({
 
   return (
     <header style={{
-      backgroundColor: '#0c1322',
-      border: '1px solid #1e293b',
+      backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+      border: '1px solid var(--glass-border)',
       borderRadius: '8px',
       padding: '0.85rem 1.25rem',
       display: 'flex',
@@ -120,7 +120,7 @@ export const ConsoleHeader: React.FC<Props> = ({
             height: '34px',
             borderRadius: '6px',
             backgroundColor: 'rgba(2, 132, 199, 0.15)',
-            border: '1px solid #0284c7',
+            border: '1px solid var(--glass-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -135,8 +135,8 @@ export const ConsoleHeader: React.FC<Props> = ({
                 value={caseItem.id}
                 onChange={(e) => onSelectCase(e.target.value)}
                 style={{
-                  backgroundColor: '#131b2e',
-                  border: '1px solid #334155',
+                  backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+                  border: '1px solid var(--glass-border)',
                   color: '#f8fafc',
                   fontSize: '0.95rem',
                   fontWeight: 700,
@@ -250,8 +250,8 @@ export const ConsoleHeader: React.FC<Props> = ({
           <button
             onClick={onOpenCompare}
             style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
+              backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+              border: '1px solid var(--glass-border)',
               color: '#cbd5e1',
               padding: '0.42rem 0.85rem',
               borderRadius: '5px',
@@ -272,8 +272,8 @@ export const ConsoleHeader: React.FC<Props> = ({
         <button
           onClick={onOpenNewModal}
           style={{
-            backgroundColor: '#1e293b',
-            border: '1px solid #334155',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             color: '#cbd5e1',
             padding: '0.42rem 0.85rem',
             borderRadius: '5px',
@@ -294,8 +294,8 @@ export const ConsoleHeader: React.FC<Props> = ({
           onClick={onExportReport}
           disabled={isDownloadingReport}
           style={{
-            backgroundColor: '#1e293b',
-            border: '1px solid #0284c7',
+            backgroundColor: 'var(--glass-panel)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+            border: '1px solid var(--glass-border)',
             color: '#38bdf8',
             padding: '0.42rem 0.95rem',
             borderRadius: '5px',
