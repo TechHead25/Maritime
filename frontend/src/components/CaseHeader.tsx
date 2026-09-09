@@ -17,7 +17,14 @@ export const CaseHeader: React.FC<Props> = ({
   onRunInvestigation,
   isRunningPipeline,
 }) => {
-  const isSynthetic = caseItem.metadata?.synthetic ?? true;
+  const isRealtime = Boolean(
+    caseItem.metadata?.is_realtime ||
+    caseItem.metadata?.operational_mode === 'REAL_TIME_SURVEILLANCE' ||
+    caseItem.id.includes('autodetect') ||
+    caseItem.id.includes('real_time') ||
+    caseItem.title.includes('REAL-TIME')
+  );
+  const isSynthetic = !isRealtime && (caseItem.metadata?.synthetic ?? true);
   const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
 
   const getStatusBadge = (status: string) => {
@@ -61,16 +68,19 @@ export const CaseHeader: React.FC<Props> = ({
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.4rem',
-            backgroundColor: isSynthetic ? '#f59e0b15' : '#10b98115',
-            border: `1px solid ${isSynthetic ? '#f59e0b' : '#10b981'}`,
-            color: isSynthetic ? '#f59e0b' : '#10b981',
+            backgroundColor: isRealtime ? 'rgba(16, 185, 129, 0.18)' : (isSynthetic ? '#f59e0b15' : '#0284c715'),
+            border: `1px solid ${isRealtime ? '#10b981' : (isSynthetic ? '#f59e0b' : '#0284c7')}`,
+            color: isRealtime ? '#34d399' : (isSynthetic ? '#f59e0b' : '#38bdf8'),
             fontSize: '0.70rem',
             fontWeight: 700,
             padding: '0.15rem 0.55rem',
             borderRadius: '4px',
             letterSpacing: '0.04em',
           }}>
-            {isSynthetic ? '⚠️ SYNTHETIC BENCHMARK DATASET' : '🛰️ HISTORICAL SENSOR DATASET'}
+            {isRealtime && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981', boxShadow: '0 0 6px #10b981' }} />}
+            {isRealtime
+              ? '🟢 REAL-TIME OPERATIONAL SENSOR'
+              : (isSynthetic ? '⚠️ SYNTHETIC BENCHMARK DATASET' : '🛰️ HISTORICAL SENSOR DATASET')}
           </span>
 
           <span style={{

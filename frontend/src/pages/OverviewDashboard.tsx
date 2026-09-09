@@ -211,7 +211,14 @@ export const OverviewDashboard: React.FC = () => {
                 <tbody>
                   {cases.slice(0, 5).map((c) => {
                     const isCompleted = c.status === 'ATTRIBUTION_COMPLETED';
-                    const isSynthetic = c.metadata?.synthetic === true;
+                    const isRealtime = Boolean(
+                      c.metadata?.is_realtime ||
+                      c.metadata?.operational_mode === 'REAL_TIME_SURVEILLANCE' ||
+                      c.id.includes('autodetect') ||
+                      c.id.includes('real_time') ||
+                      c.title.includes('REAL-TIME')
+                    );
+                    const isSynthetic = !isRealtime && (c.metadata?.synthetic === true);
 
                     return (
                       <tr
@@ -240,11 +247,19 @@ export const OverviewDashboard: React.FC = () => {
                         </td>
                         <td style={{ padding: '0.65rem 0.75rem' }}>
                           <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
                             fontSize: '0.68rem',
-                            fontWeight: 600,
-                            color: isSynthetic ? '#fbbf24' : '#38bdf8',
+                            fontWeight: 700,
+                            color: isRealtime ? '#34d399' : (isSynthetic ? '#fbbf24' : '#38bdf8'),
+                            backgroundColor: isRealtime ? 'rgba(16, 185, 129, 0.15)' : (isSynthetic ? 'rgba(245, 158, 11, 0.12)' : 'rgba(56, 189, 248, 0.12)'),
+                            border: `1px solid ${isRealtime ? 'rgba(16, 185, 129, 0.35)' : (isSynthetic ? 'rgba(245, 158, 11, 0.3)' : 'rgba(56, 189, 248, 0.25)')}`,
+                            padding: '0.15rem 0.45rem',
+                            borderRadius: '4px',
                           }}>
-                            {isSynthetic ? 'BENCHMARK' : 'HISTORICAL SENSOR'}
+                            {isRealtime && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981', boxShadow: '0 0 6px #10b981' }} />}
+                            {isRealtime ? 'REAL-TIME SENSOR' : (isSynthetic ? 'BENCHMARK' : 'HISTORICAL SENSOR')}
                           </span>
                         </td>
                         <td style={{ padding: '0.65rem 0.75rem', textAlign: 'right' }}>

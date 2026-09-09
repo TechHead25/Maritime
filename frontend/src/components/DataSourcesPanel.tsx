@@ -3,11 +3,13 @@ import React from 'react';
 interface Props {
   dataSources?: Record<string, any>;
   isSynthetic?: boolean;
+  isRealtime?: boolean;
 }
 
 export const DataSourcesPanel: React.FC<Props> = ({
   dataSources = {},
   isSynthetic = false,
+  isRealtime = false,
 }) => {
   return (
     <div style={{
@@ -30,13 +32,17 @@ export const DataSourcesPanel: React.FC<Props> = ({
         <span style={{
           fontSize: '0.70rem',
           fontWeight: 700,
-          color: isSynthetic ? '#f59e0b' : '#10b981',
-          backgroundColor: isSynthetic ? '#f59e0b15' : '#10b98115',
-          border: `1px solid ${isSynthetic ? '#f59e0b40' : '#10b98140'}`,
+          color: isRealtime ? '#34d399' : (isSynthetic ? '#f59e0b' : '#38bdf8'),
+          backgroundColor: isRealtime ? 'rgba(16, 185, 129, 0.15)' : (isSynthetic ? '#f59e0b15' : '#0284c715'),
+          border: `1px solid ${isRealtime ? '#10b981' : (isSynthetic ? '#f59e0b40' : '#0284c740')}`,
           padding: '0.15rem 0.5rem',
           borderRadius: '4px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.35rem',
         }}>
-          {isSynthetic ? 'SYNTHETIC BENCHMARK' : 'HISTORICAL SENSOR DATA'}
+          {isRealtime && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981', boxShadow: '0 0 6px #10b981' }} />}
+          {isRealtime ? 'REAL-TIME OPERATIONAL SENSOR' : (isSynthetic ? 'SYNTHETIC BENCHMARK' : 'HISTORICAL SENSOR DATA')}
         </span>
       </div>
 

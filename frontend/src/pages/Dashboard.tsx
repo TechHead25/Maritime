@@ -357,10 +357,24 @@ export const Dashboard: React.FC = () => {
                 <ReleaseWindowPanel releaseWindow={primaryReleaseWindow} />
               </div>
 
-              <DataSourcesPanel
-                dataSources={details.environment}
-                isSynthetic={details.case.metadata?.synthetic ?? false}
-              />
+              {(() => {
+                const isRealtime = Boolean(
+                  details.case.metadata?.is_realtime ||
+                  details.case.metadata?.operational_mode === 'REAL_TIME_SURVEILLANCE' ||
+                  details.case.id.includes('autodetect') ||
+                  details.case.id.includes('real_time') ||
+                  details.case.title.includes('REAL-TIME')
+                );
+                const isSynthetic = !isRealtime && (details.case.metadata?.synthetic ?? false);
+
+                return (
+                  <DataSourcesPanel
+                    dataSources={details.environment}
+                    isSynthetic={isSynthetic}
+                    isRealtime={isRealtime}
+                  />
+                );
+              })()}
             </div>
 
             {/* Right Column: Candidate Leaderboard, Sub-Scores & Evidence Chain */}

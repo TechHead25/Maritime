@@ -347,13 +347,24 @@ class SatelliteWatcherService:
                 case_id = created_case.id
 
                 # Tag metadata
-                if created_case.metadata:
+                if created_case.metadata is not None:
                     created_case.metadata["auto_detected"] = True
                     created_case.metadata["surveillance_mode"] = True
                     created_case.metadata["is_realtime"] = True
                     created_case.metadata["operational_mode"] = "REAL_TIME_SURVEILLANCE"
                     created_case.metadata["sector_id"] = sector.id
                     created_case.metadata["satellite_pass_utc"] = incident_time
+                    # Persist metadata to disk
+                    case_file_path = self._case_creation.base_cases_dir / case_id / "case.json"
+                    if case_file_path.exists():
+                        try:
+                            with open(case_file_path, "r", encoding="utf-8") as cf:
+                                case_raw = json.load(cf)
+                            case_raw["metadata"] = created_case.metadata
+                            with open(case_file_path, "w", encoding="utf-8") as cf:
+                                json.dump(case_raw, cf, indent=2)
+                        except Exception as ce:
+                            logger.warning(f"Could not persist metadata to {case_file_path}: {ce}")
 
                 # 2. Automatically execute 6-stage forensic investigation pipeline
                 logger.info(f"Auto-triggering full forensic pipeline for auto-detected case '{case_id}'...")
