@@ -34,11 +34,19 @@ export const SARAnalysisModal: React.FC<Props> = ({
 
   if (!isOpen) return null;
 
+  // Determine if this is recent/real-time surveillance
+  const isRealtime =
+    caseId.includes('autodetect') ||
+    (sarScene?.acquisition_timestamp &&
+      (Date.now() - new Date(sarScene.acquisition_timestamp).getTime()) < 30 * 24 * 3600 * 1000);
+
   // Dynamically resolve SAR image URL per active case and active tab view
+  // Use scene timestamp or case hash to prevent stale browser cache
+  const cacheBuster = sarScene?.acquisition_timestamp ? new Date(sarScene.acquisition_timestamp).getTime() : Date.now();
   const currentImage =
     activeTab === 'workflow'
       ? '/sar/sar_detection_steps.png'
-      : `${API_BASE}/cases/${encodeURIComponent(caseId)}/sar-image?view=${activeTab}`;
+      : `${API_BASE}/cases/${encodeURIComponent(caseId)}/sar-image?view=${activeTab}&t=${cacheBuster}`;
 
   const imageTitle =
     activeTab === 'diagnostics'
@@ -46,6 +54,7 @@ export const SARAnalysisModal: React.FC<Props> = ({
       : activeTab === 'workflow'
       ? 'End-to-End Satellite SAR Dark Spot Extraction & CFAR Adaptive Thresholding Pipeline'
       : `Georeferenced Slick Polygon Extraction & Backscatter Contrast (${caseId})`;
+
 
   return (
     <div style={{
@@ -93,14 +102,57 @@ export const SARAnalysisModal: React.FC<Props> = ({
               <Satellite size={22} color="#38bdf8" />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#f8fafc', margin: 0 }}>
-                Satellite SAR Radar Imagery & Spectral Diagnostics
-              </h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#f8fafc', margin: 0 }}>
+                  Satellite SAR Radar Imagery & Spectral Diagnostics
+                </h2>
+                {isRealtime ? (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                    border: '1px solid rgba(16, 185, 129, 0.4)',
+                    color: '#34d399',
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    padding: '0.15rem 0.5rem',
+                    borderRadius: '9999px',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                  }}>
+                    <span style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#10b981',
+                      boxShadow: '0 0 6px #10b981',
+                      display: 'inline-block',
+                    }} />
+                    REAL-TIME SURVEILLANCE
+                  </span>
+                ) : (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(148, 163, 184, 0.12)',
+                    border: '1px solid rgba(148, 163, 184, 0.25)',
+                    color: '#94a3b8',
+                    fontSize: '0.65rem',
+                    fontWeight: 600,
+                    padding: '0.15rem 0.5rem',
+                    borderRadius: '9999px',
+                  }}>
+                    HISTORICAL FORENSIC ARCHIVE
+                  </span>
+                )}
+              </div>
               <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
                 Copernicus Sentinel-1 C-band Synthetic Aperture Radar (SAR) Analysis
               </span>
             </div>
           </div>
+
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <a

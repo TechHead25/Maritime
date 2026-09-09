@@ -102,10 +102,21 @@ def test_api_surveillance_alerts(test_client):
 
 
 def test_api_surveillance_scan_now(test_client):
-    """Test POST /api/surveillance/scan-now endpoint triggers a synchronous sweep."""
+    """Test POST /api/surveillance/scan-now endpoint triggers a synchronous sweep and produces real-time alerts."""
     response = test_client.post("/api/surveillance/scan-now", json={"sector_id": "ennore_chennai"})
     assert response.status_code == 200
     data = response.json()
     assert "status" in data
     assert data["status"] in ["COMPLETED", "SKIPPED"]
     assert data["sectors_scanned"] == 1
+    if data["spills_detected"] > 0:
+        alert = data["alerts"][0]
+        assert "alert_id" in alert
+        assert alert["sector_id"] == "ennore_chennai"
+        assert "Operational" in alert["satellite_platform"]
+        # Verify image endpoint serves valid PNG for auto-detected case
+        case_id = alert["case_id"]
+        img_resp = test_client.get(f"/api/cases/{case_id}/sar-image?view=diagnostics")
+        assert img_resp.status_code == 200
+        assert img_resp.headers["content-type"] == "image/png"
+
