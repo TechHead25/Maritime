@@ -124,7 +124,7 @@ export const LandingPage: React.FC = () => {
           
           <video
             ref={videoRef}
-            src="https://cdn.pixabay.com/video/2020/05/25/40141-424783353_large.mp4" 
+            src="https://images-assets.nasa.gov/video/GSFC_20161212_Ocean_m12456_Heat/GSFC_20161212_Ocean_m12456_Heat~large.mp4" 
             muted
             playsInline
             preload="auto"
