@@ -112,6 +112,9 @@ class CaseService:
             if not (c.metadata and c.metadata.get("synthetic"))
             and not c.id.startswith("demo-")
             and not c.id.startswith("demo_")
+            and not any(test_prefix in c.id.lower() for test_prefix in (
+                "test", "mock", "corrupt", "unanalyzed", "malicious", "automated_dynamic", "e2e_dynamic"
+            ))
         ]
 
     def get_case(self, case_id: str) -> Optional[InvestigationCase]:

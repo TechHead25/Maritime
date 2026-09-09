@@ -58,6 +58,7 @@ class CaseCreationService:
         max_lat: float = 10.0,
         center_lon: Optional[float] = None,
         center_lat: Optional[float] = None,
+        case_id: Optional[str] = None,
         ais_filename: Optional[str] = None,
         ais_content: Optional[bytes] = None,
         sar_filename: Optional[str] = None,
@@ -92,8 +93,9 @@ class CaseCreationService:
             incident_dt = datetime.now(timezone.utc)
 
         # 3. Generate clean case_id & folder
-        slug = re.sub(r"[^a-zA-Z0-9_]", "_", title.lower().strip())[:30]
-        case_id = f"case_{slug}_{incident_dt.strftime('%Y%m%d')}_{uuid.uuid4().hex[:6]}"
+        if not case_id:
+            slug = re.sub(r"[^a-zA-Z0-9_]", "_", title.lower().strip())[:30]
+            case_id = f"case_{slug}_{incident_dt.strftime('%Y%m%d')}_{uuid.uuid4().hex[:6]}"
         case_dir = self.base_cases_dir / case_id
         uploads_dir = case_dir / "uploads"
         uploads_dir.mkdir(parents=True, exist_ok=True)

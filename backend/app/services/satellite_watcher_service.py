@@ -345,6 +345,7 @@ class SatelliteWatcherService:
                     max_lat=sector.max_lat,
                     center_lon=center_lon,
                     center_lat=center_lat,
+                    case_id=existing_case_id,
                 )
                 case_id = created_case.id
 
