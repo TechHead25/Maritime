@@ -75,9 +75,12 @@ export const LandingPage: React.FC = () => {
       transform: `translateY(${translateY}px) scale(${opacity === 1 ? 1 : 0.98})`,
       pointerEvents: opacity > 0.5 ? 'auto' : 'none',
       position: 'absolute',
-      transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
-      width: '100%',
+      top: 0,
       left: 0,
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center',
+      transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -85,7 +88,7 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-main)', minHeight: '100vh', overflow: 'hidden', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-main)', minHeight: '100vh', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       
       {/* Top Status Banner */}
       <div style={{
