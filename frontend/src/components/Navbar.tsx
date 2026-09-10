@@ -20,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ health, loadingHealth, errorHeal
         alignItems: 'center'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '32px', mixBlendMode: 'screen' }} />
+          <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '32px' }} />
           <div>
             <h1 style={{ fontSize: '1.15rem', fontWeight: '700', letterSpacing: '-0.02em' }}>
               ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution

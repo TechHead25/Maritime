@@ -137,8 +137,8 @@ export const LandingPage: React.FC = () => {
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-          <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '36px', mixBlendMode: 'screen' }} />
-          <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '22px', mixBlendMode: 'screen' }} />
+          <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '36px' }} />
+          <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '22px' }} />
         </div>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <div style={{ display: 'none', gap: '1.5rem' }}>
@@ -419,8 +419,8 @@ export const LandingPage: React.FC = () => {
           {/* Brand Column */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '42px', mixBlendMode: 'screen' }} />
-              <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '26px', mixBlendMode: 'screen' }} />
+              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '42px' }} />
+              <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '26px' }} />
             </div>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.95rem', maxWidth: '350px', lineHeight: 1.6, marginBottom: '1.5rem' }}>
               Advanced spatiotemporal analytics platform for historical maritime oil-spill forensic investigations. Built for accuracy, transparency, and scientific integrity.
