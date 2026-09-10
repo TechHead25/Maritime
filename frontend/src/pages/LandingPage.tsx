@@ -142,9 +142,9 @@ export const LandingPage: React.FC = () => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '0.05em', lineHeight: 1 }}>
-              MARITIME<span style={{ color: 'var(--accent-cyan)' }}>_OIL</span>
+              ORCA
             </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.1em' }}>INTELLIGENCE PLATFORM</span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>RECONNAISSANCE & CLASSIFICATION</span>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
@@ -428,7 +428,7 @@ export const LandingPage: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
               <Shield color="var(--accent-blue)" size={24} />
               <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '0.05em', color: '#fff' }}>
-                MARITIME<span style={{ color: 'var(--accent-cyan)' }}>_OIL</span>
+                ORCA
               </span>
             </div>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.95rem', maxWidth: '350px', lineHeight: 1.6, marginBottom: '1.5rem' }}>

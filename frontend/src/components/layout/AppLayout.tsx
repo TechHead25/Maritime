@@ -103,7 +103,7 @@ export const AppLayout: React.FC = () => {
             </div>
             <div>
               <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
-                Maritime Oil-Spill Attribution Intelligence
+                ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
               </div>
               <div style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)', letterSpacing: '0.04em' }}>
                 FORENSIC DECISION SUPPORT WORKSPACE

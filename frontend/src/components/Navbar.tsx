@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ health, loadingHealth, errorHeal
           </div>
           <div>
             <h1 style={{ fontSize: '1.15rem', fontWeight: '700', letterSpacing: '-0.02em' }}>
-              Maritime Oil-Spill Attribution Intelligence
+              ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
             </h1>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
               Maritime Environmental Intelligence & Forensic Decision Support

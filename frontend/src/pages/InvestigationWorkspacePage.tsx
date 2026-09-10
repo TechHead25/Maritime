@@ -195,7 +195,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
   // Handle Left Navigation clicks to orchestrate sub-views
   const handleSelectSection = (sec: ConsoleNavSection) => {
     setActiveSection(sec);
-    if (sec === 'overview') {
+    if (sec === 'overview' || sec === 'environmental' || sec === 'drift' || sec === 'origin' || sec === 'provenance') {
       setSelectedSlick(null);
       setSelectedVessel(null);
       setSelectedCandidateScore(null);
@@ -205,7 +205,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
         setSelectedVessel(null);
         setSelectedCandidateScore(null);
       }
-    } else if (sec === 'vessels' || sec === 'attribution') {
+    } else if (sec === 'vessels' || sec === 'attribution' || sec === 'evidence' || sec === 'uncertainty') {
       if (details?.attribution_scores && details.attribution_scores.length > 0) {
         setSelectedCandidateScore(details.attribution_scores[0]);
         setSelectedSlick(null);
@@ -591,6 +591,7 @@ export const InvestigationWorkspacePage: React.FC = () => {
         {/* Right Column: Dynamic Intelligence Panel */}
         <RightIntelligencePanel
           details={details}
+          activeSection={activeSection}
           selectedSlick={selectedSlick}
           selectedVessel={selectedVessel}
           selectedCandidateScore={selectedCandidateScore}

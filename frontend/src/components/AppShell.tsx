@@ -43,7 +43,7 @@ export const AppShell: React.FC<Props> = ({
             </div>
             <div>
               <div style={{ fontSize: '1rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.01em' }}>
-                Maritime Oil-Spill Attribution Intelligence
+                ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
               </div>
               <div style={{ fontSize: '0.7rem', color: 'var(--accent-cyan)', fontWeight: 500 }}>
                 Maritime Environmental Intelligence & Forensic Decision Support
@@ -96,7 +96,7 @@ export const AppShell: React.FC<Props> = ({
         color: 'var(--text-muted)',
         textAlign: 'center',
       }}>
-        Maritime Oil-Spill Attribution Intelligence • Maritime Environmental Intelligence & Forensic Decision Support
+        ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution • Maritime Environmental Intelligence & Forensic Decision Support
       </footer>
     </div>
   );

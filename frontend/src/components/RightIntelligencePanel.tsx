@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Shield,
@@ -26,6 +26,7 @@ export type IntelligenceViewMode = 'summary' | 'slick' | 'vessel' | 'candidate';
 
 interface Props {
   details: CaseDetails | null;
+  activeSection?: string;
   selectedSlick: SlickDetection | null;
   selectedVessel: VesselTrack | null;
   selectedCandidateScore: AttributionScore | null;
@@ -38,6 +39,7 @@ interface Props {
 
 export const RightIntelligencePanel: React.FC<Props> = ({
   details,
+  activeSection,
   selectedSlick,
   selectedVessel,
   selectedCandidateScore,
@@ -51,6 +53,16 @@ export const RightIntelligencePanel: React.FC<Props> = ({
   const [activeEvidenceTab, setActiveEvidenceTab] = useState<'breakdown' | 'evidence' | 'uncertainty'>('breakdown');
   const [profileModalMmsi, setProfileModalMmsi] = useState<string | null>(null);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (activeSection === 'evidence') {
+      setActiveEvidenceTab('evidence');
+    } else if (activeSection === 'uncertainty') {
+      setActiveEvidenceTab('uncertainty');
+    } else if (activeSection === 'attribution' || activeSection === 'vessels') {
+      setActiveEvidenceTab('breakdown');
+    }
+  }, [activeSection]);
 
   // Determine current active intelligence view mode
   let mode: IntelligenceViewMode = 'summary';
