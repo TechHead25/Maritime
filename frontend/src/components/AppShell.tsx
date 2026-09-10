@@ -27,20 +27,7 @@ export const AppShell: React.FC<Props> = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Brand / Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '6px',
-              backgroundColor: 'var(--accent-blue)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-              fontSize: '1.1rem',
-              fontWeight: 800,
-            }}>
-              ⚓
-            </div>
+            <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '32px', mixBlendMode: 'screen' }} />
             <div>
               <div style={{ fontSize: '1rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.01em' }}>
                 ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution

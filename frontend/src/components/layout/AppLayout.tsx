@@ -89,24 +89,15 @@ export const AppLayout: React.FC = () => {
               cursor: 'pointer',
             }}
           >
-            <div style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '6px',
-              backgroundColor: 'var(--accent-blue)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-            }}>
-              <Compass size={18} />
-            </div>
-            <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
-                ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
-              </div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)', letterSpacing: '0.04em' }}>
-                FORENSIC DECISION SUPPORT WORKSPACE
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '28px', mixBlendMode: 'screen' }} />
+              <div>
+                <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
+                  ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
+                </div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)', letterSpacing: '0.04em' }}>
+                  FORENSIC DECISION SUPPORT WORKSPACE
+                </div>
               </div>
             </div>
           </div>

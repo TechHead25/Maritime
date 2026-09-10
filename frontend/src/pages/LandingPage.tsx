@@ -137,15 +137,8 @@ export const LandingPage: React.FC = () => {
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-          <div style={{ padding: '0.4rem', backgroundColor: 'var(--accent-blue)', borderRadius: '8px' }}>
-            <Shield color="#fff" size={20} />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '0.05em', lineHeight: 1 }}>
-              ORCA
-            </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>RECONNAISSANCE & CLASSIFICATION</span>
-          </div>
+          <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '36px', mixBlendMode: 'screen' }} />
+          <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '22px', mixBlendMode: 'screen' }} />
         </div>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <div style={{ display: 'none', gap: '1.5rem' }}>
@@ -426,10 +419,8 @@ export const LandingPage: React.FC = () => {
           {/* Brand Column */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-              <Shield color="var(--accent-blue)" size={24} />
-              <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '0.05em', color: '#fff' }}>
-                ORCA
-              </span>
+              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '42px', mixBlendMode: 'screen' }} />
+              <img src="/orca-type.png" alt="ORCA Typography" style={{ height: '26px', mixBlendMode: 'screen' }} />
             </div>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.95rem', maxWidth: '350px', lineHeight: 1.6, marginBottom: '1.5rem' }}>
               Advanced spatiotemporal analytics platform for historical maritime oil-spill forensic investigations. Built for accuracy, transparency, and scientific integrity.
