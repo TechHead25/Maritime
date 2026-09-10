@@ -7,6 +7,7 @@ export const LandingPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [videoDuration, setVideoDuration] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Scroll-based Video Scrubbing Effect
   useEffect(() => {
@@ -49,7 +50,7 @@ export const LandingPage: React.FC = () => {
   }, [videoDuration]);
 
   // Helper function to calculate smooth opacity for sections
-  const getSectionStyles = (start: number, end: number, current: number) => {
+  const getSectionStyles = (start: number, end: number, current: number): React.CSSProperties => {
     const fadeZone = 0.05; // 5% of scroll for fading in/out
     let opacity = 0;
     let translateY = 20; // start slightly lower
@@ -75,13 +76,13 @@ export const LandingPage: React.FC = () => {
     return {
       opacity,
       transform: `translateY(${translateY}px)`,
-      pointerEvents: opacity > 0.5 ? 'auto' : 'none' as const,
-      position: 'absolute' as const,
+      pointerEvents: opacity > 0.5 ? 'auto' : 'none',
+      position: 'absolute',
       transition: 'opacity 0.1s linear, transform 0.1s linear',
       width: '100%',
       left: 0,
       display: 'flex',
-      flexDirection: 'column' as const,
+      flexDirection: 'column',
       alignItems: 'center',
     };
   };
