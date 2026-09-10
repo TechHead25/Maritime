@@ -51,23 +51,23 @@ export const LandingPage: React.FC = () => {
 
   // Helper function to calculate smooth opacity for sections
   const getSectionStyles = (start: number, end: number, current: number): React.CSSProperties => {
-    const fadeZone = 0.05; // 5% of scroll for fading in/out
+    const fadeZone = 0.08; // 8% of scroll for fading in/out
     let opacity = 0;
-    let translateY = 20; // start slightly lower
+    let translateY = 30; // start slightly lower
 
-    if (current >= start && current <= end) {
-      if (current < start + fadeZone) {
-        // Fading in
-        const ratio = (current - start) / fadeZone;
+    if (current >= start - fadeZone && current <= end + fadeZone) {
+      if (current < start) {
+        // Fading in (scrolling down into it)
+        const ratio = 1 - (start - current) / fadeZone;
         opacity = ratio;
-        translateY = 20 * (1 - ratio);
-      } else if (current > end - fadeZone) {
-        // Fading out
-        const ratio = (end - current) / fadeZone;
+        translateY = 30 * (1 - ratio);
+      } else if (current > end) {
+        // Fading out (scrolling down past it)
+        const ratio = 1 - (current - end) / fadeZone;
         opacity = ratio;
-        translateY = -20 * (1 - ratio);
+        translateY = -30 * (1 - ratio); // move up as it fades out
       } else {
-        // Fully visible
+        // Fully visible in the active zone
         opacity = 1;
         translateY = 0;
       }
@@ -78,7 +78,7 @@ export const LandingPage: React.FC = () => {
       transform: `translateY(${translateY}px)`,
       pointerEvents: opacity > 0.5 ? 'auto' : 'none',
       position: 'absolute',
-      transition: 'opacity 0.1s linear, transform 0.1s linear',
+      transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
       width: '100%',
       left: 0,
       display: 'flex',
@@ -138,7 +138,7 @@ export const LandingPage: React.FC = () => {
       </nav>
 
       {/* Main Scroll Scrubbing Container */}
-      <div ref={containerRef} style={{ height: '400vh', position: 'relative' }}>
+      <div ref={containerRef} style={{ height: '600vh', position: 'relative' }}>
         
         {/* Sticky Video Background */}
         <div style={{
@@ -190,8 +190,8 @@ export const LandingPage: React.FC = () => {
             textAlign: 'center',
           }}>
             
-            {/* Slide 1: Hero (0-25%) */}
-            <div style={getSectionStyles(0, 0.25, scrollProgress)}>
+            {/* Slide 1: Hero (0.0 to 0.15) */}
+            <div style={getSectionStyles(0, 0.15, scrollProgress)}>
               <div style={{
                 display: 'inline-block',
                 padding: '0.4rem 1rem',
@@ -219,8 +219,8 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Slide 2: Pipeline (25-50%) */}
-            <div style={getSectionStyles(0.25, 0.50, scrollProgress)}>
+            {/* Slide 2: Pipeline (0.20 to 0.35) */}
+            <div style={getSectionStyles(0.20, 0.35, scrollProgress)}>
               <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', textShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>The Scientific Engine</h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 3rem' }}>
                 Multi-factor data fusion bridging SAR backscatter observations with hydrodynamic particle modeling.
@@ -251,8 +251,31 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Slide 3: Evidence & UI (50-75%) */}
-            <div style={getSectionStyles(0.50, 0.75, scrollProgress)}>
+            {/* Slide 3: Global Satellite Coverage (0.40 to 0.55) */}
+            <div style={getSectionStyles(0.40, 0.55, scrollProgress)}>
+              <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '2rem' }}>Global Satellite Integrations</h2>
+              <div className="glass-panel" style={{ padding: '2.5rem', maxWidth: '900px', margin: '0 auto', textAlign: 'left', display: 'flex', gap: '3rem', alignItems: 'center' }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1rem' }}>Multi-Constellation Support</h3>
+                  <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
+                    Seamlessly ingest historical Synthetic Aperture Radar (SAR) imagery from Copernicus Sentinel-1 and other orbital platforms. The system supports full-resolution GRD products.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
+                    <div style={{ padding: '1rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}>
+                      <strong style={{ color: 'var(--accent-cyan)', display: 'block' }}>Copernicus OData</strong>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Direct CDSE archive queries</span>
+                    </div>
+                    <div style={{ padding: '1rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}>
+                      <strong style={{ color: 'var(--accent-blue)', display: 'block' }}>ECMWF ERA5</strong>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Historical wind grids</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 4: Evidence & UI (0.60 to 0.75) */}
+            <div style={getSectionStyles(0.60, 0.75, scrollProgress)}>
               <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '2rem' }}>Explainable Forensics</h2>
               <div className="glass-panel" style={{ padding: '2.5rem', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
                 <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
@@ -275,8 +298,8 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Slide 4: CTA (75-100%) */}
-            <div style={getSectionStyles(0.75, 1.0, scrollProgress)}>
+            {/* Slide 5: CTA (0.80 to 1.0) */}
+            <div style={getSectionStyles(0.80, 1.0, scrollProgress)}>
               <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Ready for Investigation?</h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
                 Access the forensic command center to explore case intelligence, verify attribution chains, and review the algorithmic models.
