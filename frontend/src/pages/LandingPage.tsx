@@ -11,7 +11,9 @@ export const LandingPage: React.FC = () => {
 
   // Scroll-based Video Scrubbing Effect
   useEffect(() => {
-    let ticking = false;
+    const targetProgress = { current: 0 };
+    const currentProgress = { current: 0 };
+    let rafId: number;
 
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -30,23 +32,30 @@ export const LandingPage: React.FC = () => {
       }
       
       setScrollProgress(progress);
+      targetProgress.current = progress;
+    };
 
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (videoRef.current && videoDuration > 0) {
-            // Smoothly scrub the video
-            videoRef.current.currentTime = progress * videoDuration;
-          }
-          ticking = false;
-        });
-        ticking = true;
+    const renderLoop = () => {
+      // Lerp for smooth video scrubbing
+      currentProgress.current += (targetProgress.current - currentProgress.current) * 0.1;
+      
+      if (videoRef.current && videoDuration > 0) {
+        if (Math.abs(targetProgress.current - currentProgress.current) > 0.001) {
+          videoRef.current.currentTime = currentProgress.current * videoDuration;
+        }
       }
+      
+      rafId = requestAnimationFrame(renderLoop);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+    rafId = requestAnimationFrame(renderLoop);
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, [videoDuration]);
 
   // Helper function to calculate smooth opacity for sections
@@ -474,3 +483,4 @@ const navLinkStyle: React.CSSProperties = {
   cursor: 'pointer',
   transition: 'color 0.2s',
 };
+
