@@ -89,7 +89,7 @@ export const AppLayout: React.FC = () => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '28px' }} />
+              <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '38px' }} />
               <div>
                 <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
                   ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution

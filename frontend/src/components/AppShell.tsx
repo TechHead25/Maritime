@@ -27,7 +27,7 @@ export const AppShell: React.FC<Props> = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Brand / Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '32px' }} />
+            <img src="/orca-logo.png" alt="ORCA Logo" style={{ height: '42px' }} />
             <div>
               <div style={{ fontSize: '1rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.01em' }}>
                 ORCA Platform - Oil Spill Reconnaissance, Classification & Attribution
