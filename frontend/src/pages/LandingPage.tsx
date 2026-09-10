@@ -6,50 +6,85 @@ export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [videoDuration, setVideoDuration] = useState(0);
 
   // Scroll-based Video Scrubbing Effect
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!containerRef.current || !videoRef.current) return;
+      if (!containerRef.current) return;
       
       const { top, height } = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate how far we've scrolled past the top of the container
       const scrollPosition = -top;
-      // The total scrollable distance is the container height minus the viewport height
       const totalScrollable = height - windowHeight;
       
+      let progress = 0;
       if (scrollPosition >= 0 && scrollPosition <= totalScrollable) {
-        const rawProgress = scrollPosition / totalScrollable;
-        const progress = Math.max(0, Math.min(1, rawProgress));
-        setScrollProgress(progress);
-        
-        // Update video time if metadata is loaded
-        if (videoRef.current.duration) {
-          // Add a small requestAnimationFrame smoothing
-          requestAnimationFrame(() => {
-            if (videoRef.current) {
-               videoRef.current.currentTime = progress * videoRef.current.duration;
-            }
-          });
-        }
-      } else if (scrollPosition < 0) {
-        setScrollProgress(0);
-        if (videoRef.current && videoRef.current.duration) videoRef.current.currentTime = 0;
-      } else {
-        setScrollProgress(1);
-        if (videoRef.current && videoRef.current.duration) videoRef.current.currentTime = videoRef.current.duration;
+        progress = scrollPosition / totalScrollable;
+      } else if (scrollPosition > totalScrollable) {
+        progress = 1;
+      }
+      
+      setScrollProgress(progress);
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (videoRef.current && videoDuration > 0) {
+            // Smoothly scrub the video
+            videoRef.current.currentTime = progress * videoDuration;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Initial call
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [videoDuration]);
+
+  // Helper function to calculate smooth opacity for sections
+  const getSectionStyles = (start: number, end: number, current: number) => {
+    const fadeZone = 0.05; // 5% of scroll for fading in/out
+    let opacity = 0;
+    let translateY = 20; // start slightly lower
+
+    if (current >= start && current <= end) {
+      if (current < start + fadeZone) {
+        // Fading in
+        const ratio = (current - start) / fadeZone;
+        opacity = ratio;
+        translateY = 20 * (1 - ratio);
+      } else if (current > end - fadeZone) {
+        // Fading out
+        const ratio = (end - current) / fadeZone;
+        opacity = ratio;
+        translateY = -20 * (1 - ratio);
+      } else {
+        // Fully visible
+        opacity = 1;
+        translateY = 0;
+      }
+    }
+
+    return {
+      opacity,
+      transform: `translateY(${translateY}px)`,
+      pointerEvents: opacity > 0.5 ? 'auto' : 'none' as const,
+      position: 'absolute' as const,
+      transition: 'opacity 0.1s linear, transform 0.1s linear',
+      width: '100%',
+      left: 0,
+      display: 'flex',
+      flexDirection: 'column' as const,
+      alignItems: 'center',
+    };
+  };
 
   return (
     <div style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-main)', minHeight: '100vh', overflow: 'hidden' }}>
@@ -102,7 +137,6 @@ export const LandingPage: React.FC = () => {
       </nav>
 
       {/* Main Scroll Scrubbing Container */}
-      {/* We make this container very tall so the user has to scroll a lot, allowing fine scrubbing control */}
       <div ref={containerRef} style={{ height: '400vh', position: 'relative' }}>
         
         {/* Sticky Video Background */}
@@ -128,6 +162,12 @@ export const LandingPage: React.FC = () => {
             muted
             playsInline
             preload="auto"
+            onLoadedMetadata={(e) => {
+              const dur = e.currentTarget.duration;
+              if (dur && isFinite(dur)) {
+                setVideoDuration(dur);
+              }
+            }}
             style={{
               width: '100%',
               height: '100%',
@@ -150,14 +190,8 @@ export const LandingPage: React.FC = () => {
           }}>
             
             {/* Slide 1: Hero (0-25%) */}
-            <div style={{
-              position: 'absolute',
-              transition: 'opacity 0.5s ease',
-              opacity: scrollProgress < 0.25 ? 1 : 0,
-              pointerEvents: scrollProgress < 0.25 ? 'auto' : 'none',
-              transform: `translateY(${(scrollProgress * 100)}px)`,
-            }}>
-              <div className="animate-slide-up" style={{
+            <div style={getSectionStyles(0, 0.25, scrollProgress)}>
+              <div style={{
                 display: 'inline-block',
                 padding: '0.4rem 1rem',
                 backgroundColor: 'rgba(56, 189, 248, 0.1)',
@@ -185,12 +219,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Slide 2: Pipeline (25-50%) */}
-            <div style={{
-              position: 'absolute',
-              transition: 'opacity 0.5s ease',
-              opacity: scrollProgress >= 0.25 && scrollProgress < 0.5 ? 1 : 0,
-              pointerEvents: scrollProgress >= 0.25 && scrollProgress < 0.5 ? 'auto' : 'none',
-            }}>
+            <div style={getSectionStyles(0.25, 0.50, scrollProgress)}>
               <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', textShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>The Scientific Engine</h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 3rem' }}>
                 Multi-factor data fusion bridging SAR backscatter observations with hydrodynamic particle modeling.
@@ -222,12 +251,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Slide 3: Evidence & UI (50-75%) */}
-            <div style={{
-              position: 'absolute',
-              transition: 'opacity 0.5s ease',
-              opacity: scrollProgress >= 0.5 && scrollProgress < 0.75 ? 1 : 0,
-              pointerEvents: scrollProgress >= 0.5 && scrollProgress < 0.75 ? 'auto' : 'none',
-            }}>
+            <div style={getSectionStyles(0.50, 0.75, scrollProgress)}>
               <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '2rem' }}>Explainable Forensics</h2>
               <div className="glass-panel" style={{ padding: '2.5rem', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
                 <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
@@ -251,12 +275,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Slide 4: CTA (75-100%) */}
-            <div style={{
-              position: 'absolute',
-              transition: 'opacity 0.5s ease',
-              opacity: scrollProgress >= 0.75 ? 1 : 0,
-              pointerEvents: scrollProgress >= 0.75 ? 'auto' : 'none',
-            }}>
+            <div style={getSectionStyles(0.75, 1.0, scrollProgress)}>
               <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Ready for Investigation?</h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
                 Access the forensic command center to explore case intelligence, verify attribution chains, and review the algorithmic models.
