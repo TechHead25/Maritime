@@ -145,7 +145,7 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          <div style={{ display: 'flex', gap: '1.5rem', display: 'none' }}>
+          <div style={{ display: 'none', gap: '1.5rem' }}>
             {/* Keeping hidden on small screens for layout safety */}
           </div>
           <button style={navLinkStyle}>Platform</button>
